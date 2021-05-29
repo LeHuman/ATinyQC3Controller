@@ -17,8 +17,8 @@ mod/millis/millis.d mod/millis/millis.o: ../mod/millis/millis.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../mod/millis/../counter/counter.h ../mod/millis/../imath/imath.h \
  ../mod/millis/../tm1637/tm1637.h ../mod/millis/../input/input.h \
- ../mod/millis/../millis/millis.h ../mod/millis/../display/display.h \
- ../mod/millis/../state/state.h ../mod/millis/../navigator/navigator.h \
+ ../mod/millis/../millis/millis.h ../mod/millis/../state/state.h \
+ ../mod/millis/../navigator/navigator.h \
  ../mod/millis/../QC3Control/QC3Control.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
@@ -64,8 +64,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../mod/millis/../input/input.h:
 
 ../mod/millis/../millis/millis.h:
-
-../mod/millis/../display/display.h:
 
 ../mod/millis/../state/state.h:
 

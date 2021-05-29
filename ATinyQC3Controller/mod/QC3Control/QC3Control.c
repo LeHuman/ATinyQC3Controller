@@ -12,12 +12,10 @@ uint8_t _handshakeDone;  //!< Is the handshake done?
 uint8_t _continuousMode; //!< Are we in continuous adjustment (QC3) mode?
 uint8_t _classB;         //!< Do we have a class B QC source (up to 20V) ?
 uint16_t _milliVoltNow = 5000; //!< Voltage currently set (in mV). Using the word "now" instead of "current" to prevent confusion between "current" and "voltage" :-)
-uint8_t _DmGndPin = 0; //!< Pin pin connected to the bottom of the D- 1K5-10K bridge in legacy "3-wire" circuit. Must be 0 if using a recommended "2-wire" circuit // Do not port legacy circuit for now
 
 void switchToContinuousMode();
 
 // Low level functions to obtain desired voltages
-void dmHiZ();
 void dm0V();
 void dm600mV();
 void dm3300mV();
@@ -32,30 +30,18 @@ void QC3_begin(uint8_t classB) {
 
     // The spec requires that D+ remains at 0.6V during _WaitTime.
     dp600mV(); // Setting D+ to 0.6V is done by default (Arduino pins are input on boot)
-    if (_DmGndPin != 0) {
-        // We're in "QC2 schema" + DmGndPin mode
-        dmHiZ(); // Which is done by default
+    // We're in "QC3 schema". There's no way to let D- "float", but setting it to 0.6V will prevent the D+/D- short from pulling D+/D- down
+    dm600mV(); // Which is done by default
 
-        //because the Arduino starts the right way we just wait till millis() passes
-        //Has the advantage that if you call this last in setup, all other setup
-        //stuff will be counted as "waiting" :)
-        // After QC_T_GLITCH_BC_DONE_MS, the QC source removes the short between D+ and D- and pulls D- down.
-        // We need to stay in this state for at least 2 more milliseconds before we can start requesting voltages.
-        while (millis() < QC_T_GLITCH_BC_DONE_MS + 2);
-    } else {
-        // We're in "QC3 schema". There's no way to let D- "float", but setting it to 0.6V will prevent the D+/D- short from pulling D+/D- down
-        dm600mV(); // Which is done by default
+    //because the Arduino starts the right way we just wait till millis() passes
+    //Has the advantage that if you call this last in setup, all other setup
+    //stuff will be counted as "waiting" :) (No longer the case)
+    while (millis() < QC_T_GLITCH_BC_DONE_MS);
 
-        //because the Arduino starts the right way we just wait till millis() passes
-        //Has the advantage that if you call this last in setup, all other setup
-        //stuff will be counted as "waiting" :) (No longer the case)
-        while (millis() < QC_T_GLITCH_BC_DONE_MS);
-
-        // After QC_T_GLITCH_BC_DONE_MS, the QC source removes the short between D+ and D- and pulls D- down.
-        // We need to stay in this state for at least 2 more milliseconds before we can start requesting voltages.
-        dm0V(); // "Acknowledge" by simulating that we "follow" the internal pull down
-        _delay_ms(2);
-    }
+    // After QC_T_GLITCH_BC_DONE_MS, the QC source removes the short between D+ and D- and pulls D- down.
+    // We need to stay in this state for at least 2 more milliseconds before we can start requesting voltages.
+    dm0V(); // "Acknowledge" by simulating that we "follow" the internal pull down
+    _delay_ms(2);
 	
 	millis_Disable();
 
@@ -64,10 +50,6 @@ void QC3_begin(uint8_t classB) {
 }
 
 void QC3_set5V() {
-    if (!_handshakeDone) {
-        QC3_begin(0);
-    }
-
     dp600mV();
     dm0V();
 
@@ -78,10 +60,6 @@ void QC3_set5V() {
 }
 
 void QC3_set9V() {
-    if (!_handshakeDone) {
-        QC3_begin(0);
-    }
-
     if (_continuousMode) {
         // Transition from continuous to discrete values requires first going to 5V
         QC3_set5V();
@@ -97,10 +75,6 @@ void QC3_set9V() {
 }
 
 void QC3_set12V() {
-    if (!_handshakeDone) {
-        QC3_begin(0);
-    }
-
     if (_continuousMode) {
         // Transition from continuous to discrete values requires first going to 5V
         QC3_set5V();
@@ -117,10 +91,6 @@ void QC3_set12V() {
 
 void QC3_set20V() {
     if (_classB) {
-        if (!_handshakeDone) {
-            QC3_begin(0);
-        }
-
         if (_continuousMode) {
             // Transition from continuous to discrete values requires first going to 5V
             QC3_set5V();
@@ -137,9 +107,6 @@ void QC3_set20V() {
 }
 
 void QC3_incrementVoltage() {
-    if (!_handshakeDone) {
-        QC3_begin(0);
-    }
     if (_milliVoltNow < (_classB ? QC3_CLASS_B_MAX_VOLTAGE_MV : QC3_CLASS_A_MAX_VOLTAGE_MV)) {
         if (!_continuousMode) {
             switchToContinuousMode();
@@ -156,9 +123,6 @@ void QC3_incrementVoltage() {
 }
 
 void QC3_decrementVoltage() {
-    if (!_handshakeDone) {
-        QC3_begin(0);
-    }
     if (_milliVoltNow > QC3_MIN_VOLTAGE_MV) {
         if (!_continuousMode) {
             switchToContinuousMode();
@@ -186,10 +150,6 @@ uint16_t getClosestValidMilliVolt(uint16_t mV) {
 }
 
 void QC3_setMilliVoltage(uint16_t milliVolt) {
-    if (!_handshakeDone) {
-        QC3_begin(0);
-    }
-
     if (milliVolt <= QC3_MIN_VOLTAGE_MV) {
         // below lower boundary: limit
         milliVolt = QC3_MIN_VOLTAGE_MV;
@@ -246,47 +206,18 @@ void switchToContinuousMode() {
 
 // Low level functions to obtain desired voltages
 
-void dmHiZ() {
-    if (_DmGndPin != 0) {
-        // "disconnect" DM resistors : D- will be pulled down by QC source
-        //pinMode(_DmPin, INPUT);
-        //pinMode(_DmGndPin, INPUT);
-    } else {
-        // Hi-Z is impossible with this hardware !
-    }
-}
-
 void dm0V() {
-    if (_DmGndPin != 0) {
-        //pinMode(_DmPin, INPUT); // "disconnect" DM top resistor
-        //digitalWrite(_DmGndPin, LOW);
-        //pinMode(_DmGndPin, OUTPUT); // and pull D- down
-    } else {
-		pinLow(QC3_DM_PIN);
-		pinOutput(QC3_DM_PIN); // pull D- down
-    }
+	pinLow(QC3_DM_PIN);
+	pinOutput(QC3_DM_PIN); // pull D- down
 }
 
 void dm600mV() {
-    if (_DmGndPin != 0) {
-        //digitalWrite(_DmPin, HIGH); // Activate DM divider so it sets D- to about 0.6V
-        //pinMode(_DmPin, OUTPUT);
-        //digitalWrite(_DmGndPin, LOW);
-        //pinMode(_DmGndPin, OUTPUT);
-    } else {
-		pinInput(QC3_DM_PIN); // Let the DM divider set D- to about 0.6V
-    }
+	pinInput(QC3_DM_PIN); // Let the DM divider set D- to about 0.6V
 }
 
 void dm3300mV() {
-    if (_DmGndPin != 0) {
-        //digitalWrite(_DmPin, HIGH); // Pull D- up (3.3V minimum)
-        //pinMode(_DmPin, OUTPUT);
-        //pinMode(_DmGndPin, INPUT); // And leave DM bottom resistor "unconnected"
-    } else {
-		pinHigh(QC3_DM_PIN); // Pull D- up (3.3V minimum)
-		pinOutput(QC3_DM_PIN); // pull D- down
-    }
+	pinHigh(QC3_DM_PIN); // Pull D- up (3.3V minimum)
+	pinOutput(QC3_DM_PIN); // pull D- down
 }
 
 void dp600mV() {

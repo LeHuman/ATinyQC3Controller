@@ -31,6 +31,7 @@
     *  begin() is **blocking code**. It waits for a fixed period counting from the start up of the Arduino to act because the handshake needs a minimum time. But this is most likely not a problem because if you need 9V or 12V in your application, there is no gain in proceeding when the voltage isn't there yet (because of the handshake). And by putting begin() (or a call to one of the setXXX() functions) at the end of setup() (or other initialization) you can even do stuff while waiting because it counts from Arduino startup.
     *  
     *  @see begin(), setMilliVoltage(uint16_t), set5V(), set9V(), set12V(), set20V()
+	*  @warning QC3_begin MUST be called before anything else
     */
 void QC3_begin(uint8_t classB);
 

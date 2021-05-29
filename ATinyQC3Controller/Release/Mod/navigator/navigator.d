@@ -17,8 +17,7 @@ mod/navigator/navigator.d mod/navigator/navigator.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- ../mod/navigator/../millis/millis.h \
- ../mod/navigator/../display/display.h ../mod/navigator/../state/state.h \
+ ../mod/navigator/../millis/millis.h ../mod/navigator/../state/state.h \
  ../mod/navigator/../navigator/navigator.h \
  ../mod/navigator/../QC3Control/QC3Control.h
 
@@ -63,8 +62,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
 ../mod/navigator/../millis/millis.h:
-
-../mod/navigator/../display/display.h:
 
 ../mod/navigator/../state/state.h:
 

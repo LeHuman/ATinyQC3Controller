@@ -16,8 +16,8 @@ mod/input/input.d mod/input/input.o: ../mod/input/input.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../mod/input/../counter/counter.h ../mod/input/../imath/imath.h \
  ../mod/input/../tm1637/tm1637.h ../mod/input/../input/input.h \
- ../mod/input/../millis/millis.h ../mod/input/../display/display.h \
- ../mod/input/../state/state.h ../mod/input/../navigator/navigator.h \
+ ../mod/input/../millis/millis.h ../mod/input/../state/state.h \
+ ../mod/input/../navigator/navigator.h \
  ../mod/input/../QC3Control/QC3Control.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
@@ -61,8 +61,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../mod/input/../input/input.h:
 
 ../mod/input/../millis/millis.h:
-
-../mod/input/../display/display.h:
 
 ../mod/input/../state/state.h:
 

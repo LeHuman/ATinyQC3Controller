@@ -16,8 +16,8 @@ mod/counter/counter.d mod/counter/counter.o: ../mod/counter/counter.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- ../mod/counter/../millis/millis.h ../mod/counter/../display/display.h \
- ../mod/counter/../state/state.h ../mod/counter/../navigator/navigator.h \
+ ../mod/counter/../millis/millis.h ../mod/counter/../state/state.h \
+ ../mod/counter/../navigator/navigator.h \
  ../mod/counter/../QC3Control/QC3Control.h
 
 ../mod/counter/../mod.h:
@@ -61,8 +61,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
 ../mod/counter/../millis/millis.h:
-
-../mod/counter/../display/display.h:
 
 ../mod/counter/../state/state.h:
 

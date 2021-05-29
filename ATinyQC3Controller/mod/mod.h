@@ -11,7 +11,6 @@
 #include "tm1637/tm1637.h"
 #include "input/input.h"
 #include "millis/millis.h"
-#include "display/display.h"
 #include "state/state.h"
 #include "navigator/navigator.h"
 #include "QC3Control/QC3Control.h"

@@ -19,8 +19,8 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  .././mod/counter/counter.h .././mod/imath/imath.h \
  .././mod/tm1637/tm1637.h .././mod/input/input.h .././mod/millis/millis.h \
- .././mod/display/display.h .././mod/state/state.h \
- .././mod/navigator/navigator.h .././mod/QC3Control/QC3Control.h
+ .././mod/state/state.h .././mod/navigator/navigator.h \
+ .././mod/QC3Control/QC3Control.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -69,8 +69,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 .././mod/input/input.h:
 
 .././mod/millis/millis.h:
-
-.././mod/display/display.h:
 
 .././mod/state/state.h:
 

@@ -16,8 +16,8 @@ mod/state/state.d mod/state/state.o: ../mod/state/state.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- ../mod/state/../millis/millis.h ../mod/state/../display/display.h \
- ../mod/state/../state/state.h ../mod/state/../navigator/navigator.h \
+ ../mod/state/../millis/millis.h ../mod/state/../state/state.h \
+ ../mod/state/../navigator/navigator.h \
  ../mod/state/../QC3Control/QC3Control.h
 
 ../mod/state/../mod.h:
@@ -61,8 +61,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
 ../mod/state/../millis/millis.h:
-
-../mod/state/../display/display.h:
 
 ../mod/state/../state/state.h:
 

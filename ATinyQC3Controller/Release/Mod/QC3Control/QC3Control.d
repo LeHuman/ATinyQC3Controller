@@ -18,9 +18,7 @@ mod/QC3Control/QC3Control.d mod/QC3Control/QC3Control.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- ../mod/QC3Control/../millis/millis.h \
- ../mod/QC3Control/../display/display.h \
- ../mod/QC3Control/../state/state.h \
+ ../mod/QC3Control/../millis/millis.h ../mod/QC3Control/../state/state.h \
  ../mod/QC3Control/../navigator/navigator.h \
  ../mod/QC3Control/../QC3Control/QC3Control.h
 
@@ -65,8 +63,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
 ../mod/QC3Control/../millis/millis.h:
-
-../mod/QC3Control/../display/display.h:
 
 ../mod/QC3Control/../state/state.h:
 
