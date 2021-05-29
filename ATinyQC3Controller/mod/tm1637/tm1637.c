@@ -4,7 +4,7 @@
  * Modified: 5/27/2021 5:05:16 PM
  *  Author: IR
  *  Library: https://github.com/lpodkalicki/attiny-tm1637-library
- */ 
+ */
 
 /**
 * Copyright (c) 2017-2018, Łukasz Marcin Podkalicki <lpodkalicki@gmail.com>
@@ -179,7 +179,7 @@ void TM1637_send_command(const uint8_t value) {
 
 void TM1637_enable(const uint8_t enable) {
     enabled = enable;
-	enabledDigits = 0b1111 * enable;
+    enabledDigits = 0b1111 * enable;
     TM1637_send_command(TM1637_CMD_SET_DISPLAY | TM1637_BRIGHTNESS | (enable ? TM1637_SET_DISPLAY_ON : TM1637_SET_DISPLAY_OFF));
 }
 
@@ -188,11 +188,11 @@ uint8_t TM1637_is_enabled(void) {
 }
 
 //void TM1637_display_digit(const uint8_t position, const uint8_t digit) {
-    //uint8_t segments = (digit < 10 ? pgm_read_byte_near((uint8_t *)&_digit2segments + digit) : 0x00);
-    //TM1637_start();
-    //TM1637_write_byte(TM1637_CMD_SET_ADDR | (position & (TM1637_POSITION_MAX - 1)));
-    //TM1637_write_byte(segments);
-    //TM1637_stop();
+//uint8_t segments = (digit < 10 ? pgm_read_byte_near((uint8_t *)&_digit2segments + digit) : 0x00);
+//TM1637_start();
+//TM1637_write_byte(TM1637_CMD_SET_ADDR | (position & (TM1637_POSITION_MAX - 1)));
+//TM1637_write_byte(segments);
+//TM1637_stop();
 //}
 
 void TM1637_push_buff() {
@@ -227,14 +227,14 @@ void _TM1637_display_number(uint16_t value) {
 #endif
 }
 
-void TM1637_display_number(uint16_t value){
-	enabledDigits = 0b1111;
-	_TM1637_display_number(value);
+void TM1637_display_number(uint16_t value) {
+    enabledDigits = 0b1111;
+    _TM1637_display_number(value);
     TM1637_push_buff();
 }
 
 void TM1637_refresh(void) {
-	TM1637_enable(1);
+    TM1637_enable(1);
     if (lastWasStr) {
         TM1637_display_prog_string(lastValue);
     } else {
@@ -247,27 +247,27 @@ void TM1637_toggle(void) {
 }
 
 void TM1637_toggle_digit(const uint8_t position) {
-	if (!lastWasStr) {
-		_TM1637_display_number(lastValue);
-		if (bitGet(enabledDigits, position)) {
-			byteBuf[position] = 0;
-			bitClr(enabledDigits, position);
-		} else {
-			bitSet(enabledDigits, position);
-		}
+    if (!lastWasStr) {
+        _TM1637_display_number(lastValue);
+        if (bitGet(enabledDigits, position)) {
+            byteBuf[position] = 0;
+            bitClr(enabledDigits, position);
+        } else {
+            bitSet(enabledDigits, position);
+        }
 #if TM1637_FAUX_DECIMAL == 1
-		byteBuf[1] |= 0x80;
+        byteBuf[1] |= 0x80;
 #endif
-		TM1637_push_buff();
-	}
+        TM1637_push_buff();
+    }
 }
 
 void TM1637_flash(const uint8_t count, const uint8_t wait) {
     for (uint8_t i = 0; i < count; ++i) {
         TM1637_toggle();
-		for (uint8_t j = 0; j < wait; ++j) {
-			delay(50);
-		}
+        for (uint8_t j = 0; j < wait; ++j) {
+            delay(50);
+        }
     }
 }
 

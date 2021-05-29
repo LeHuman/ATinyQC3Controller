@@ -24,8 +24,6 @@ Common symbol       size              file
 
 currentState        0x2               mod/state/state.o
 _classB             0x1               mod/QC3Control/QC3Control.o
-_handshakeDone      0x1               mod/QC3Control/QC3Control.o
-_continuousMode     0x1               mod/QC3Control/QC3Control.o
 
 Discarded input sections
 
@@ -44,8 +42,8 @@ Discarded input sections
                 0x00000000       0x16 mod/counter/counter.o
  .text.slowCounter
                 0x00000000       0x16 mod/counter/counter.o
- .bss.c.1803    0x00000000        0x1 mod/counter/counter.o
- .bss.c.1800    0x00000000        0x1 mod/counter/counter.o
+ .bss.c.1819    0x00000000        0x1 mod/counter/counter.o
+ .bss.c.1816    0x00000000        0x1 mod/counter/counter.o
  .comment       0x00000000       0x31 mod/counter/counter.o
  .text          0x00000000        0x0 mod/imath/imath.o
  .data          0x00000000        0x0 mod/imath/imath.o
@@ -344,7 +342,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xc1c
+.text           0x00000000      0xbfc
  *(.vectors)
  .vectors       0x00000000       0x1e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.8.332/gcc/dev/attiny45/avr25/crtattiny45.o
                 0x00000000                __vector_default
@@ -361,40 +359,40 @@ END GROUP
  *libc.a:*(.progmem.data)
  *(.progmem*)
  .progmem.data._definedStrings
-                0x0000001e       0x3c mod/tm1637/tm1637.o
+                0x0000001e       0x34 mod/tm1637/tm1637.o
                 0x0000001e                _definedStrings
  .progmem.data._digit2segments
-                0x0000005a        0xa mod/tm1637/tm1637.o
-                0x0000005a                _digit2segments
-                0x00000064                . = ALIGN (0x2)
+                0x00000052        0xa mod/tm1637/tm1637.o
+                0x00000052                _digit2segments
+                0x0000005c                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x00000064                __ctors_start = .
+                0x0000005c                __ctors_start = .
  *(.ctors)
-                0x00000064                __ctors_end = .
-                0x00000064                __dtors_start = .
+                0x0000005c                __ctors_end = .
+                0x0000005c                __dtors_start = .
  *(.dtors)
-                0x00000064                __dtors_end = .
+                0x0000005c                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x00000064        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.8.332/gcc/dev/attiny45/avr25/crtattiny45.o
-                0x00000064                __init
+ .init0         0x0000005c        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.8.332/gcc/dev/attiny45/avr25/crtattiny45.o
+                0x0000005c                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000064        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.8.332/gcc/dev/attiny45/avr25/crtattiny45.o
+ .init2         0x0000005c        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.8.332/gcc/dev/attiny45/avr25/crtattiny45.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000070       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
-                0x00000070                __do_copy_data
- .init4         0x00000086       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_clear_bss.o)
-                0x00000086                __do_clear_bss
+ .init4         0x00000068       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_copy_data.o)
+                0x00000068                __do_copy_data
+ .init4         0x0000007e       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_clear_bss.o)
+                0x0000007e                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -405,180 +403,180 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000096        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.8.332/gcc/dev/attiny45/avr25/crtattiny45.o
+ .init9         0x0000008e        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.8.332/gcc/dev/attiny45/avr25/crtattiny45.o
  *(.init9)
  *(.text)
- .text          0x0000009a        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.8.332/gcc/dev/attiny45/avr25/crtattiny45.o
-                0x0000009a                __vector_1
-                0x0000009a                __vector_12
-                0x0000009a                __bad_interrupt
-                0x0000009a                __vector_6
-                0x0000009a                __vector_3
-                0x0000009a                __vector_11
-                0x0000009a                __vector_13
-                0x0000009a                __vector_7
-                0x0000009a                __vector_4
-                0x0000009a                __vector_9
-                0x0000009a                __vector_2
-                0x0000009a                __vector_8
-                0x0000009a                __vector_14
-                0x0000009a                __vector_10
-                0x0000009c                . = ALIGN (0x2)
+ .text          0x00000092        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATtiny_DFP/1.8.332/gcc/dev/attiny45/avr25/crtattiny45.o
+                0x00000092                __vector_1
+                0x00000092                __vector_12
+                0x00000092                __bad_interrupt
+                0x00000092                __vector_6
+                0x00000092                __vector_3
+                0x00000092                __vector_11
+                0x00000092                __vector_13
+                0x00000092                __vector_7
+                0x00000092                __vector_4
+                0x00000092                __vector_9
+                0x00000092                __vector_2
+                0x00000092                __vector_8
+                0x00000092                __vector_14
+                0x00000092                __vector_10
+                0x00000094                . = ALIGN (0x2)
  *(.text.*)
  .text.acurSelect
-                0x0000009c        0x6 main.o
-                0x0000009c                acurSelect
+                0x00000094        0x6 main.o
+                0x00000094                acurSelect
  .text.voltSelect
-                0x000000a2      0x11a main.o
-                0x000000a2                voltSelect
+                0x0000009a      0x11a main.o
+                0x0000009a                voltSelect
  .text.normalizeVoltage
-                0x000001bc      0x16c main.o
-                0x000001bc                normalizeVoltage
+                0x000001b4      0x16c main.o
+                0x000001b4                normalizeVoltage
  .text.confirmVoltage
-                0x00000328       0x62 main.o
-                0x00000328                confirmVoltage
+                0x00000320       0x62 main.o
+                0x00000320                confirmVoltage
  .text.mainMenu
-                0x0000038a       0x54 main.o
-                0x0000038a                mainMenu
+                0x00000382       0x54 main.o
+                0x00000382                mainMenu
  .text.startup.main
-                0x000003de       0x34 main.o
-                0x000003de                main
+                0x000003d6       0x34 main.o
+                0x000003d6                main
  .text.buttonDown
-                0x00000412       0x34 mod/input/input.o
-                0x00000412                buttonDown
- .text.btnWait  0x00000446       0x1a mod/input/input.o
-                0x00000446                btnWait
+                0x0000040a       0x34 mod/input/input.o
+                0x0000040a                buttonDown
+ .text.btnWait  0x0000043e       0x1a mod/input/input.o
+                0x0000043e                btnWait
  .text.input_init
-                0x00000460        0x8 mod/input/input.o
-                0x00000460                input_init
+                0x00000458        0x8 mod/input/input.o
+                0x00000458                input_init
  .text.__vector_5
-                0x00000468       0x7c mod/millis/millis.o
-                0x00000468                __vector_5
- .text.millis   0x000004e4        0xe mod/millis/millis.o
-                0x000004e4                millis
+                0x00000460       0x7c mod/millis/millis.o
+                0x00000460                __vector_5
+ .text.millis   0x000004dc        0xe mod/millis/millis.o
+                0x000004dc                millis
  .text.millis_Enable
-                0x000004f2       0x16 mod/millis/millis.o
-                0x000004f2                millis_Enable
+                0x000004ea       0x16 mod/millis/millis.o
+                0x000004ea                millis_Enable
  .text.millis_Disable
-                0x00000508        0x4 mod/millis/millis.o
-                0x00000508                millis_Disable
+                0x00000500        0x4 mod/millis/millis.o
+                0x00000500                millis_Disable
  .text.millis_TakeSnap
-                0x0000050c       0x1a mod/millis/millis.o
-                0x0000050c                millis_TakeSnap
+                0x00000504       0x1a mod/millis/millis.o
+                0x00000504                millis_TakeSnap
  .text.millis_Init
-                0x00000526        0xe mod/millis/millis.o
-                0x00000526                millis_Init
- .text.select   0x00000534       0x44 mod/navigator/navigator.o
-                0x00000534                select
- .text.next     0x00000578       0x52 mod/navigator/navigator.o
-                0x00000578                next
+                0x0000051e        0xe mod/millis/millis.o
+                0x0000051e                millis_Init
+ .text.select   0x0000052c       0x44 mod/navigator/navigator.o
+                0x0000052c                select
+ .text.next     0x00000570       0x52 mod/navigator/navigator.o
+                0x00000570                next
  .text.nav_getSelection
-                0x000005ca       0xdc mod/navigator/navigator.o
-                0x000005ca                nav_getSelection
+                0x000005c2       0xdc mod/navigator/navigator.o
+                0x000005c2                nav_getSelection
  .text.QC3_getMilliVoltage
-                0x000006a6        0xa mod/QC3Control/QC3Control.o
-                0x000006a6                QC3_getMilliVoltage
- .text.dm0V     0x000006b0        0x6 mod/QC3Control/QC3Control.o
-                0x000006b0                dm0V
- .text.dm600mV  0x000006b6        0x4 mod/QC3Control/QC3Control.o
-                0x000006b6                dm600mV
+                0x0000069e        0xa mod/QC3Control/QC3Control.o
+                0x0000069e                QC3_getMilliVoltage
+ .text.dm0V     0x000006a8        0x6 mod/QC3Control/QC3Control.o
+                0x000006a8                dm0V
+ .text.dm600mV  0x000006ae        0x4 mod/QC3Control/QC3Control.o
+                0x000006ae                dm600mV
  .text.dm3300mV
-                0x000006ba        0x6 mod/QC3Control/QC3Control.o
-                0x000006ba                dm3300mV
- .text.dp600mV  0x000006c0        0x4 mod/QC3Control/QC3Control.o
-                0x000006c0                dp600mV
+                0x000006b2        0x6 mod/QC3Control/QC3Control.o
+                0x000006b2                dm3300mV
+ .text.dp600mV  0x000006b8        0x4 mod/QC3Control/QC3Control.o
+                0x000006b8                dp600mV
  .text.QC3_begin
-                0x000006c4       0x2e mod/QC3Control/QC3Control.o
-                0x000006c4                QC3_begin
+                0x000006bc       0x22 mod/QC3Control/QC3Control.o
+                0x000006bc                QC3_begin
  .text.QC3_set5V
-                0x000006f2       0x28 mod/QC3Control/QC3Control.o
-                0x000006f2                QC3_set5V
+                0x000006de       0x28 mod/QC3Control/QC3Control.o
+                0x000006de                QC3_set5V
  .text.QC3_set12V
-                0x0000071a       0x30 mod/QC3Control/QC3Control.o
-                0x0000071a                QC3_set12V
+                0x00000706       0x2c mod/QC3Control/QC3Control.o
+                0x00000706                QC3_set12V
  .text.switchToContinuousMode
-                0x0000074a       0x1e mod/QC3Control/QC3Control.o
-                0x0000074a                switchToContinuousMode
+                0x00000732       0x1e mod/QC3Control/QC3Control.o
+                0x00000732                switchToContinuousMode
  .text.QC3_decrementVoltage
-                0x00000768       0x4a mod/QC3Control/QC3Control.o
-                0x00000768                QC3_decrementVoltage
+                0x00000750       0x4a mod/QC3Control/QC3Control.o
+                0x00000750                QC3_decrementVoltage
  .text.dp3300mV
-                0x000007b2        0x6 mod/QC3Control/QC3Control.o
-                0x000007b2                dp3300mV
+                0x0000079a        0x6 mod/QC3Control/QC3Control.o
+                0x0000079a                dp3300mV
  .text.QC3_set9V
-                0x000007b8       0x30 mod/QC3Control/QC3Control.o
-                0x000007b8                QC3_set9V
+                0x000007a0       0x2c mod/QC3Control/QC3Control.o
+                0x000007a0                QC3_set9V
  .text.QC3_set20V
-                0x000007e8       0x38 mod/QC3Control/QC3Control.o
-                0x000007e8                QC3_set20V
+                0x000007cc       0x34 mod/QC3Control/QC3Control.o
+                0x000007cc                QC3_set20V
  .text.QC3_incrementVoltage
-                0x00000820       0x5c mod/QC3Control/QC3Control.o
-                0x00000820                QC3_incrementVoltage
+                0x00000800       0x5c mod/QC3Control/QC3Control.o
+                0x00000800                QC3_incrementVoltage
  .text.QC3_setMilliVoltage
-                0x0000087c       0xc6 mod/QC3Control/QC3Control.o
-                0x0000087c                QC3_setMilliVoltage
+                0x0000085c       0xc6 mod/QC3Control/QC3Control.o
+                0x0000085c                QC3_setMilliVoltage
  .text.stateRun
-                0x00000942       0x1c mod/state/state.o
-                0x00000942                stateRun
- .text.nilFunc  0x0000095e        0x2 mod/state/state.o
-                0x0000095e                nilFunc
+                0x00000922       0x1c mod/state/state.o
+                0x00000922                stateRun
+ .text.nilFunc  0x0000093e        0x2 mod/state/state.o
+                0x0000093e                nilFunc
  .text.TM1637_start
-                0x00000960       0x10 mod/tm1637/tm1637.o
+                0x00000940       0x10 mod/tm1637/tm1637.o
  .text.TM1637_stop
-                0x00000970       0x22 mod/tm1637/tm1637.o
+                0x00000950       0x22 mod/tm1637/tm1637.o
  .text.TM1637_write_byte
-                0x00000992       0x68 mod/tm1637/tm1637.o
+                0x00000972       0x68 mod/tm1637/tm1637.o
  .text.TM1637_enable
-                0x000009fa       0x24 mod/tm1637/tm1637.o
-                0x000009fa                TM1637_enable
+                0x000009da       0x24 mod/tm1637/tm1637.o
+                0x000009da                TM1637_enable
  .text.TM1637_is_enabled
-                0x00000a1e        0x6 mod/tm1637/tm1637.o
-                0x00000a1e                TM1637_is_enabled
+                0x000009fe        0x6 mod/tm1637/tm1637.o
+                0x000009fe                TM1637_is_enabled
  .text.TM1637_push_buff
-                0x00000a24       0x28 mod/tm1637/tm1637.o
-                0x00000a24                TM1637_push_buff
+                0x00000a04       0x28 mod/tm1637/tm1637.o
+                0x00000a04                TM1637_push_buff
  .text.TM1637_display_prog_string
-                0x00000a4c       0x50 mod/tm1637/tm1637.o
-                0x00000a4c                TM1637_display_prog_string
+                0x00000a2c       0x50 mod/tm1637/tm1637.o
+                0x00000a2c                TM1637_display_prog_string
  .text._TM1637_display_number
-                0x00000a9c       0x40 mod/tm1637/tm1637.o
-                0x00000a9c                _TM1637_display_number
+                0x00000a7c       0x40 mod/tm1637/tm1637.o
+                0x00000a7c                _TM1637_display_number
  .text.TM1637_display_number
-                0x00000adc        0xa mod/tm1637/tm1637.o
-                0x00000adc                TM1637_display_number
+                0x00000abc        0xa mod/tm1637/tm1637.o
+                0x00000abc                TM1637_display_number
  .text.TM1637_toggle
-                0x00000ae6        0xc mod/tm1637/tm1637.o
-                0x00000ae6                TM1637_toggle
+                0x00000ac6        0xc mod/tm1637/tm1637.o
+                0x00000ac6                TM1637_toggle
  .text.TM1637_flash
-                0x00000af2       0x34 mod/tm1637/tm1637.o
-                0x00000af2                TM1637_flash
+                0x00000ad2       0x34 mod/tm1637/tm1637.o
+                0x00000ad2                TM1637_flash
  .text.TM1637_clear
-                0x00000b26        0xe mod/tm1637/tm1637.o
-                0x00000b26                TM1637_clear
+                0x00000b06        0xe mod/tm1637/tm1637.o
+                0x00000b06                TM1637_clear
  .text.TM1637_init
-                0x00000b34       0x12 mod/tm1637/tm1637.o
-                0x00000b34                TM1637_init
+                0x00000b14       0x12 mod/tm1637/tm1637.o
+                0x00000b14                TM1637_init
  .text.libgcc.mul
-                0x00000b46       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulqi3.o)
-                0x00000b46                __mulqi3
+                0x00000b26       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulqi3.o)
+                0x00000b26                __mulqi3
  .text.libgcc.mul
-                0x00000b58       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
-                0x00000b58                __mulhi3
+                0x00000b38       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulhi3.o)
+                0x00000b38                __mulhi3
  .text.libgcc.mul
-                0x00000b7a       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
-                0x00000b7a                __mulsi3
-                0x00000b7e                __mulsi3_helper
+                0x00000b5a       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_mulsi3.o)
+                0x00000b5a                __mulsi3
+                0x00000b5e                __mulsi3_helper
  .text.libgcc.div
-                0x00000bac       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodhi4.o)
-                0x00000bac                __udivmodhi4
+                0x00000b8c       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodhi4.o)
+                0x00000b8c                __udivmodhi4
  .text.libgcc.div
-                0x00000bd4       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
-                0x00000bd4                __udivmodsi4
-                0x00000c18                . = ALIGN (0x2)
+                0x00000bb4       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_udivmodsi4.o)
+                0x00000bb4                __udivmodsi4
+                0x00000bf8                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000c18        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
-                0x00000c18                _exit
-                0x00000c18                exit
+ .fini9         0x00000bf8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
+                0x00000bf8                _exit
+                0x00000bf8                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -597,11 +595,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000c18        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
+ .fini0         0x00000bf8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr25\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000c1c                _etext = .
+                0x00000bfc                _etext = .
 
-.data           0x00800060       0x36 load address 0x00000c1c
+.data           0x00800060       0x36 load address 0x00000bfc
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -636,14 +634,14 @@ END GROUP
                 0x00800096                _edata = .
                 0x00800096                PROVIDE (__data_end, .)
 
-.bss            0x00800096       0x14
+.bss            0x00800096       0x13
                 0x00800096                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.queuedVoltage
                 0x00800096        0x2 main.o
                 0x00800096                queuedVoltage
- .bss.down.1800
+ .bss.down.1816
                 0x00800098        0x1 mod/input/input.o
  .bss.us        0x00800099        0x2 mod/millis/millis.o
                 0x00800099                us
@@ -652,29 +650,30 @@ END GROUP
  .bss.millis_snap
                 0x0080009d        0x2 mod/millis/millis.o
                 0x0080009d                millis_snap
+ .bss._continuousMode
+                0x0080009f        0x1 mod/QC3Control/QC3Control.o
+                0x0080009f                _continuousMode
  .bss.lastWasStr
-                0x0080009f        0x1 mod/tm1637/tm1637.o
-                0x0080009f                lastWasStr
- .bss.enabled   0x008000a0        0x1 mod/tm1637/tm1637.o
-                0x008000a0                enabled
- .bss.byteBuf   0x008000a1        0x4 mod/tm1637/tm1637.o
-                0x008000a1                byteBuf
+                0x008000a0        0x1 mod/tm1637/tm1637.o
+                0x008000a0                lastWasStr
+ .bss.enabled   0x008000a1        0x1 mod/tm1637/tm1637.o
+                0x008000a1                enabled
+ .bss.byteBuf   0x008000a2        0x4 mod/tm1637/tm1637.o
+                0x008000a2                byteBuf
  *(COMMON)
- COMMON         0x008000a5        0x3 mod/QC3Control/QC3Control.o
-                0x008000a5                _classB
-                0x008000a6                _handshakeDone
-                0x008000a7                _continuousMode
- COMMON         0x008000a8        0x2 mod/state/state.o
-                0x008000a8                currentState
-                0x008000aa                PROVIDE (__bss_end, .)
-                0x00000c1c                __data_load_start = LOADADDR (.data)
-                0x00000c52                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x008000a6        0x1 mod/QC3Control/QC3Control.o
+                0x008000a6                _classB
+ COMMON         0x008000a7        0x2 mod/state/state.o
+                0x008000a7                currentState
+                0x008000a9                PROVIDE (__bss_end, .)
+                0x00000bfc                __data_load_start = LOADADDR (.data)
+                0x00000c32                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008000aa        0x0
+.noinit         0x008000a9        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x008000aa                _end = .
+                0x008000a9                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0

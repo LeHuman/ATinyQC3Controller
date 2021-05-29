@@ -4,7 +4,7 @@
  * Modified: 5/27/2021 5:05:16 PM
  *  Author: IR
  *  Library: https://github.com/lpodkalicki/attiny-tm1637-library
- */ 
+ */
 
 /**
 * Copyright (c) 2017-2018, Łukasz Marcin Podkalicki <lpodkalicki@gmail.com>
@@ -29,38 +29,34 @@
 
 #include <stdint.h>
 
-#define TM1637_STR_NONE 0
-#define TM1637_STR_VOLT 1
+#define TM1637_STR_NONE 1
 #define TM1637_STR_CNCL 2
-#define TM1637_STR_ACUR 3
-#define TM1637_STR_DONE 4
-#define TM1637_STR_ERRO 5
+#define TM1637_STR_VOLT 3
+#define TM1637_STR_ACUR 4
+#define TM1637_STR_DONE 5
 #define TM1637_STR_BEGN 6
-#define TM1637_STR_LED  7
+#define TM1637_STR_LED 7
 #define TM1637_STR_8000 8
 #define TM1637_STR_0800 9
 #define TM1637_STR_0080 10
 #define TM1637_STR_0008 11
-#define TM1637_STR_HOLD 12
-#define TM1637_STR_NORM 13
-#define TM1637_STR_DISC 14
+#define TM1637_STR_NORM 12
+#define TM1637_STR_DISC 13
 
 #define TM1637_STRINGS \
     X(N, O, N, E)      \
-    X(V, O, L, T)      \
     X(C, N, C, L)      \
+    X(V, O, L, T)      \
     X(A, C, U, R)      \
-	X(D, O, N, E)      \
-    X(E, R, R, O)      \
+    X(D, O, N, E)      \
     X(B, E, G, N)      \
-    X(L, E, D,  )      \
-    X(8,  ,  ,  )      \
-    X( , 8,  ,  )      \
-    X( ,  , 8,  )      \
-    X( ,  , , 8 )      \
-	X(H, O, L, D)	   \
-	X(N, O, R, M)	   \
-	X(D, I, S, C)
+    X(L, E, D, )       \
+    X(8, , , )         \
+    X(, 8, , )         \
+    X(, , 8, )         \
+    X(, , , 8)         \
+    X(N, O, R, M)      \
+    X(D, I, S, C)
 
 // Main Settings
 #define TM1637_DIO_PIN PB3

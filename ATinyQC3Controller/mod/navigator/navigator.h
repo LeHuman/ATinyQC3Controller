@@ -3,8 +3,7 @@
  *
  * Created: 5/28/2021 6:11:19 PM
  *  Author: IR
- */ 
-
+ */
 
 #ifndef NAVIGATOR_H_
 #define NAVIGATOR_H_

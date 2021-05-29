@@ -4,7 +4,7 @@
  * Modified: 5/28/2021 10:12:27 PM
  *  Author: IR
  *  Library: https://github.com/vdeconinck/QC3Control
- */ 
+ */
 
 #ifndef QC3CONTROL_H_
 #define QC3CONTROL_H_

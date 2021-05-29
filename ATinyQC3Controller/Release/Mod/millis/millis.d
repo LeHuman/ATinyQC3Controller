@@ -1,4 +1,5 @@
 mod/millis/millis.d mod/millis/millis.o: ../mod/millis/millis.c \
+ ../mod/millis/../mod.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -10,16 +11,20 @@ mod/millis/millis.d mod/millis/millis.o: ../mod/millis/millis.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- ../mod/millis/../mod.h ../mod/millis/../delay/delay.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdfix.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdfix-gcc.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdfix-avrlibc.h \
+ ../mod/millis/../QC3Control/QC3Control.h \
+ ../mod/millis/../counter/counter.h ../mod/millis/../delay/delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../mod/millis/../counter/counter.h ../mod/millis/../imath/imath.h \
- ../mod/millis/../tm1637/tm1637.h ../mod/millis/../input/input.h \
- ../mod/millis/../millis/millis.h ../mod/millis/../state/state.h \
- ../mod/millis/../navigator/navigator.h \
- ../mod/millis/../QC3Control/QC3Control.h
+ ../mod/millis/../imath/imath.h ../mod/millis/../input/input.h \
+ ../mod/millis/../millis/millis.h ../mod/millis/../navigator/navigator.h \
+ ../mod/millis/../state/state.h ../mod/millis/../tm1637/tm1637.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h
+
+../mod/millis/../mod.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -43,9 +48,15 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdfix.h:
 
-../mod/millis/../mod.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdfix-gcc.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdfix-avrlibc.h:
+
+../mod/millis/../QC3Control/QC3Control.h:
+
+../mod/millis/../counter/counter.h:
 
 ../mod/millis/../delay/delay.h:
 
@@ -55,18 +66,16 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-../mod/millis/../counter/counter.h:
-
 ../mod/millis/../imath/imath.h:
-
-../mod/millis/../tm1637/tm1637.h:
 
 ../mod/millis/../input/input.h:
 
 ../mod/millis/../millis/millis.h:
 
-../mod/millis/../state/state.h:
-
 ../mod/millis/../navigator/navigator.h:
 
-../mod/millis/../QC3Control/QC3Control.h:
+../mod/millis/../state/state.h:
+
+../mod/millis/../tm1637/tm1637.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:

@@ -3,8 +3,7 @@
  *
  * Created: 5/28/2021 5:37:21 PM
  *  Author: IR
- */ 
-
+ */
 
 #ifndef COUNTER_H_
 #define COUNTER_H_
