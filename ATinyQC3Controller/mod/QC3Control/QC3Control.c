@@ -155,7 +155,7 @@ void QC3_setMilliVoltage(uint16_t milliVolt) {
     if (milliVolt == _milliVoltNow)
         return;
 
-    switch (milliVolt) {
+    switch (milliVolt) { // ~200+ bytes
     case 5000:
         QC3_set5V();
         return;
