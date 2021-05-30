@@ -5,8 +5,10 @@
 *  Author: IR
 */
 
-int ipow(int base, int exp) {
-    int result = 1;
+#include <avr/io.h>
+
+uint16_t ipow(uint16_t base, uint16_t exp) {
+    uint16_t result = 1;
     for (;;) {
         if (exp & 1)
             result *= base;
