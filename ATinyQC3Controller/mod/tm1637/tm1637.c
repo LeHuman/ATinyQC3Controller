@@ -187,14 +187,6 @@ uint8_t TM1637_is_enabled(void) {
     return enabled;
 }
 
-//void TM1637_display_digit(const uint8_t position, const uint8_t digit) {
-//uint8_t segments = (digit < 10 ? pgm_read_byte_near((uint8_t *)&_digit2segments + digit) : 0x00);
-//TM1637_start();
-//TM1637_write_byte(TM1637_CMD_SET_ADDR | (position & (TM1637_POSITION_MAX - 1)));
-//TM1637_write_byte(segments);
-//TM1637_stop();
-//}
-
 void TM1637_push_buff() {
     TM1637_send_command(TM1637_CMD_SET_DATA | TM1637_SET_DATA_A_ADDR);
     TM1637_start();
