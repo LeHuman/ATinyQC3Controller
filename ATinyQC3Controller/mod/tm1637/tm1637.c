@@ -228,7 +228,7 @@ void _TM1637_display_number(uint16_t value) {
 }
 
 void TM1637_display_number(uint16_t value) {
-    enabledDigits = 0b1111;
+    //enabledDigits = 0b1111;
     _TM1637_display_number(value);
     TM1637_push_buff();
 }
@@ -266,7 +266,7 @@ void TM1637_flash(const uint8_t count, const uint8_t wait) {
     for (uint8_t i = 0; i < count; ++i) {
         TM1637_toggle();
         for (uint8_t j = 0; j < wait; ++j) {
-            delay(50);
+            _delay_ms(50);
         }
     }
 }
