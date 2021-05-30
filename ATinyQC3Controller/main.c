@@ -54,47 +54,47 @@ state_t acurState = {
 
 state_t *acurSelect(void) {
     uint16_t setVolt = voltage;
-	uint8_t pos = 0;
+    uint8_t pos = 0;
     TM1637_enable(1);
     millis_Enable();
     millis_TakeSnap(0);
     while (1) {
-	    loadPotVal();
-		setVolt = (setVolt / 1000 % 10) * 1000 * (pos != 0) + (setVolt / 100 % 10) * 100 * (pos != 1) + (setVolt / 10 % 10) * 10 * (pos != 2) + (setVolt % 10) * (pos != 3);
-		setVolt += clamp(((potVal() - 40) * 5) / 97, 0, 9) * ipow(10, 3-pos); // ~40+ bytes for negative comparison
-		
-	    TM1637_display_number(setVolt);
+        loadPotVal();
+        setVolt = (setVolt / 1000 % 10) * 1000 * (pos != 0) + (setVolt / 100 % 10) * 100 * (pos != 1) + (setVolt / 10 % 10) * 10 * (pos != 2) + (setVolt % 10) * (pos != 3);
+        setVolt += clamp(((potVal() - 40) * 5) / 97, 0, 9) * ipow(10, 3 - pos); // ~40+ bytes for negative comparison
 
-	    if (millis() > (millis_snap + 300)) {
-		    millis_TakeSnap(0);
-		    TM1637_toggle_digit(pos);
-	    }
+        TM1637_display_number(setVolt);
 
-	    loadBtnVal();
-	    if (btnPressed()) {
-		    TM1637_enable(1);
-		    switch (nav_getSelection()) {
-				case TM1637_STR_8000:
-					pos	= 0;
-					break;
-				case TM1637_STR_0800:
-					pos	= 1;
-					break;
-				case TM1637_STR_0080:
-					pos	= 2;
-					break;
-				case TM1637_STR_0008:
-					pos	= 3;
-					break;
-			    case TM1637_STR_DONE:
-					queuedVoltage = setVolt;
-			    case TM1637_STR_CNCL:
-					TM1637_enable(1);
-					return &mainState;
-		    }
-		    millis_Reset();
-		    millis_TakeSnap(0);
-	    }
+        if (millis() > (millis_snap + 300)) {
+            millis_TakeSnap(0);
+            TM1637_toggle_digit(pos);
+        }
+
+        loadBtnVal();
+        if (btnPressed()) {
+            TM1637_enable(1);
+            switch (nav_getSelection()) {
+            case TM1637_STR_8000:
+                pos = 0;
+                break;
+            case TM1637_STR_0800:
+                pos = 1;
+                break;
+            case TM1637_STR_0080:
+                pos = 2;
+                break;
+            case TM1637_STR_0008:
+                pos = 3;
+                break;
+            case TM1637_STR_DONE:
+                queuedVoltage = setVolt;
+            case TM1637_STR_CNCL:
+                TM1637_enable(1);
+                return &mainState;
+            }
+            millis_Reset();
+            millis_TakeSnap(0);
+        }
     }
     millis_Disable();
     TM1637_enable(1);
@@ -108,7 +108,7 @@ state_t *voltSelect(void) {
     millis_TakeSnap(0);
     while (1) {
         loadPotVal();
-		setVolt = clamp((potVal() + 20U) * 8U, MIN_VOLT, MAX_VOLT);
+        setVolt = clamp((potVal() + 20U) * 8U, MIN_VOLT, MAX_VOLT);
         TM1637_display_number(setVolt);
 
         if (millis() > (millis_snap + 250U) || (millis() > (millis_snap + 100U) && (!TM1637_is_enabled() || setVolt == MIN_VOLT || setVolt == MAX_VOLT))) {
@@ -221,8 +221,9 @@ int main(void) {
 
     TM1637_display_string(BEGN);
     TM1637_flash(4, 4);
+
     QC3_begin(1);
-	QC3_set5V();
+    QC3_set5V();
 
     stateRun(&mainState);
 }
