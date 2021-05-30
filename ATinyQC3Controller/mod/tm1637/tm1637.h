@@ -35,7 +35,7 @@
 #define TM1637_STR_ACUR 3
 #define TM1637_STR_DONE 4
 #define TM1637_STR_BEGN 5
-#define TM1637_STR_LED  6
+#define TM1637_STR_LED 6
 #define TM1637_STR_8000 7
 #define TM1637_STR_0800 8
 #define TM1637_STR_0080 9
