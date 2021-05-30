@@ -15,7 +15,7 @@ uint16_t ms = 0;
 uint16_t us = 0;
 
 ISR(TIM0_OVF_vect) {
-    us += 256 * (F_CPU / 1000000);
+    us += 2000000000 / F_CPU;
     while (us > 1000) {
         ms += us / 1000;
         us %= 1000;
