@@ -7,9 +7,10 @@
 
 #include <avr/io.h>
 #include <stdfix.h>
+#include <util/delay.h>
 
 #include "QC3Control/QC3Control.h"
-#include "delay/delay.h"
+//#include "delay/delay.h"
 #include "imath/imath.h"
 #include "input/input.h"
 #include "millis/millis.h"
