@@ -40,7 +40,7 @@ uint8_t nav_getSelection(void) {
     TM1637_enable(1);
 
     enableButtonInput();
-    delay(50);
+    _delay_ms(50);
     updateAnalog();
 
     millis_Enable();

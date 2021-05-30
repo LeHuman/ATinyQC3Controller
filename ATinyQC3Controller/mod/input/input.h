@@ -21,7 +21,7 @@
 #define enablePotInput() ADMUX |= (1 << MUX0)
 #define updateAnalog()     \
     ADCSRA |= (1 << ADSC); \
-    delay(8)
+    _delay_ms(8)
 #define loadBtnVal()     \
     enableButtonInput(); \
     updateAnalog()
