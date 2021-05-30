@@ -36,7 +36,6 @@ SUBDIRS :=  \
 ../mod \
 ../mod/input \
 ../mod/imath \
-../mod/counter \
 ../mod/navigator \
 ../mod/millis \
 ../mod/delay \
@@ -49,7 +48,6 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../main.c \
 ../mod/input/input.c \
-../mod/counter/counter.c \
 ../mod/imath/imath.c \
 ../mod/millis/millis.c \
 ../mod/navigator/navigator.c \
@@ -67,7 +65,6 @@ ASM_SRCS +=
 OBJS +=  \
 main.o \
 mod/input/input.o \
-mod/counter/counter.o \
 mod/imath/imath.o \
 mod/millis/millis.o \
 mod/navigator/navigator.o \
@@ -78,7 +75,6 @@ mod/tm1637/tm1637.o
 OBJS_AS_ARGS +=  \
 main.o \
 mod/input/input.o \
-mod/counter/counter.o \
 mod/imath/imath.o \
 mod/millis/millis.o \
 mod/navigator/navigator.o \
@@ -89,7 +85,6 @@ mod/tm1637/tm1637.o
 C_DEPS +=  \
 main.d \
 mod/input/input.d \
-mod/counter/counter.d \
 mod/imath/imath.d \
 mod/millis/millis.d \
 mod/navigator/navigator.d \
@@ -100,7 +95,6 @@ mod/tm1637/tm1637.d
 C_DEPS_AS_ARGS +=  \
 main.d \
 mod/input/input.d \
-mod/counter/counter.d \
 mod/imath/imath.d \
 mod/millis/millis.d \
 mod/navigator/navigator.d \
@@ -130,13 +124,6 @@ LINKER_SCRIPT_DEP+=
 	
 
 mod/input/input.o: ../mod/input/input.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG -DF_CPU=8000000  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.8.332\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -Wextra -mmcu=attiny45 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.8.332\gcc\dev\attiny45" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-mod/counter/counter.o: ../mod/counter/counter.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG -DF_CPU=8000000  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.8.332\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -Wextra -mmcu=attiny45 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.8.332\gcc\dev\attiny45" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

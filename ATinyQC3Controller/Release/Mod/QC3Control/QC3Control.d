@@ -15,7 +15,6 @@ mod/QC3Control/QC3Control.d mod/QC3Control/QC3Control.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdfix-gcc.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdfix-avrlibc.h \
  ../mod/QC3Control/../QC3Control/QC3Control.h \
- ../mod/QC3Control/../counter/counter.h \
  ../mod/QC3Control/../delay/delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
@@ -56,8 +55,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdfix-avrlibc.h:
 
 ../mod/QC3Control/../QC3Control/QC3Control.h:
-
-../mod/QC3Control/../counter/counter.h:
 
 ../mod/QC3Control/../delay/delay.h:
 

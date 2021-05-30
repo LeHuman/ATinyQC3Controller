@@ -14,8 +14,7 @@ mod/tm1637/tm1637.d mod/tm1637/tm1637.o: ../mod/tm1637/tm1637.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdfix.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdfix-gcc.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdfix-avrlibc.h \
- ../mod/tm1637/../QC3Control/QC3Control.h \
- ../mod/tm1637/../counter/counter.h ../mod/tm1637/../delay/delay.h \
+ ../mod/tm1637/../QC3Control/QC3Control.h ../mod/tm1637/../delay/delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
@@ -56,8 +55,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdfix-avrlibc.h:
 
 ../mod/tm1637/../QC3Control/QC3Control.h:
-
-../mod/tm1637/../counter/counter.h:
 
 ../mod/tm1637/../delay/delay.h:
 

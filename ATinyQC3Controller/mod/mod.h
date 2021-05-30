@@ -9,7 +9,6 @@
 #include <stdfix.h>
 
 #include "QC3Control/QC3Control.h"
-#include "counter/counter.h"
 #include "delay/delay.h"
 #include "imath/imath.h"
 #include "input/input.h"

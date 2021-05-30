@@ -6,8 +6,6 @@ main.c
 
 mod\input\input.c
 
-mod\counter\counter.c
-
 mod\imath\imath.c
 
 mod\millis\millis.c

@@ -63,7 +63,7 @@ state_t *voltSelect(void) {
     millis_TakeSnap(0);
     while (1) {
         loadPotVal();
-        setVolt = clamp(((potVal() + 16) * 2000UL) / (255 + 8), MIN_VOLT, MAX_VOLT); // UL adds ~100+ bytes
+		setVolt = clamp((potVal() + 20U) * 8, MIN_VOLT, MAX_VOLT);
         TM1637_display_number(setVolt);
 
         if (millis() > (millis_snap + 250) || (millis() > (millis_snap + 100) && (!TM1637_is_enabled() || setVolt == MIN_VOLT || setVolt == MAX_VOLT))) {

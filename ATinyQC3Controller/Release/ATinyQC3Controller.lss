@@ -3,23 +3,23 @@ ATinyQC3Controller.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000bfc  00000000  00000000  00000094  2**1
+  0 .text         00000b3e  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000036  00800060  00000bfc  00000c90  2**0
+  1 .data         00000036  00800060  00000b3e  00000bd2  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000013  00800096  00800096  00000cc6  2**0
+  2 .bss          00000013  00800096  00800096  00000c08  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000cc6  2**0
+  3 .comment      00000030  00000000  00000000  00000c08  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000cf8  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000c38  2**2
                   CONTENTS, READONLY
-  5 .debug_info   00000420  00000000  00000000  00000d34  2**0
+  5 .debug_info   00000420  00000000  00000000  00000c74  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000003e8  00000000  00000000  00001154  2**0
+  6 .debug_abbrev 000003e8  00000000  00000000  00001094  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000000f2  00000000  00000000  0000153c  2**0
+  7 .debug_line   000000f2  00000000  00000000  0000147c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000169  00000000  00000000  0000162e  2**0
+  8 .debug_str    00000169  00000000  00000000  0000156e  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -30,7 +30,7 @@ Disassembly of section .text:
    4:	46 c0       	rjmp	.+140    	; 0x92 <__bad_interrupt>
    6:	45 c0       	rjmp	.+138    	; 0x92 <__bad_interrupt>
    8:	44 c0       	rjmp	.+136    	; 0x92 <__bad_interrupt>
-   a:	2a c2       	rjmp	.+1108   	; 0x460 <__vector_5>
+   a:	06 c2       	rjmp	.+1036   	; 0x418 <__vector_5>
    c:	42 c0       	rjmp	.+132    	; 0x92 <__bad_interrupt>
    e:	41 c0       	rjmp	.+130    	; 0x92 <__bad_interrupt>
   10:	40 c0       	rjmp	.+128    	; 0x92 <__bad_interrupt>
@@ -84,7 +84,7 @@ Disassembly of section .text:
   68:	10 e0       	ldi	r17, 0x00	; 0
   6a:	a0 e6       	ldi	r26, 0x60	; 96
   6c:	b0 e0       	ldi	r27, 0x00	; 0
-  6e:	ec ef       	ldi	r30, 0xFC	; 252
+  6e:	ee e3       	ldi	r30, 0x3E	; 62
   70:	fb e0       	ldi	r31, 0x0B	; 11
   72:	02 c0       	rjmp	.+4      	; 0x78 <__do_copy_data+0x10>
   74:	05 90       	lpm	r0, Z+
@@ -106,8 +106,8 @@ Disassembly of section .text:
   88:	a9 3a       	cpi	r26, 0xA9	; 169
   8a:	b2 07       	cpc	r27, r18
   8c:	e1 f7       	brne	.-8      	; 0x86 <.do_clear_bss_loop>
-  8e:	a3 d1       	rcall	.+838    	; 0x3d6 <main>
-  90:	b3 c5       	rjmp	.+2918   	; 0xbf8 <_exit>
+  8e:	7f d1       	rcall	.+766    	; 0x38e <main>
+  90:	54 c5       	rjmp	.+2728   	; 0xb3a <_exit>
 
 00000092 <__bad_interrupt>:
   92:	b6 cf       	rjmp	.-148    	; 0x0 <__vectors>
@@ -118,1448 +118,1343 @@ Disassembly of section .text:
   98:	08 95       	ret
 
 0000009a <voltSelect>:
-  9a:	cf 92       	push	r12
-  9c:	df 92       	push	r13
-  9e:	ef 92       	push	r14
-  a0:	ff 92       	push	r15
-  a2:	cf 93       	push	r28
-  a4:	df 93       	push	r29
-  a6:	81 e0       	ldi	r24, 0x01	; 1
-  a8:	98 d4       	rcall	.+2352   	; 0x9da <TM1637_enable>
-  aa:	1f d2       	rcall	.+1086   	; 0x4ea <millis_Enable>
-  ac:	80 e0       	ldi	r24, 0x00	; 0
-  ae:	90 e0       	ldi	r25, 0x00	; 0
-  b0:	29 d2       	rcall	.+1106   	; 0x504 <millis_TakeSnap>
-  b2:	87 e0       	ldi	r24, 0x07	; 7
-  b4:	c8 2e       	mov	r12, r24
-  b6:	dd 24       	eor	r13, r13
-  b8:	d3 94       	inc	r13
-  ba:	e1 2c       	mov	r14, r1
-  bc:	f1 2c       	mov	r15, r1
-  be:	38 9a       	sbi	0x07, 0	; 7
-  c0:	36 9a       	sbi	0x06, 6	; 6
-  c2:	8f ec       	ldi	r24, 0xCF	; 207
-  c4:	97 e0       	ldi	r25, 0x07	; 7
-  c6:	01 97       	sbiw	r24, 0x01	; 1
-  c8:	f1 f7       	brne	.-4      	; 0xc6 <voltSelect+0x2c>
-  ca:	00 c0       	rjmp	.+0      	; 0xcc <voltSelect+0x32>
-  cc:	00 00       	nop
-  ce:	65 b1       	in	r22, 0x05	; 5
-  d0:	70 e0       	ldi	r23, 0x00	; 0
-  d2:	60 5f       	subi	r22, 0xF0	; 240
-  d4:	7f 4f       	sbci	r23, 0xFF	; 255
-  d6:	07 2e       	mov	r0, r23
-  d8:	00 0c       	add	r0, r0
-  da:	88 0b       	sbc	r24, r24
-  dc:	99 0b       	sbc	r25, r25
-  de:	20 ed       	ldi	r18, 0xD0	; 208
-  e0:	37 e0       	ldi	r19, 0x07	; 7
-  e2:	40 e0       	ldi	r20, 0x00	; 0
-  e4:	50 e0       	ldi	r21, 0x00	; 0
-  e6:	39 d5       	rcall	.+2674   	; 0xb5a <__mulsi3>
-  e8:	a7 01       	movw	r20, r14
-  ea:	96 01       	movw	r18, r12
-  ec:	63 d5       	rcall	.+2758   	; 0xbb4 <__udivmodsi4>
-  ee:	21 3d       	cpi	r18, 0xD1	; 209
-  f0:	97 e0       	ldi	r25, 0x07	; 7
-  f2:	39 07       	cpc	r19, r25
-  f4:	41 05       	cpc	r20, r1
-  f6:	51 05       	cpc	r21, r1
-  f8:	20 f0       	brcs	.+8      	; 0x102 <__DATA_REGION_LENGTH__+0x2>
-  fa:	20 ed       	ldi	r18, 0xD0	; 208
-  fc:	37 e0       	ldi	r19, 0x07	; 7
-  fe:	40 e0       	ldi	r20, 0x00	; 0
- 100:	50 e0       	ldi	r21, 0x00	; 0
- 102:	2b 3d       	cpi	r18, 0xDB	; 219
- 104:	81 e0       	ldi	r24, 0x01	; 1
- 106:	38 07       	cpc	r19, r24
- 108:	41 05       	cpc	r20, r1
- 10a:	51 05       	cpc	r21, r1
- 10c:	20 f4       	brcc	.+8      	; 0x116 <__DATA_REGION_LENGTH__+0x16>
- 10e:	2b ed       	ldi	r18, 0xDB	; 219
- 110:	31 e0       	ldi	r19, 0x01	; 1
- 112:	40 e0       	ldi	r20, 0x00	; 0
- 114:	50 e0       	ldi	r21, 0x00	; 0
- 116:	e9 01       	movw	r28, r18
- 118:	c9 01       	movw	r24, r18
- 11a:	d0 d4       	rcall	.+2464   	; 0xabc <TM1637_display_number>
- 11c:	df d1       	rcall	.+958    	; 0x4dc <millis>
- 11e:	20 91 9d 00 	lds	r18, 0x009D	; 0x80009d <millis_snap>
- 122:	30 91 9e 00 	lds	r19, 0x009E	; 0x80009e <millis_snap+0x1>
- 126:	26 50       	subi	r18, 0x06	; 6
- 128:	3f 4f       	sbci	r19, 0xFF	; 255
- 12a:	28 17       	cp	r18, r24
- 12c:	39 07       	cpc	r19, r25
- 12e:	28 f4       	brcc	.+10     	; 0x13a <__DATA_REGION_LENGTH__+0x3a>
- 130:	80 e0       	ldi	r24, 0x00	; 0
- 132:	90 e0       	ldi	r25, 0x00	; 0
- 134:	e7 d1       	rcall	.+974    	; 0x504 <millis_TakeSnap>
- 136:	c7 d4       	rcall	.+2446   	; 0xac6 <TM1637_toggle>
- 138:	15 c0       	rjmp	.+42     	; 0x164 <__stack+0x5>
- 13a:	d0 d1       	rcall	.+928    	; 0x4dc <millis>
- 13c:	20 91 9d 00 	lds	r18, 0x009D	; 0x80009d <millis_snap>
- 140:	30 91 9e 00 	lds	r19, 0x009E	; 0x80009e <millis_snap+0x1>
- 144:	2c 59       	subi	r18, 0x9C	; 156
- 146:	3f 4f       	sbci	r19, 0xFF	; 255
- 148:	28 17       	cp	r18, r24
- 14a:	39 07       	cpc	r19, r25
- 14c:	58 f4       	brcc	.+22     	; 0x164 <__stack+0x5>
- 14e:	57 d4       	rcall	.+2222   	; 0x9fe <TM1637_is_enabled>
- 150:	88 23       	and	r24, r24
- 152:	71 f3       	breq	.-36     	; 0x130 <__DATA_REGION_LENGTH__+0x30>
- 154:	cb 3d       	cpi	r28, 0xDB	; 219
- 156:	91 e0       	ldi	r25, 0x01	; 1
- 158:	d9 07       	cpc	r29, r25
- 15a:	51 f3       	breq	.-44     	; 0x130 <__DATA_REGION_LENGTH__+0x30>
- 15c:	c0 3d       	cpi	r28, 0xD0	; 208
- 15e:	87 e0       	ldi	r24, 0x07	; 7
- 160:	d8 07       	cpc	r29, r24
- 162:	31 f3       	breq	.-52     	; 0x130 <__DATA_REGION_LENGTH__+0x30>
- 164:	38 98       	cbi	0x07, 0	; 7
- 166:	36 9a       	sbi	0x06, 6	; 6
- 168:	8f ec       	ldi	r24, 0xCF	; 207
- 16a:	97 e0       	ldi	r25, 0x07	; 7
- 16c:	01 97       	sbiw	r24, 0x01	; 1
- 16e:	f1 f7       	brne	.-4      	; 0x16c <__stack+0xd>
- 170:	00 c0       	rjmp	.+0      	; 0x172 <__stack+0x13>
- 172:	00 00       	nop
- 174:	85 b1       	in	r24, 0x05	; 5
- 176:	87 3e       	cpi	r24, 0xE7	; 231
- 178:	08 f0       	brcs	.+2      	; 0x17c <__stack+0x1d>
- 17a:	a1 cf       	rjmp	.-190    	; 0xbe <voltSelect+0x24>
- 17c:	81 e0       	ldi	r24, 0x01	; 1
- 17e:	2d d4       	rcall	.+2138   	; 0x9da <TM1637_enable>
- 180:	20 d2       	rcall	.+1088   	; 0x5c2 <nav_getSelection>
- 182:	82 30       	cpi	r24, 0x02	; 2
- 184:	61 f0       	breq	.+24     	; 0x19e <__stack+0x3f>
- 186:	85 30       	cpi	r24, 0x05	; 5
- 188:	29 f4       	brne	.+10     	; 0x194 <__stack+0x35>
- 18a:	d0 93 97 00 	sts	0x0097, r29	; 0x800097 <__data_end+0x1>
- 18e:	c0 93 96 00 	sts	0x0096, r28	; 0x800096 <__data_end>
- 192:	05 c0       	rjmp	.+10     	; 0x19e <__stack+0x3f>
- 194:	aa d1       	rcall	.+852    	; 0x4ea <millis_Enable>
- 196:	80 e0       	ldi	r24, 0x00	; 0
- 198:	90 e0       	ldi	r25, 0x00	; 0
- 19a:	b4 d1       	rcall	.+872    	; 0x504 <millis_TakeSnap>
- 19c:	90 cf       	rjmp	.-224    	; 0xbe <voltSelect+0x24>
- 19e:	81 e0       	ldi	r24, 0x01	; 1
- 1a0:	1c d4       	rcall	.+2104   	; 0x9da <TM1637_enable>
- 1a2:	8e e7       	ldi	r24, 0x7E	; 126
- 1a4:	90 e0       	ldi	r25, 0x00	; 0
- 1a6:	df 91       	pop	r29
- 1a8:	cf 91       	pop	r28
- 1aa:	ff 90       	pop	r15
- 1ac:	ef 90       	pop	r14
- 1ae:	df 90       	pop	r13
- 1b0:	cf 90       	pop	r12
- 1b2:	08 95       	ret
+  9a:	cf 93       	push	r28
+  9c:	df 93       	push	r29
+  9e:	81 e0       	ldi	r24, 0x01	; 1
+  a0:	78 d4       	rcall	.+2288   	; 0x992 <TM1637_enable>
+  a2:	ff d1       	rcall	.+1022   	; 0x4a2 <millis_Enable>
+  a4:	80 e0       	ldi	r24, 0x00	; 0
+  a6:	90 e0       	ldi	r25, 0x00	; 0
+  a8:	09 d2       	rcall	.+1042   	; 0x4bc <millis_TakeSnap>
+  aa:	38 9a       	sbi	0x07, 0	; 7
+  ac:	36 9a       	sbi	0x06, 6	; 6
+  ae:	8f ec       	ldi	r24, 0xCF	; 207
+  b0:	97 e0       	ldi	r25, 0x07	; 7
+  b2:	01 97       	sbiw	r24, 0x01	; 1
+  b4:	f1 f7       	brne	.-4      	; 0xb2 <voltSelect+0x18>
+  b6:	00 c0       	rjmp	.+0      	; 0xb8 <voltSelect+0x1e>
+  b8:	00 00       	nop
+  ba:	c5 b1       	in	r28, 0x05	; 5
+  bc:	d0 e0       	ldi	r29, 0x00	; 0
+  be:	64 96       	adiw	r28, 0x14	; 20
+  c0:	83 e0       	ldi	r24, 0x03	; 3
+  c2:	cc 0f       	add	r28, r28
+  c4:	dd 1f       	adc	r29, r29
+  c6:	8a 95       	dec	r24
+  c8:	e1 f7       	brne	.-8      	; 0xc2 <voltSelect+0x28>
+  ca:	c1 3d       	cpi	r28, 0xD1	; 209
+  cc:	97 e0       	ldi	r25, 0x07	; 7
+  ce:	d9 07       	cpc	r29, r25
+  d0:	10 f0       	brcs	.+4      	; 0xd6 <voltSelect+0x3c>
+  d2:	c0 ed       	ldi	r28, 0xD0	; 208
+  d4:	d7 e0       	ldi	r29, 0x07	; 7
+  d6:	cb 3d       	cpi	r28, 0xDB	; 219
+  d8:	81 e0       	ldi	r24, 0x01	; 1
+  da:	d8 07       	cpc	r29, r24
+  dc:	10 f4       	brcc	.+4      	; 0xe2 <voltSelect+0x48>
+  de:	cb ed       	ldi	r28, 0xDB	; 219
+  e0:	d1 e0       	ldi	r29, 0x01	; 1
+  e2:	ce 01       	movw	r24, r28
+  e4:	c7 d4       	rcall	.+2446   	; 0xa74 <TM1637_display_number>
+  e6:	d6 d1       	rcall	.+940    	; 0x494 <millis>
+  e8:	20 91 9d 00 	lds	r18, 0x009D	; 0x80009d <millis_snap>
+  ec:	30 91 9e 00 	lds	r19, 0x009E	; 0x80009e <millis_snap+0x1>
+  f0:	26 50       	subi	r18, 0x06	; 6
+  f2:	3f 4f       	sbci	r19, 0xFF	; 255
+  f4:	28 17       	cp	r18, r24
+  f6:	39 07       	cpc	r19, r25
+  f8:	28 f4       	brcc	.+10     	; 0x104 <__DATA_REGION_LENGTH__+0x4>
+  fa:	80 e0       	ldi	r24, 0x00	; 0
+  fc:	90 e0       	ldi	r25, 0x00	; 0
+  fe:	de d1       	rcall	.+956    	; 0x4bc <millis_TakeSnap>
+ 100:	be d4       	rcall	.+2428   	; 0xa7e <TM1637_toggle>
+ 102:	15 c0       	rjmp	.+42     	; 0x12e <__DATA_REGION_LENGTH__+0x2e>
+ 104:	c7 d1       	rcall	.+910    	; 0x494 <millis>
+ 106:	20 91 9d 00 	lds	r18, 0x009D	; 0x80009d <millis_snap>
+ 10a:	30 91 9e 00 	lds	r19, 0x009E	; 0x80009e <millis_snap+0x1>
+ 10e:	2c 59       	subi	r18, 0x9C	; 156
+ 110:	3f 4f       	sbci	r19, 0xFF	; 255
+ 112:	28 17       	cp	r18, r24
+ 114:	39 07       	cpc	r19, r25
+ 116:	58 f4       	brcc	.+22     	; 0x12e <__DATA_REGION_LENGTH__+0x2e>
+ 118:	4e d4       	rcall	.+2204   	; 0x9b6 <TM1637_is_enabled>
+ 11a:	88 23       	and	r24, r24
+ 11c:	71 f3       	breq	.-36     	; 0xfa <voltSelect+0x60>
+ 11e:	cb 3d       	cpi	r28, 0xDB	; 219
+ 120:	91 e0       	ldi	r25, 0x01	; 1
+ 122:	d9 07       	cpc	r29, r25
+ 124:	51 f3       	breq	.-44     	; 0xfa <voltSelect+0x60>
+ 126:	c0 3d       	cpi	r28, 0xD0	; 208
+ 128:	87 e0       	ldi	r24, 0x07	; 7
+ 12a:	d8 07       	cpc	r29, r24
+ 12c:	31 f3       	breq	.-52     	; 0xfa <voltSelect+0x60>
+ 12e:	38 98       	cbi	0x07, 0	; 7
+ 130:	36 9a       	sbi	0x06, 6	; 6
+ 132:	8f ec       	ldi	r24, 0xCF	; 207
+ 134:	97 e0       	ldi	r25, 0x07	; 7
+ 136:	01 97       	sbiw	r24, 0x01	; 1
+ 138:	f1 f7       	brne	.-4      	; 0x136 <__DATA_REGION_LENGTH__+0x36>
+ 13a:	00 c0       	rjmp	.+0      	; 0x13c <__DATA_REGION_LENGTH__+0x3c>
+ 13c:	00 00       	nop
+ 13e:	85 b1       	in	r24, 0x05	; 5
+ 140:	87 3e       	cpi	r24, 0xE7	; 231
+ 142:	08 f0       	brcs	.+2      	; 0x146 <__DATA_REGION_LENGTH__+0x46>
+ 144:	b2 cf       	rjmp	.-156    	; 0xaa <voltSelect+0x10>
+ 146:	81 e0       	ldi	r24, 0x01	; 1
+ 148:	24 d4       	rcall	.+2120   	; 0x992 <TM1637_enable>
+ 14a:	17 d2       	rcall	.+1070   	; 0x57a <nav_getSelection>
+ 14c:	81 30       	cpi	r24, 0x01	; 1
+ 14e:	39 f0       	breq	.+14     	; 0x15e <__DATA_REGION_LENGTH__+0x5e>
+ 150:	84 30       	cpi	r24, 0x04	; 4
+ 152:	09 f0       	breq	.+2      	; 0x156 <__DATA_REGION_LENGTH__+0x56>
+ 154:	a6 cf       	rjmp	.-180    	; 0xa2 <voltSelect+0x8>
+ 156:	d0 93 97 00 	sts	0x0097, r29	; 0x800097 <__data_end+0x1>
+ 15a:	c0 93 96 00 	sts	0x0096, r28	; 0x800096 <__data_end>
+ 15e:	81 e0       	ldi	r24, 0x01	; 1
+ 160:	18 d4       	rcall	.+2096   	; 0x992 <TM1637_enable>
+ 162:	8e e7       	ldi	r24, 0x7E	; 126
+ 164:	90 e0       	ldi	r25, 0x00	; 0
+ 166:	df 91       	pop	r29
+ 168:	cf 91       	pop	r28
+ 16a:	08 95       	ret
 
-000001b4 <normalizeVoltage>:
- 1b4:	9f 92       	push	r9
- 1b6:	af 92       	push	r10
- 1b8:	bf 92       	push	r11
- 1ba:	cf 92       	push	r12
- 1bc:	df 92       	push	r13
- 1be:	ef 92       	push	r14
- 1c0:	ff 92       	push	r15
- 1c2:	0f 93       	push	r16
- 1c4:	1f 93       	push	r17
- 1c6:	cf 93       	push	r28
- 1c8:	df 93       	push	r29
- 1ca:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <__data_end>
- 1ce:	90 91 97 00 	lds	r25, 0x0097	; 0x800097 <__data_end+0x1>
- 1d2:	89 2b       	or	r24, r25
- 1d4:	09 f4       	brne	.+2      	; 0x1d8 <normalizeVoltage+0x24>
- 1d6:	98 c0       	rjmp	.+304    	; 0x308 <normalizeVoltage+0x154>
- 1d8:	81 e0       	ldi	r24, 0x01	; 1
- 1da:	ff d3       	rcall	.+2046   	; 0x9da <TM1637_enable>
- 1dc:	8c e0       	ldi	r24, 0x0C	; 12
- 1de:	26 d4       	rcall	.+2124   	; 0xa2c <TM1637_display_prog_string>
- 1e0:	2f e7       	ldi	r18, 0x7F	; 127
- 1e2:	83 e8       	ldi	r24, 0x83	; 131
- 1e4:	91 e0       	ldi	r25, 0x01	; 1
- 1e6:	21 50       	subi	r18, 0x01	; 1
- 1e8:	80 40       	sbci	r24, 0x00	; 0
- 1ea:	90 40       	sbci	r25, 0x00	; 0
- 1ec:	e1 f7       	brne	.-8      	; 0x1e6 <normalizeVoltage+0x32>
- 1ee:	00 c0       	rjmp	.+0      	; 0x1f0 <normalizeVoltage+0x3c>
- 1f0:	00 00       	nop
- 1f2:	20 91 96 00 	lds	r18, 0x0096	; 0x800096 <__data_end>
- 1f6:	30 91 97 00 	lds	r19, 0x0097	; 0x800097 <__data_end+0x1>
- 1fa:	c1 e0       	ldi	r28, 0x01	; 1
- 1fc:	25 3d       	cpi	r18, 0xD5	; 213
- 1fe:	84 e0       	ldi	r24, 0x04	; 4
- 200:	38 07       	cpc	r19, r24
- 202:	08 f0       	brcs	.+2      	; 0x206 <normalizeVoltage+0x52>
- 204:	c0 e0       	ldi	r28, 0x00	; 0
- 206:	81 e0       	ldi	r24, 0x01	; 1
- 208:	25 3d       	cpi	r18, 0xD5	; 213
- 20a:	34 40       	sbci	r19, 0x04	; 4
- 20c:	08 f4       	brcc	.+2      	; 0x210 <normalizeVoltage+0x5c>
- 20e:	80 e0       	ldi	r24, 0x00	; 0
- 210:	c8 1b       	sub	r28, r24
- 212:	0c 2e       	mov	r0, r28
- 214:	00 0c       	add	r0, r0
- 216:	dd 0b       	sbc	r29, r29
- 218:	ce 01       	movw	r24, r28
- 21a:	68 ee       	ldi	r22, 0xE8	; 232
- 21c:	73 e0       	ldi	r23, 0x03	; 3
- 21e:	8c d4       	rcall	.+2328   	; 0xb38 <__mulhi3>
- 220:	8c 01       	movw	r16, r24
- 222:	ce 01       	movw	r24, r28
- 224:	6a e0       	ldi	r22, 0x0A	; 10
- 226:	70 e0       	ldi	r23, 0x00	; 0
- 228:	87 d4       	rcall	.+2318   	; 0xb38 <__mulhi3>
- 22a:	7c 01       	movw	r14, r24
- 22c:	8a e0       	ldi	r24, 0x0A	; 10
- 22e:	a8 2e       	mov	r10, r24
- 230:	b1 2c       	mov	r11, r1
- 232:	94 e6       	ldi	r25, 0x64	; 100
- 234:	c9 2e       	mov	r12, r25
- 236:	d1 2c       	mov	r13, r1
- 238:	20 91 96 00 	lds	r18, 0x0096	; 0x800096 <__data_end>
- 23c:	30 91 97 00 	lds	r19, 0x0097	; 0x800097 <__data_end+0x1>
- 240:	c9 01       	movw	r24, r18
- 242:	b5 01       	movw	r22, r10
- 244:	a3 d4       	rcall	.+2374   	; 0xb8c <__udivmodhi4>
- 246:	89 2b       	or	r24, r25
- 248:	19 f0       	breq	.+6      	; 0x250 <normalizeVoltage+0x9c>
- 24a:	2c 0f       	add	r18, r28
- 24c:	3d 1f       	adc	r19, r29
- 24e:	08 c0       	rjmp	.+16     	; 0x260 <normalizeVoltage+0xac>
- 250:	2b 3d       	cpi	r18, 0xDB	; 219
- 252:	91 e0       	ldi	r25, 0x01	; 1
- 254:	39 07       	cpc	r19, r25
- 256:	c8 f3       	brcs	.-14     	; 0x24a <normalizeVoltage+0x96>
- 258:	60 ff       	sbrs	r22, 0
- 25a:	09 c0       	rjmp	.+18     	; 0x26e <normalizeVoltage+0xba>
- 25c:	2e 0d       	add	r18, r14
- 25e:	3f 1d       	adc	r19, r15
- 260:	30 93 97 00 	sts	0x0097, r19	; 0x800097 <__data_end+0x1>
- 264:	20 93 96 00 	sts	0x0096, r18	; 0x800096 <__data_end>
- 268:	99 24       	eor	r9, r9
- 26a:	93 94       	inc	r9
- 26c:	05 c0       	rjmp	.+10     	; 0x278 <normalizeVoltage+0xc4>
- 26e:	21 3d       	cpi	r18, 0xD1	; 209
- 270:	87 e0       	ldi	r24, 0x07	; 7
- 272:	38 07       	cpc	r19, r24
- 274:	b8 f5       	brcc	.+110    	; 0x2e4 <normalizeVoltage+0x130>
- 276:	91 2c       	mov	r9, r1
- 278:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <__data_end>
- 27c:	90 91 97 00 	lds	r25, 0x0097	; 0x800097 <__data_end+0x1>
- 280:	1d d4       	rcall	.+2106   	; 0xabc <TM1637_display_number>
- 282:	8f eb       	ldi	r24, 0xBF	; 191
- 284:	9d e5       	ldi	r25, 0x5D	; 93
- 286:	01 97       	sbiw	r24, 0x01	; 1
- 288:	f1 f7       	brne	.-4      	; 0x286 <normalizeVoltage+0xd2>
- 28a:	00 c0       	rjmp	.+0      	; 0x28c <normalizeVoltage+0xd8>
- 28c:	00 00       	nop
- 28e:	91 10       	cpse	r9, r1
- 290:	d3 cf       	rjmp	.-90     	; 0x238 <normalizeVoltage+0x84>
- 292:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <__data_end>
- 296:	90 91 97 00 	lds	r25, 0x0097	; 0x800097 <__data_end+0x1>
- 29a:	10 d4       	rcall	.+2080   	; 0xabc <TM1637_display_number>
- 29c:	62 e0       	ldi	r22, 0x02	; 2
- 29e:	84 e0       	ldi	r24, 0x04	; 4
- 2a0:	18 d4       	rcall	.+2096   	; 0xad2 <TM1637_flash>
- 2a2:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <__data_end>
- 2a6:	90 91 97 00 	lds	r25, 0x0097	; 0x800097 <__data_end+0x1>
- 2aa:	90 93 8e 00 	sts	0x008E, r25	; 0x80008e <voltage+0x1>
- 2ae:	80 93 8d 00 	sts	0x008D, r24	; 0x80008d <voltage>
- 2b2:	10 92 97 00 	sts	0x0097, r1	; 0x800097 <__data_end+0x1>
- 2b6:	10 92 96 00 	sts	0x0096, r1	; 0x800096 <__data_end>
- 2ba:	9f e7       	ldi	r25, 0x7F	; 127
- 2bc:	23 e8       	ldi	r18, 0x83	; 131
- 2be:	81 e0       	ldi	r24, 0x01	; 1
- 2c0:	91 50       	subi	r25, 0x01	; 1
- 2c2:	20 40       	sbci	r18, 0x00	; 0
- 2c4:	80 40       	sbci	r24, 0x00	; 0
- 2c6:	e1 f7       	brne	.-8      	; 0x2c0 <normalizeVoltage+0x10c>
- 2c8:	00 c0       	rjmp	.+0      	; 0x2ca <normalizeVoltage+0x116>
- 2ca:	00 00       	nop
- 2cc:	85 e0       	ldi	r24, 0x05	; 5
- 2ce:	ae d3       	rcall	.+1884   	; 0xa2c <TM1637_display_prog_string>
- 2d0:	9f e7       	ldi	r25, 0x7F	; 127
- 2d2:	23 e8       	ldi	r18, 0x83	; 131
- 2d4:	81 e0       	ldi	r24, 0x01	; 1
- 2d6:	91 50       	subi	r25, 0x01	; 1
- 2d8:	20 40       	sbci	r18, 0x00	; 0
- 2da:	80 40       	sbci	r24, 0x00	; 0
- 2dc:	e1 f7       	brne	.-8      	; 0x2d6 <normalizeVoltage+0x122>
- 2de:	00 c0       	rjmp	.+0      	; 0x2e0 <normalizeVoltage+0x12c>
- 2e0:	00 00       	nop
- 2e2:	12 c0       	rjmp	.+36     	; 0x308 <normalizeVoltage+0x154>
- 2e4:	cb 01       	movw	r24, r22
- 2e6:	b5 01       	movw	r22, r10
- 2e8:	51 d4       	rcall	.+2210   	; 0xb8c <__udivmodhi4>
- 2ea:	89 2b       	or	r24, r25
- 2ec:	09 f0       	breq	.+2      	; 0x2f0 <normalizeVoltage+0x13c>
- 2ee:	b6 cf       	rjmp	.-148    	; 0x25c <normalizeVoltage+0xa8>
- 2f0:	c9 01       	movw	r24, r18
- 2f2:	b6 01       	movw	r22, r12
- 2f4:	4b d4       	rcall	.+2198   	; 0xb8c <__udivmodhi4>
- 2f6:	cb 01       	movw	r24, r22
- 2f8:	b5 01       	movw	r22, r10
- 2fa:	48 d4       	rcall	.+2192   	; 0xb8c <__udivmodhi4>
- 2fc:	89 2b       	or	r24, r25
- 2fe:	09 f4       	brne	.+2      	; 0x302 <normalizeVoltage+0x14e>
- 300:	ba cf       	rjmp	.-140    	; 0x276 <normalizeVoltage+0xc2>
- 302:	20 0f       	add	r18, r16
- 304:	31 1f       	adc	r19, r17
- 306:	ac cf       	rjmp	.-168    	; 0x260 <normalizeVoltage+0xac>
- 308:	df 91       	pop	r29
- 30a:	cf 91       	pop	r28
- 30c:	1f 91       	pop	r17
- 30e:	0f 91       	pop	r16
- 310:	ff 90       	pop	r15
- 312:	ef 90       	pop	r14
- 314:	df 90       	pop	r13
- 316:	cf 90       	pop	r12
- 318:	bf 90       	pop	r11
- 31a:	af 90       	pop	r10
- 31c:	9f 90       	pop	r9
- 31e:	08 95       	ret
+0000016c <normalizeVoltage>:
+ 16c:	9f 92       	push	r9
+ 16e:	af 92       	push	r10
+ 170:	bf 92       	push	r11
+ 172:	cf 92       	push	r12
+ 174:	df 92       	push	r13
+ 176:	ef 92       	push	r14
+ 178:	ff 92       	push	r15
+ 17a:	0f 93       	push	r16
+ 17c:	1f 93       	push	r17
+ 17e:	cf 93       	push	r28
+ 180:	df 93       	push	r29
+ 182:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <__data_end>
+ 186:	90 91 97 00 	lds	r25, 0x0097	; 0x800097 <__data_end+0x1>
+ 18a:	89 2b       	or	r24, r25
+ 18c:	09 f4       	brne	.+2      	; 0x190 <normalizeVoltage+0x24>
+ 18e:	98 c0       	rjmp	.+304    	; 0x2c0 <normalizeVoltage+0x154>
+ 190:	81 e0       	ldi	r24, 0x01	; 1
+ 192:	ff d3       	rcall	.+2046   	; 0x992 <TM1637_enable>
+ 194:	8b e0       	ldi	r24, 0x0B	; 11
+ 196:	26 d4       	rcall	.+2124   	; 0x9e4 <TM1637_display_prog_string>
+ 198:	2f e7       	ldi	r18, 0x7F	; 127
+ 19a:	83 e8       	ldi	r24, 0x83	; 131
+ 19c:	91 e0       	ldi	r25, 0x01	; 1
+ 19e:	21 50       	subi	r18, 0x01	; 1
+ 1a0:	80 40       	sbci	r24, 0x00	; 0
+ 1a2:	90 40       	sbci	r25, 0x00	; 0
+ 1a4:	e1 f7       	brne	.-8      	; 0x19e <normalizeVoltage+0x32>
+ 1a6:	00 c0       	rjmp	.+0      	; 0x1a8 <normalizeVoltage+0x3c>
+ 1a8:	00 00       	nop
+ 1aa:	20 91 96 00 	lds	r18, 0x0096	; 0x800096 <__data_end>
+ 1ae:	30 91 97 00 	lds	r19, 0x0097	; 0x800097 <__data_end+0x1>
+ 1b2:	c1 e0       	ldi	r28, 0x01	; 1
+ 1b4:	25 3d       	cpi	r18, 0xD5	; 213
+ 1b6:	84 e0       	ldi	r24, 0x04	; 4
+ 1b8:	38 07       	cpc	r19, r24
+ 1ba:	08 f0       	brcs	.+2      	; 0x1be <normalizeVoltage+0x52>
+ 1bc:	c0 e0       	ldi	r28, 0x00	; 0
+ 1be:	81 e0       	ldi	r24, 0x01	; 1
+ 1c0:	25 3d       	cpi	r18, 0xD5	; 213
+ 1c2:	34 40       	sbci	r19, 0x04	; 4
+ 1c4:	08 f4       	brcc	.+2      	; 0x1c8 <normalizeVoltage+0x5c>
+ 1c6:	80 e0       	ldi	r24, 0x00	; 0
+ 1c8:	c8 1b       	sub	r28, r24
+ 1ca:	0c 2e       	mov	r0, r28
+ 1cc:	00 0c       	add	r0, r0
+ 1ce:	dd 0b       	sbc	r29, r29
+ 1d0:	ce 01       	movw	r24, r28
+ 1d2:	68 ee       	ldi	r22, 0xE8	; 232
+ 1d4:	73 e0       	ldi	r23, 0x03	; 3
+ 1d6:	8c d4       	rcall	.+2328   	; 0xaf0 <__mulhi3>
+ 1d8:	8c 01       	movw	r16, r24
+ 1da:	ce 01       	movw	r24, r28
+ 1dc:	6a e0       	ldi	r22, 0x0A	; 10
+ 1de:	70 e0       	ldi	r23, 0x00	; 0
+ 1e0:	87 d4       	rcall	.+2318   	; 0xaf0 <__mulhi3>
+ 1e2:	7c 01       	movw	r14, r24
+ 1e4:	8a e0       	ldi	r24, 0x0A	; 10
+ 1e6:	a8 2e       	mov	r10, r24
+ 1e8:	b1 2c       	mov	r11, r1
+ 1ea:	94 e6       	ldi	r25, 0x64	; 100
+ 1ec:	c9 2e       	mov	r12, r25
+ 1ee:	d1 2c       	mov	r13, r1
+ 1f0:	20 91 96 00 	lds	r18, 0x0096	; 0x800096 <__data_end>
+ 1f4:	30 91 97 00 	lds	r19, 0x0097	; 0x800097 <__data_end+0x1>
+ 1f8:	c9 01       	movw	r24, r18
+ 1fa:	b5 01       	movw	r22, r10
+ 1fc:	8a d4       	rcall	.+2324   	; 0xb12 <__udivmodhi4>
+ 1fe:	89 2b       	or	r24, r25
+ 200:	19 f0       	breq	.+6      	; 0x208 <normalizeVoltage+0x9c>
+ 202:	2c 0f       	add	r18, r28
+ 204:	3d 1f       	adc	r19, r29
+ 206:	08 c0       	rjmp	.+16     	; 0x218 <normalizeVoltage+0xac>
+ 208:	2b 3d       	cpi	r18, 0xDB	; 219
+ 20a:	91 e0       	ldi	r25, 0x01	; 1
+ 20c:	39 07       	cpc	r19, r25
+ 20e:	c8 f3       	brcs	.-14     	; 0x202 <normalizeVoltage+0x96>
+ 210:	60 ff       	sbrs	r22, 0
+ 212:	09 c0       	rjmp	.+18     	; 0x226 <normalizeVoltage+0xba>
+ 214:	2e 0d       	add	r18, r14
+ 216:	3f 1d       	adc	r19, r15
+ 218:	30 93 97 00 	sts	0x0097, r19	; 0x800097 <__data_end+0x1>
+ 21c:	20 93 96 00 	sts	0x0096, r18	; 0x800096 <__data_end>
+ 220:	99 24       	eor	r9, r9
+ 222:	93 94       	inc	r9
+ 224:	05 c0       	rjmp	.+10     	; 0x230 <normalizeVoltage+0xc4>
+ 226:	21 3d       	cpi	r18, 0xD1	; 209
+ 228:	87 e0       	ldi	r24, 0x07	; 7
+ 22a:	38 07       	cpc	r19, r24
+ 22c:	b8 f5       	brcc	.+110    	; 0x29c <normalizeVoltage+0x130>
+ 22e:	91 2c       	mov	r9, r1
+ 230:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <__data_end>
+ 234:	90 91 97 00 	lds	r25, 0x0097	; 0x800097 <__data_end+0x1>
+ 238:	1d d4       	rcall	.+2106   	; 0xa74 <TM1637_display_number>
+ 23a:	8f eb       	ldi	r24, 0xBF	; 191
+ 23c:	9d e5       	ldi	r25, 0x5D	; 93
+ 23e:	01 97       	sbiw	r24, 0x01	; 1
+ 240:	f1 f7       	brne	.-4      	; 0x23e <normalizeVoltage+0xd2>
+ 242:	00 c0       	rjmp	.+0      	; 0x244 <normalizeVoltage+0xd8>
+ 244:	00 00       	nop
+ 246:	91 10       	cpse	r9, r1
+ 248:	d3 cf       	rjmp	.-90     	; 0x1f0 <normalizeVoltage+0x84>
+ 24a:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <__data_end>
+ 24e:	90 91 97 00 	lds	r25, 0x0097	; 0x800097 <__data_end+0x1>
+ 252:	10 d4       	rcall	.+2080   	; 0xa74 <TM1637_display_number>
+ 254:	62 e0       	ldi	r22, 0x02	; 2
+ 256:	84 e0       	ldi	r24, 0x04	; 4
+ 258:	18 d4       	rcall	.+2096   	; 0xa8a <TM1637_flash>
+ 25a:	80 91 96 00 	lds	r24, 0x0096	; 0x800096 <__data_end>
+ 25e:	90 91 97 00 	lds	r25, 0x0097	; 0x800097 <__data_end+0x1>
+ 262:	90 93 8e 00 	sts	0x008E, r25	; 0x80008e <voltage+0x1>
+ 266:	80 93 8d 00 	sts	0x008D, r24	; 0x80008d <voltage>
+ 26a:	10 92 97 00 	sts	0x0097, r1	; 0x800097 <__data_end+0x1>
+ 26e:	10 92 96 00 	sts	0x0096, r1	; 0x800096 <__data_end>
+ 272:	9f e7       	ldi	r25, 0x7F	; 127
+ 274:	23 e8       	ldi	r18, 0x83	; 131
+ 276:	81 e0       	ldi	r24, 0x01	; 1
+ 278:	91 50       	subi	r25, 0x01	; 1
+ 27a:	20 40       	sbci	r18, 0x00	; 0
+ 27c:	80 40       	sbci	r24, 0x00	; 0
+ 27e:	e1 f7       	brne	.-8      	; 0x278 <normalizeVoltage+0x10c>
+ 280:	00 c0       	rjmp	.+0      	; 0x282 <normalizeVoltage+0x116>
+ 282:	00 00       	nop
+ 284:	84 e0       	ldi	r24, 0x04	; 4
+ 286:	ae d3       	rcall	.+1884   	; 0x9e4 <TM1637_display_prog_string>
+ 288:	9f e7       	ldi	r25, 0x7F	; 127
+ 28a:	23 e8       	ldi	r18, 0x83	; 131
+ 28c:	81 e0       	ldi	r24, 0x01	; 1
+ 28e:	91 50       	subi	r25, 0x01	; 1
+ 290:	20 40       	sbci	r18, 0x00	; 0
+ 292:	80 40       	sbci	r24, 0x00	; 0
+ 294:	e1 f7       	brne	.-8      	; 0x28e <normalizeVoltage+0x122>
+ 296:	00 c0       	rjmp	.+0      	; 0x298 <normalizeVoltage+0x12c>
+ 298:	00 00       	nop
+ 29a:	12 c0       	rjmp	.+36     	; 0x2c0 <normalizeVoltage+0x154>
+ 29c:	cb 01       	movw	r24, r22
+ 29e:	b5 01       	movw	r22, r10
+ 2a0:	38 d4       	rcall	.+2160   	; 0xb12 <__udivmodhi4>
+ 2a2:	89 2b       	or	r24, r25
+ 2a4:	09 f0       	breq	.+2      	; 0x2a8 <normalizeVoltage+0x13c>
+ 2a6:	b6 cf       	rjmp	.-148    	; 0x214 <normalizeVoltage+0xa8>
+ 2a8:	c9 01       	movw	r24, r18
+ 2aa:	b6 01       	movw	r22, r12
+ 2ac:	32 d4       	rcall	.+2148   	; 0xb12 <__udivmodhi4>
+ 2ae:	cb 01       	movw	r24, r22
+ 2b0:	b5 01       	movw	r22, r10
+ 2b2:	2f d4       	rcall	.+2142   	; 0xb12 <__udivmodhi4>
+ 2b4:	89 2b       	or	r24, r25
+ 2b6:	09 f4       	brne	.+2      	; 0x2ba <normalizeVoltage+0x14e>
+ 2b8:	ba cf       	rjmp	.-140    	; 0x22e <normalizeVoltage+0xc2>
+ 2ba:	20 0f       	add	r18, r16
+ 2bc:	31 1f       	adc	r19, r17
+ 2be:	ac cf       	rjmp	.-168    	; 0x218 <normalizeVoltage+0xac>
+ 2c0:	df 91       	pop	r29
+ 2c2:	cf 91       	pop	r28
+ 2c4:	1f 91       	pop	r17
+ 2c6:	0f 91       	pop	r16
+ 2c8:	ff 90       	pop	r15
+ 2ca:	ef 90       	pop	r14
+ 2cc:	df 90       	pop	r13
+ 2ce:	cf 90       	pop	r12
+ 2d0:	bf 90       	pop	r11
+ 2d2:	af 90       	pop	r10
+ 2d4:	9f 90       	pop	r9
+ 2d6:	08 95       	ret
 
-00000320 <confirmVoltage>:
- 320:	0f 93       	push	r16
- 322:	1f 93       	push	r17
- 324:	cf 93       	push	r28
- 326:	df 93       	push	r29
- 328:	ba d1       	rcall	.+884    	; 0x69e <QC3_getMilliVoltage>
- 32a:	20 91 8d 00 	lds	r18, 0x008D	; 0x80008d <voltage>
- 32e:	30 91 8e 00 	lds	r19, 0x008E	; 0x80008e <voltage+0x1>
- 332:	ca e0       	ldi	r28, 0x0A	; 10
- 334:	d0 e0       	ldi	r29, 0x00	; 0
- 336:	be 01       	movw	r22, r28
- 338:	29 d4       	rcall	.+2130   	; 0xb8c <__udivmodhi4>
- 33a:	62 17       	cp	r22, r18
- 33c:	73 07       	cpc	r23, r19
- 33e:	e1 f0       	breq	.+56     	; 0x378 <confirmVoltage+0x58>
- 340:	c9 01       	movw	r24, r18
- 342:	6a e0       	ldi	r22, 0x0A	; 10
- 344:	70 e0       	ldi	r23, 0x00	; 0
- 346:	f8 d3       	rcall	.+2032   	; 0xb38 <__mulhi3>
- 348:	89 d2       	rcall	.+1298   	; 0x85c <QC3_setMilliVoltage>
- 34a:	00 91 8d 00 	lds	r16, 0x008D	; 0x80008d <voltage>
- 34e:	10 91 8e 00 	lds	r17, 0x008E	; 0x80008e <voltage+0x1>
- 352:	a5 d1       	rcall	.+842    	; 0x69e <QC3_getMilliVoltage>
- 354:	be 01       	movw	r22, r28
- 356:	1a d4       	rcall	.+2100   	; 0xb8c <__udivmodhi4>
- 358:	cb 01       	movw	r24, r22
- 35a:	70 93 8e 00 	sts	0x008E, r23	; 0x80008e <voltage+0x1>
- 35e:	60 93 8d 00 	sts	0x008D, r22	; 0x80008d <voltage>
- 362:	06 17       	cp	r16, r22
- 364:	17 07       	cpc	r17, r23
- 366:	41 f0       	breq	.+16     	; 0x378 <confirmVoltage+0x58>
- 368:	a9 d3       	rcall	.+1874   	; 0xabc <TM1637_display_number>
- 36a:	62 e0       	ldi	r22, 0x02	; 2
- 36c:	84 e0       	ldi	r24, 0x04	; 4
- 36e:	df 91       	pop	r29
- 370:	cf 91       	pop	r28
- 372:	1f 91       	pop	r17
- 374:	0f 91       	pop	r16
- 376:	ad c3       	rjmp	.+1882   	; 0xad2 <TM1637_flash>
- 378:	df 91       	pop	r29
- 37a:	cf 91       	pop	r28
- 37c:	1f 91       	pop	r17
- 37e:	0f 91       	pop	r16
- 380:	08 95       	ret
+000002d8 <confirmVoltage>:
+ 2d8:	0f 93       	push	r16
+ 2da:	1f 93       	push	r17
+ 2dc:	cf 93       	push	r28
+ 2de:	df 93       	push	r29
+ 2e0:	ba d1       	rcall	.+884    	; 0x656 <QC3_getMilliVoltage>
+ 2e2:	20 91 8d 00 	lds	r18, 0x008D	; 0x80008d <voltage>
+ 2e6:	30 91 8e 00 	lds	r19, 0x008E	; 0x80008e <voltage+0x1>
+ 2ea:	ca e0       	ldi	r28, 0x0A	; 10
+ 2ec:	d0 e0       	ldi	r29, 0x00	; 0
+ 2ee:	be 01       	movw	r22, r28
+ 2f0:	10 d4       	rcall	.+2080   	; 0xb12 <__udivmodhi4>
+ 2f2:	62 17       	cp	r22, r18
+ 2f4:	73 07       	cpc	r23, r19
+ 2f6:	e1 f0       	breq	.+56     	; 0x330 <confirmVoltage+0x58>
+ 2f8:	c9 01       	movw	r24, r18
+ 2fa:	6a e0       	ldi	r22, 0x0A	; 10
+ 2fc:	70 e0       	ldi	r23, 0x00	; 0
+ 2fe:	f8 d3       	rcall	.+2032   	; 0xaf0 <__mulhi3>
+ 300:	89 d2       	rcall	.+1298   	; 0x814 <QC3_setMilliVoltage>
+ 302:	00 91 8d 00 	lds	r16, 0x008D	; 0x80008d <voltage>
+ 306:	10 91 8e 00 	lds	r17, 0x008E	; 0x80008e <voltage+0x1>
+ 30a:	a5 d1       	rcall	.+842    	; 0x656 <QC3_getMilliVoltage>
+ 30c:	be 01       	movw	r22, r28
+ 30e:	01 d4       	rcall	.+2050   	; 0xb12 <__udivmodhi4>
+ 310:	cb 01       	movw	r24, r22
+ 312:	70 93 8e 00 	sts	0x008E, r23	; 0x80008e <voltage+0x1>
+ 316:	60 93 8d 00 	sts	0x008D, r22	; 0x80008d <voltage>
+ 31a:	06 17       	cp	r16, r22
+ 31c:	17 07       	cpc	r17, r23
+ 31e:	41 f0       	breq	.+16     	; 0x330 <confirmVoltage+0x58>
+ 320:	a9 d3       	rcall	.+1874   	; 0xa74 <TM1637_display_number>
+ 322:	62 e0       	ldi	r22, 0x02	; 2
+ 324:	84 e0       	ldi	r24, 0x04	; 4
+ 326:	df 91       	pop	r29
+ 328:	cf 91       	pop	r28
+ 32a:	1f 91       	pop	r17
+ 32c:	0f 91       	pop	r16
+ 32e:	ad c3       	rjmp	.+1882   	; 0xa8a <TM1637_flash>
+ 330:	df 91       	pop	r29
+ 332:	cf 91       	pop	r28
+ 334:	1f 91       	pop	r17
+ 336:	0f 91       	pop	r16
+ 338:	08 95       	ret
 
-00000382 <mainMenu>:
- 382:	18 df       	rcall	.-464    	; 0x1b4 <normalizeVoltage>
- 384:	cd df       	rcall	.-102    	; 0x320 <confirmVoltage>
- 386:	38 98       	cbi	0x07, 0	; 7
- 388:	36 9a       	sbi	0x06, 6	; 6
- 38a:	8f ec       	ldi	r24, 0xCF	; 207
- 38c:	97 e0       	ldi	r25, 0x07	; 7
- 38e:	01 97       	sbiw	r24, 0x01	; 1
- 390:	f1 f7       	brne	.-4      	; 0x38e <mainMenu+0xc>
- 392:	00 c0       	rjmp	.+0      	; 0x394 <mainMenu+0x12>
- 394:	00 00       	nop
- 396:	8f e9       	ldi	r24, 0x9F	; 159
- 398:	9f e0       	ldi	r25, 0x0F	; 15
- 39a:	01 97       	sbiw	r24, 0x01	; 1
- 39c:	f1 f7       	brne	.-4      	; 0x39a <mainMenu+0x18>
- 39e:	00 c0       	rjmp	.+0      	; 0x3a0 <mainMenu+0x1e>
- 3a0:	00 00       	nop
- 3a2:	80 91 8d 00 	lds	r24, 0x008D	; 0x80008d <voltage>
- 3a6:	90 91 8e 00 	lds	r25, 0x008E	; 0x80008e <voltage+0x1>
- 3aa:	88 d3       	rcall	.+1808   	; 0xabc <TM1637_display_number>
- 3ac:	36 9a       	sbi	0x06, 6	; 6
- 3ae:	8f ec       	ldi	r24, 0xCF	; 207
- 3b0:	97 e0       	ldi	r25, 0x07	; 7
- 3b2:	01 97       	sbiw	r24, 0x01	; 1
- 3b4:	f1 f7       	brne	.-4      	; 0x3b2 <mainMenu+0x30>
- 3b6:	00 c0       	rjmp	.+0      	; 0x3b8 <mainMenu+0x36>
- 3b8:	00 00       	nop
- 3ba:	85 b1       	in	r24, 0x05	; 5
- 3bc:	87 3e       	cpi	r24, 0xE7	; 231
- 3be:	88 f7       	brcc	.-30     	; 0x3a2 <mainMenu+0x20>
- 3c0:	00 d1       	rcall	.+512    	; 0x5c2 <nav_getSelection>
- 3c2:	83 30       	cpi	r24, 0x03	; 3
- 3c4:	29 f0       	breq	.+10     	; 0x3d0 <mainMenu+0x4e>
- 3c6:	84 30       	cpi	r24, 0x04	; 4
- 3c8:	61 f7       	brne	.-40     	; 0x3a2 <mainMenu+0x20>
- 3ca:	80 e6       	ldi	r24, 0x60	; 96
- 3cc:	90 e0       	ldi	r25, 0x00	; 0
- 3ce:	08 95       	ret
- 3d0:	85 e7       	ldi	r24, 0x75	; 117
- 3d2:	90 e0       	ldi	r25, 0x00	; 0
- 3d4:	08 95       	ret
+0000033a <mainMenu>:
+ 33a:	18 df       	rcall	.-464    	; 0x16c <normalizeVoltage>
+ 33c:	cd df       	rcall	.-102    	; 0x2d8 <confirmVoltage>
+ 33e:	38 98       	cbi	0x07, 0	; 7
+ 340:	36 9a       	sbi	0x06, 6	; 6
+ 342:	8f ec       	ldi	r24, 0xCF	; 207
+ 344:	97 e0       	ldi	r25, 0x07	; 7
+ 346:	01 97       	sbiw	r24, 0x01	; 1
+ 348:	f1 f7       	brne	.-4      	; 0x346 <mainMenu+0xc>
+ 34a:	00 c0       	rjmp	.+0      	; 0x34c <mainMenu+0x12>
+ 34c:	00 00       	nop
+ 34e:	8f e9       	ldi	r24, 0x9F	; 159
+ 350:	9f e0       	ldi	r25, 0x0F	; 15
+ 352:	01 97       	sbiw	r24, 0x01	; 1
+ 354:	f1 f7       	brne	.-4      	; 0x352 <mainMenu+0x18>
+ 356:	00 c0       	rjmp	.+0      	; 0x358 <mainMenu+0x1e>
+ 358:	00 00       	nop
+ 35a:	80 91 8d 00 	lds	r24, 0x008D	; 0x80008d <voltage>
+ 35e:	90 91 8e 00 	lds	r25, 0x008E	; 0x80008e <voltage+0x1>
+ 362:	88 d3       	rcall	.+1808   	; 0xa74 <TM1637_display_number>
+ 364:	36 9a       	sbi	0x06, 6	; 6
+ 366:	8f ec       	ldi	r24, 0xCF	; 207
+ 368:	97 e0       	ldi	r25, 0x07	; 7
+ 36a:	01 97       	sbiw	r24, 0x01	; 1
+ 36c:	f1 f7       	brne	.-4      	; 0x36a <mainMenu+0x30>
+ 36e:	00 c0       	rjmp	.+0      	; 0x370 <mainMenu+0x36>
+ 370:	00 00       	nop
+ 372:	85 b1       	in	r24, 0x05	; 5
+ 374:	87 3e       	cpi	r24, 0xE7	; 231
+ 376:	88 f7       	brcc	.-30     	; 0x35a <mainMenu+0x20>
+ 378:	00 d1       	rcall	.+512    	; 0x57a <nav_getSelection>
+ 37a:	82 30       	cpi	r24, 0x02	; 2
+ 37c:	29 f0       	breq	.+10     	; 0x388 <mainMenu+0x4e>
+ 37e:	83 30       	cpi	r24, 0x03	; 3
+ 380:	61 f7       	brne	.-40     	; 0x35a <mainMenu+0x20>
+ 382:	80 e6       	ldi	r24, 0x60	; 96
+ 384:	90 e0       	ldi	r25, 0x00	; 0
+ 386:	08 95       	ret
+ 388:	85 e7       	ldi	r24, 0x75	; 117
+ 38a:	90 e0       	ldi	r25, 0x00	; 0
+ 38c:	08 95       	ret
 
-000003d6 <main>:
- 3d6:	a3 d0       	rcall	.+326    	; 0x51e <millis_Init>
- 3d8:	81 e0       	ldi	r24, 0x01	; 1
- 3da:	70 d1       	rcall	.+736    	; 0x6bc <QC3_begin>
- 3dc:	3d d0       	rcall	.+122    	; 0x458 <input_init>
- 3de:	9a d3       	rcall	.+1844   	; 0xb14 <TM1637_init>
- 3e0:	86 e0       	ldi	r24, 0x06	; 6
- 3e2:	24 d3       	rcall	.+1608   	; 0xa2c <TM1637_display_prog_string>
- 3e4:	64 e0       	ldi	r22, 0x04	; 4
- 3e6:	84 e0       	ldi	r24, 0x04	; 4
- 3e8:	74 d3       	rcall	.+1768   	; 0xad2 <TM1637_flash>
- 3ea:	79 d1       	rcall	.+754    	; 0x6de <QC3_set5V>
- 3ec:	2f e7       	ldi	r18, 0x7F	; 127
- 3ee:	83 e8       	ldi	r24, 0x83	; 131
- 3f0:	91 e0       	ldi	r25, 0x01	; 1
- 3f2:	21 50       	subi	r18, 0x01	; 1
- 3f4:	80 40       	sbci	r24, 0x00	; 0
- 3f6:	90 40       	sbci	r25, 0x00	; 0
- 3f8:	e1 f7       	brne	.-8      	; 0x3f2 <main+0x1c>
- 3fa:	00 c0       	rjmp	.+0      	; 0x3fc <main+0x26>
- 3fc:	00 00       	nop
- 3fe:	8e e7       	ldi	r24, 0x7E	; 126
- 400:	90 e0       	ldi	r25, 0x00	; 0
- 402:	8f d2       	rcall	.+1310   	; 0x922 <stateRun>
- 404:	80 e0       	ldi	r24, 0x00	; 0
- 406:	90 e0       	ldi	r25, 0x00	; 0
- 408:	08 95       	ret
+0000038e <main>:
+ 38e:	a3 d0       	rcall	.+326    	; 0x4d6 <millis_Init>
+ 390:	81 e0       	ldi	r24, 0x01	; 1
+ 392:	70 d1       	rcall	.+736    	; 0x674 <QC3_begin>
+ 394:	3d d0       	rcall	.+122    	; 0x410 <input_init>
+ 396:	9a d3       	rcall	.+1844   	; 0xacc <TM1637_init>
+ 398:	85 e0       	ldi	r24, 0x05	; 5
+ 39a:	24 d3       	rcall	.+1608   	; 0x9e4 <TM1637_display_prog_string>
+ 39c:	64 e0       	ldi	r22, 0x04	; 4
+ 39e:	84 e0       	ldi	r24, 0x04	; 4
+ 3a0:	74 d3       	rcall	.+1768   	; 0xa8a <TM1637_flash>
+ 3a2:	79 d1       	rcall	.+754    	; 0x696 <QC3_set5V>
+ 3a4:	2f e7       	ldi	r18, 0x7F	; 127
+ 3a6:	83 e8       	ldi	r24, 0x83	; 131
+ 3a8:	91 e0       	ldi	r25, 0x01	; 1
+ 3aa:	21 50       	subi	r18, 0x01	; 1
+ 3ac:	80 40       	sbci	r24, 0x00	; 0
+ 3ae:	90 40       	sbci	r25, 0x00	; 0
+ 3b0:	e1 f7       	brne	.-8      	; 0x3aa <main+0x1c>
+ 3b2:	00 c0       	rjmp	.+0      	; 0x3b4 <main+0x26>
+ 3b4:	00 00       	nop
+ 3b6:	8e e7       	ldi	r24, 0x7E	; 126
+ 3b8:	90 e0       	ldi	r25, 0x00	; 0
+ 3ba:	8f d2       	rcall	.+1310   	; 0x8da <stateRun>
+ 3bc:	80 e0       	ldi	r24, 0x00	; 0
+ 3be:	90 e0       	ldi	r25, 0x00	; 0
+ 3c0:	08 95       	ret
 
-0000040a <buttonDown>:
- 40a:	36 9a       	sbi	0x06, 6	; 6
- 40c:	8f ec       	ldi	r24, 0xCF	; 207
- 40e:	97 e0       	ldi	r25, 0x07	; 7
- 410:	01 97       	sbiw	r24, 0x01	; 1
- 412:	f1 f7       	brne	.-4      	; 0x410 <buttonDown+0x6>
- 414:	00 c0       	rjmp	.+0      	; 0x416 <buttonDown+0xc>
- 416:	00 00       	nop
- 418:	80 91 98 00 	lds	r24, 0x0098	; 0x800098 <down.1816>
- 41c:	88 23       	and	r24, r24
- 41e:	29 f0       	breq	.+10     	; 0x42a <buttonDown+0x20>
- 420:	85 b1       	in	r24, 0x05	; 5
- 422:	87 3e       	cpi	r24, 0xE7	; 231
- 424:	30 f4       	brcc	.+12     	; 0x432 <buttonDown+0x28>
- 426:	82 e0       	ldi	r24, 0x02	; 2
- 428:	05 c0       	rjmp	.+10     	; 0x434 <buttonDown+0x2a>
- 42a:	95 b1       	in	r25, 0x05	; 5
- 42c:	81 e0       	ldi	r24, 0x01	; 1
- 42e:	97 3e       	cpi	r25, 0xE7	; 231
- 430:	08 f0       	brcs	.+2      	; 0x434 <buttonDown+0x2a>
- 432:	80 e0       	ldi	r24, 0x00	; 0
- 434:	80 93 98 00 	sts	0x0098, r24	; 0x800098 <down.1816>
- 438:	80 91 98 00 	lds	r24, 0x0098	; 0x800098 <down.1816>
- 43c:	08 95       	ret
+000003c2 <buttonDown>:
+ 3c2:	36 9a       	sbi	0x06, 6	; 6
+ 3c4:	8f ec       	ldi	r24, 0xCF	; 207
+ 3c6:	97 e0       	ldi	r25, 0x07	; 7
+ 3c8:	01 97       	sbiw	r24, 0x01	; 1
+ 3ca:	f1 f7       	brne	.-4      	; 0x3c8 <buttonDown+0x6>
+ 3cc:	00 c0       	rjmp	.+0      	; 0x3ce <buttonDown+0xc>
+ 3ce:	00 00       	nop
+ 3d0:	80 91 98 00 	lds	r24, 0x0098	; 0x800098 <down.1814>
+ 3d4:	88 23       	and	r24, r24
+ 3d6:	29 f0       	breq	.+10     	; 0x3e2 <buttonDown+0x20>
+ 3d8:	85 b1       	in	r24, 0x05	; 5
+ 3da:	87 3e       	cpi	r24, 0xE7	; 231
+ 3dc:	30 f4       	brcc	.+12     	; 0x3ea <buttonDown+0x28>
+ 3de:	82 e0       	ldi	r24, 0x02	; 2
+ 3e0:	05 c0       	rjmp	.+10     	; 0x3ec <buttonDown+0x2a>
+ 3e2:	95 b1       	in	r25, 0x05	; 5
+ 3e4:	81 e0       	ldi	r24, 0x01	; 1
+ 3e6:	97 3e       	cpi	r25, 0xE7	; 231
+ 3e8:	08 f0       	brcs	.+2      	; 0x3ec <buttonDown+0x2a>
+ 3ea:	80 e0       	ldi	r24, 0x00	; 0
+ 3ec:	80 93 98 00 	sts	0x0098, r24	; 0x800098 <down.1814>
+ 3f0:	80 91 98 00 	lds	r24, 0x0098	; 0x800098 <down.1814>
+ 3f4:	08 95       	ret
 
-0000043e <btnWait>:
- 43e:	38 98       	cbi	0x07, 0	; 7
- 440:	85 b1       	in	r24, 0x05	; 5
- 442:	87 3e       	cpi	r24, 0xE7	; 231
- 444:	40 f4       	brcc	.+16     	; 0x456 <btnWait+0x18>
- 446:	36 9a       	sbi	0x06, 6	; 6
- 448:	8f ec       	ldi	r24, 0xCF	; 207
- 44a:	97 e0       	ldi	r25, 0x07	; 7
- 44c:	01 97       	sbiw	r24, 0x01	; 1
- 44e:	f1 f7       	brne	.-4      	; 0x44c <btnWait+0xe>
- 450:	00 c0       	rjmp	.+0      	; 0x452 <btnWait+0x14>
- 452:	00 00       	nop
- 454:	f5 cf       	rjmp	.-22     	; 0x440 <btnWait+0x2>
- 456:	08 95       	ret
+000003f6 <btnWait>:
+ 3f6:	38 98       	cbi	0x07, 0	; 7
+ 3f8:	85 b1       	in	r24, 0x05	; 5
+ 3fa:	87 3e       	cpi	r24, 0xE7	; 231
+ 3fc:	40 f4       	brcc	.+16     	; 0x40e <__LOCK_REGION_LENGTH__+0xe>
+ 3fe:	36 9a       	sbi	0x06, 6	; 6
+ 400:	8f ec       	ldi	r24, 0xCF	; 207
+ 402:	97 e0       	ldi	r25, 0x07	; 7
+ 404:	01 97       	sbiw	r24, 0x01	; 1
+ 406:	f1 f7       	brne	.-4      	; 0x404 <__LOCK_REGION_LENGTH__+0x4>
+ 408:	00 c0       	rjmp	.+0      	; 0x40a <__LOCK_REGION_LENGTH__+0xa>
+ 40a:	00 00       	nop
+ 40c:	f5 cf       	rjmp	.-22     	; 0x3f8 <btnWait+0x2>
+ 40e:	08 95       	ret
 
-00000458 <input_init>:
- 458:	3d 9a       	sbi	0x07, 5	; 7
- 45a:	85 e8       	ldi	r24, 0x85	; 133
- 45c:	86 b9       	out	0x06, r24	; 6
- 45e:	08 95       	ret
+00000410 <input_init>:
+ 410:	3d 9a       	sbi	0x07, 5	; 7
+ 412:	85 e8       	ldi	r24, 0x85	; 133
+ 414:	86 b9       	out	0x06, r24	; 6
+ 416:	08 95       	ret
 
-00000460 <__vector_5>:
- 460:	1f 92       	push	r1
- 462:	0f 92       	push	r0
- 464:	0f b6       	in	r0, 0x3f	; 63
- 466:	0f 92       	push	r0
- 468:	11 24       	eor	r1, r1
- 46a:	2f 93       	push	r18
- 46c:	3f 93       	push	r19
- 46e:	4f 93       	push	r20
- 470:	5f 93       	push	r21
- 472:	6f 93       	push	r22
- 474:	7f 93       	push	r23
- 476:	8f 93       	push	r24
- 478:	9f 93       	push	r25
- 47a:	af 93       	push	r26
- 47c:	bf 93       	push	r27
- 47e:	ef 93       	push	r30
- 480:	ff 93       	push	r31
- 482:	80 91 99 00 	lds	r24, 0x0099	; 0x800099 <us>
- 486:	90 91 9a 00 	lds	r25, 0x009A	; 0x80009a <us+0x1>
- 48a:	98 5f       	subi	r25, 0xF8	; 248
- 48c:	20 91 9b 00 	lds	r18, 0x009B	; 0x80009b <ms>
- 490:	30 91 9c 00 	lds	r19, 0x009C	; 0x80009c <ms+0x1>
- 494:	e8 ee       	ldi	r30, 0xE8	; 232
- 496:	f3 e0       	ldi	r31, 0x03	; 3
- 498:	89 3e       	cpi	r24, 0xE9	; 233
- 49a:	43 e0       	ldi	r20, 0x03	; 3
- 49c:	94 07       	cpc	r25, r20
- 49e:	28 f0       	brcs	.+10     	; 0x4aa <__vector_5+0x4a>
- 4a0:	bf 01       	movw	r22, r30
- 4a2:	74 d3       	rcall	.+1768   	; 0xb8c <__udivmodhi4>
- 4a4:	26 0f       	add	r18, r22
- 4a6:	37 1f       	adc	r19, r23
- 4a8:	f7 cf       	rjmp	.-18     	; 0x498 <__vector_5+0x38>
- 4aa:	90 93 9a 00 	sts	0x009A, r25	; 0x80009a <us+0x1>
- 4ae:	80 93 99 00 	sts	0x0099, r24	; 0x800099 <us>
- 4b2:	30 93 9c 00 	sts	0x009C, r19	; 0x80009c <ms+0x1>
- 4b6:	20 93 9b 00 	sts	0x009B, r18	; 0x80009b <ms>
- 4ba:	ff 91       	pop	r31
- 4bc:	ef 91       	pop	r30
- 4be:	bf 91       	pop	r27
- 4c0:	af 91       	pop	r26
- 4c2:	9f 91       	pop	r25
- 4c4:	8f 91       	pop	r24
- 4c6:	7f 91       	pop	r23
- 4c8:	6f 91       	pop	r22
- 4ca:	5f 91       	pop	r21
- 4cc:	4f 91       	pop	r20
- 4ce:	3f 91       	pop	r19
- 4d0:	2f 91       	pop	r18
- 4d2:	0f 90       	pop	r0
- 4d4:	0f be       	out	0x3f, r0	; 63
- 4d6:	0f 90       	pop	r0
- 4d8:	1f 90       	pop	r1
- 4da:	18 95       	reti
+00000418 <__vector_5>:
+ 418:	1f 92       	push	r1
+ 41a:	0f 92       	push	r0
+ 41c:	0f b6       	in	r0, 0x3f	; 63
+ 41e:	0f 92       	push	r0
+ 420:	11 24       	eor	r1, r1
+ 422:	2f 93       	push	r18
+ 424:	3f 93       	push	r19
+ 426:	4f 93       	push	r20
+ 428:	5f 93       	push	r21
+ 42a:	6f 93       	push	r22
+ 42c:	7f 93       	push	r23
+ 42e:	8f 93       	push	r24
+ 430:	9f 93       	push	r25
+ 432:	af 93       	push	r26
+ 434:	bf 93       	push	r27
+ 436:	ef 93       	push	r30
+ 438:	ff 93       	push	r31
+ 43a:	80 91 99 00 	lds	r24, 0x0099	; 0x800099 <us>
+ 43e:	90 91 9a 00 	lds	r25, 0x009A	; 0x80009a <us+0x1>
+ 442:	98 5f       	subi	r25, 0xF8	; 248
+ 444:	20 91 9b 00 	lds	r18, 0x009B	; 0x80009b <ms>
+ 448:	30 91 9c 00 	lds	r19, 0x009C	; 0x80009c <ms+0x1>
+ 44c:	e8 ee       	ldi	r30, 0xE8	; 232
+ 44e:	f3 e0       	ldi	r31, 0x03	; 3
+ 450:	89 3e       	cpi	r24, 0xE9	; 233
+ 452:	43 e0       	ldi	r20, 0x03	; 3
+ 454:	94 07       	cpc	r25, r20
+ 456:	28 f0       	brcs	.+10     	; 0x462 <__vector_5+0x4a>
+ 458:	bf 01       	movw	r22, r30
+ 45a:	5b d3       	rcall	.+1718   	; 0xb12 <__udivmodhi4>
+ 45c:	26 0f       	add	r18, r22
+ 45e:	37 1f       	adc	r19, r23
+ 460:	f7 cf       	rjmp	.-18     	; 0x450 <__vector_5+0x38>
+ 462:	90 93 9a 00 	sts	0x009A, r25	; 0x80009a <us+0x1>
+ 466:	80 93 99 00 	sts	0x0099, r24	; 0x800099 <us>
+ 46a:	30 93 9c 00 	sts	0x009C, r19	; 0x80009c <ms+0x1>
+ 46e:	20 93 9b 00 	sts	0x009B, r18	; 0x80009b <ms>
+ 472:	ff 91       	pop	r31
+ 474:	ef 91       	pop	r30
+ 476:	bf 91       	pop	r27
+ 478:	af 91       	pop	r26
+ 47a:	9f 91       	pop	r25
+ 47c:	8f 91       	pop	r24
+ 47e:	7f 91       	pop	r23
+ 480:	6f 91       	pop	r22
+ 482:	5f 91       	pop	r21
+ 484:	4f 91       	pop	r20
+ 486:	3f 91       	pop	r19
+ 488:	2f 91       	pop	r18
+ 48a:	0f 90       	pop	r0
+ 48c:	0f be       	out	0x3f, r0	; 63
+ 48e:	0f 90       	pop	r0
+ 490:	1f 90       	pop	r1
+ 492:	18 95       	reti
 
-000004dc <millis>:
- 4dc:	f8 94       	cli
- 4de:	80 91 9b 00 	lds	r24, 0x009B	; 0x80009b <ms>
- 4e2:	90 91 9c 00 	lds	r25, 0x009C	; 0x80009c <ms+0x1>
- 4e6:	78 94       	sei
- 4e8:	08 95       	ret
+00000494 <millis>:
+ 494:	f8 94       	cli
+ 496:	80 91 9b 00 	lds	r24, 0x009B	; 0x80009b <ms>
+ 49a:	90 91 9c 00 	lds	r25, 0x009C	; 0x80009c <ms+0x1>
+ 49e:	78 94       	sei
+ 4a0:	08 95       	ret
 
-000004ea <millis_Enable>:
- 4ea:	f8 94       	cli
- 4ec:	10 92 9c 00 	sts	0x009C, r1	; 0x80009c <ms+0x1>
- 4f0:	10 92 9b 00 	sts	0x009B, r1	; 0x80009b <ms>
- 4f4:	10 92 9a 00 	sts	0x009A, r1	; 0x80009a <us+0x1>
- 4f8:	10 92 99 00 	sts	0x0099, r1	; 0x800099 <us>
- 4fc:	78 94       	sei
- 4fe:	08 95       	ret
+000004a2 <millis_Enable>:
+ 4a2:	f8 94       	cli
+ 4a4:	10 92 9c 00 	sts	0x009C, r1	; 0x80009c <ms+0x1>
+ 4a8:	10 92 9b 00 	sts	0x009B, r1	; 0x80009b <ms>
+ 4ac:	10 92 9a 00 	sts	0x009A, r1	; 0x80009a <us+0x1>
+ 4b0:	10 92 99 00 	sts	0x0099, r1	; 0x800099 <us>
+ 4b4:	78 94       	sei
+ 4b6:	08 95       	ret
 
-00000500 <millis_Disable>:
- 500:	f8 94       	cli
- 502:	08 95       	ret
+000004b8 <millis_Disable>:
+ 4b8:	f8 94       	cli
+ 4ba:	08 95       	ret
 
-00000504 <millis_TakeSnap>:
- 504:	cf 93       	push	r28
- 506:	df 93       	push	r29
- 508:	ec 01       	movw	r28, r24
- 50a:	e8 df       	rcall	.-48     	; 0x4dc <millis>
- 50c:	8c 0f       	add	r24, r28
- 50e:	9d 1f       	adc	r25, r29
- 510:	90 93 9e 00 	sts	0x009E, r25	; 0x80009e <millis_snap+0x1>
- 514:	80 93 9d 00 	sts	0x009D, r24	; 0x80009d <millis_snap>
- 518:	df 91       	pop	r29
- 51a:	cf 91       	pop	r28
- 51c:	08 95       	ret
+000004bc <millis_TakeSnap>:
+ 4bc:	cf 93       	push	r28
+ 4be:	df 93       	push	r29
+ 4c0:	ec 01       	movw	r28, r24
+ 4c2:	e8 df       	rcall	.-48     	; 0x494 <millis>
+ 4c4:	8c 0f       	add	r24, r28
+ 4c6:	9d 1f       	adc	r25, r29
+ 4c8:	90 93 9e 00 	sts	0x009E, r25	; 0x80009e <millis_snap+0x1>
+ 4cc:	80 93 9d 00 	sts	0x009D, r24	; 0x80009d <millis_snap>
+ 4d0:	df 91       	pop	r29
+ 4d2:	cf 91       	pop	r28
+ 4d4:	08 95       	ret
 
-0000051e <millis_Init>:
- 51e:	83 b7       	in	r24, 0x33	; 51
- 520:	82 60       	ori	r24, 0x02	; 2
- 522:	83 bf       	out	0x33, r24	; 51
- 524:	89 b7       	in	r24, 0x39	; 57
- 526:	82 60       	ori	r24, 0x02	; 2
- 528:	89 bf       	out	0x39, r24	; 57
- 52a:	08 95       	ret
+000004d6 <millis_Init>:
+ 4d6:	83 b7       	in	r24, 0x33	; 51
+ 4d8:	82 60       	ori	r24, 0x02	; 2
+ 4da:	83 bf       	out	0x33, r24	; 51
+ 4dc:	89 b7       	in	r24, 0x39	; 57
+ 4de:	82 60       	ori	r24, 0x02	; 2
+ 4e0:	89 bf       	out	0x39, r24	; 57
+ 4e2:	08 95       	ret
 
-0000052c <select>:
- 52c:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
- 530:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
- 534:	90 81       	ld	r25, Z
- 536:	80 91 8f 00 	lds	r24, 0x008F	; 0x80008f <c>
- 53a:	89 17       	cp	r24, r25
- 53c:	18 f0       	brcs	.+6      	; 0x544 <select+0x18>
- 53e:	61 e0       	ldi	r22, 0x01	; 1
- 540:	88 e0       	ldi	r24, 0x08	; 8
- 542:	c7 c2       	rjmp	.+1422   	; 0xad2 <TM1637_flash>
- 544:	62 e0       	ldi	r22, 0x02	; 2
- 546:	84 e0       	ldi	r24, 0x04	; 4
- 548:	c4 d2       	rcall	.+1416   	; 0xad2 <TM1637_flash>
- 54a:	20 91 a7 00 	lds	r18, 0x00A7	; 0x8000a7 <currentState>
- 54e:	30 91 a8 00 	lds	r19, 0x00A8	; 0x8000a8 <currentState+0x1>
- 552:	80 91 8f 00 	lds	r24, 0x008F	; 0x80008f <c>
- 556:	90 e0       	ldi	r25, 0x00	; 0
- 558:	63 e0       	ldi	r22, 0x03	; 3
- 55a:	70 e0       	ldi	r23, 0x00	; 0
- 55c:	ed d2       	rcall	.+1498   	; 0xb38 <__mulhi3>
- 55e:	82 0f       	add	r24, r18
- 560:	93 1f       	adc	r25, r19
- 562:	dc 01       	movw	r26, r24
- 564:	17 96       	adiw	r26, 0x07	; 7
- 566:	ed 91       	ld	r30, X+
- 568:	fc 91       	ld	r31, X
- 56a:	18 97       	sbiw	r26, 0x08	; 8
- 56c:	09 95       	icall
- 56e:	67 cf       	rjmp	.-306    	; 0x43e <btnWait>
+000004e4 <select>:
+ 4e4:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
+ 4e8:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
+ 4ec:	90 81       	ld	r25, Z
+ 4ee:	80 91 8f 00 	lds	r24, 0x008F	; 0x80008f <c>
+ 4f2:	89 17       	cp	r24, r25
+ 4f4:	18 f0       	brcs	.+6      	; 0x4fc <select+0x18>
+ 4f6:	61 e0       	ldi	r22, 0x01	; 1
+ 4f8:	88 e0       	ldi	r24, 0x08	; 8
+ 4fa:	c7 c2       	rjmp	.+1422   	; 0xa8a <TM1637_flash>
+ 4fc:	62 e0       	ldi	r22, 0x02	; 2
+ 4fe:	84 e0       	ldi	r24, 0x04	; 4
+ 500:	c4 d2       	rcall	.+1416   	; 0xa8a <TM1637_flash>
+ 502:	20 91 a7 00 	lds	r18, 0x00A7	; 0x8000a7 <currentState>
+ 506:	30 91 a8 00 	lds	r19, 0x00A8	; 0x8000a8 <currentState+0x1>
+ 50a:	80 91 8f 00 	lds	r24, 0x008F	; 0x80008f <c>
+ 50e:	90 e0       	ldi	r25, 0x00	; 0
+ 510:	63 e0       	ldi	r22, 0x03	; 3
+ 512:	70 e0       	ldi	r23, 0x00	; 0
+ 514:	ed d2       	rcall	.+1498   	; 0xaf0 <__mulhi3>
+ 516:	82 0f       	add	r24, r18
+ 518:	93 1f       	adc	r25, r19
+ 51a:	dc 01       	movw	r26, r24
+ 51c:	17 96       	adiw	r26, 0x07	; 7
+ 51e:	ed 91       	ld	r30, X+
+ 520:	fc 91       	ld	r31, X
+ 522:	18 97       	sbiw	r26, 0x08	; 8
+ 524:	09 95       	icall
+ 526:	67 cf       	rjmp	.-306    	; 0x3f6 <btnWait>
 
-00000570 <next>:
- 570:	80 91 8f 00 	lds	r24, 0x008F	; 0x80008f <c>
- 574:	8f 5f       	subi	r24, 0xFF	; 255
- 576:	80 93 8f 00 	sts	0x008F, r24	; 0x80008f <c>
- 57a:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
- 57e:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
- 582:	90 81       	ld	r25, Z
- 584:	89 17       	cp	r24, r25
- 586:	28 f0       	brcs	.+10     	; 0x592 <next+0x22>
- 588:	81 e0       	ldi	r24, 0x01	; 1
- 58a:	50 d2       	rcall	.+1184   	; 0xa2c <TM1637_display_prog_string>
- 58c:	80 e0       	ldi	r24, 0x00	; 0
- 58e:	90 e0       	ldi	r25, 0x00	; 0
- 590:	08 95       	ret
- 592:	90 e0       	ldi	r25, 0x00	; 0
- 594:	63 e0       	ldi	r22, 0x03	; 3
- 596:	70 e0       	ldi	r23, 0x00	; 0
- 598:	cf d2       	rcall	.+1438   	; 0xb38 <__mulhi3>
- 59a:	e8 0f       	add	r30, r24
- 59c:	f9 1f       	adc	r31, r25
- 59e:	86 81       	ldd	r24, Z+6	; 0x06
- 5a0:	45 d2       	rcall	.+1162   	; 0xa2c <TM1637_display_prog_string>
- 5a2:	80 91 a7 00 	lds	r24, 0x00A7	; 0x8000a7 <currentState>
- 5a6:	90 91 a8 00 	lds	r25, 0x00A8	; 0x8000a8 <currentState+0x1>
- 5aa:	9c 01       	movw	r18, r24
- 5ac:	2a 5f       	subi	r18, 0xFA	; 250
- 5ae:	3f 4f       	sbci	r19, 0xFF	; 255
- 5b0:	80 91 8f 00 	lds	r24, 0x008F	; 0x80008f <c>
- 5b4:	90 e0       	ldi	r25, 0x00	; 0
- 5b6:	63 e0       	ldi	r22, 0x03	; 3
- 5b8:	70 e0       	ldi	r23, 0x00	; 0
- 5ba:	be d2       	rcall	.+1404   	; 0xb38 <__mulhi3>
- 5bc:	82 0f       	add	r24, r18
- 5be:	93 1f       	adc	r25, r19
- 5c0:	08 95       	ret
+00000528 <next>:
+ 528:	80 91 8f 00 	lds	r24, 0x008F	; 0x80008f <c>
+ 52c:	8f 5f       	subi	r24, 0xFF	; 255
+ 52e:	80 93 8f 00 	sts	0x008F, r24	; 0x80008f <c>
+ 532:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
+ 536:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
+ 53a:	90 81       	ld	r25, Z
+ 53c:	89 17       	cp	r24, r25
+ 53e:	28 f0       	brcs	.+10     	; 0x54a <next+0x22>
+ 540:	80 e0       	ldi	r24, 0x00	; 0
+ 542:	50 d2       	rcall	.+1184   	; 0x9e4 <TM1637_display_prog_string>
+ 544:	80 e0       	ldi	r24, 0x00	; 0
+ 546:	90 e0       	ldi	r25, 0x00	; 0
+ 548:	08 95       	ret
+ 54a:	90 e0       	ldi	r25, 0x00	; 0
+ 54c:	63 e0       	ldi	r22, 0x03	; 3
+ 54e:	70 e0       	ldi	r23, 0x00	; 0
+ 550:	cf d2       	rcall	.+1438   	; 0xaf0 <__mulhi3>
+ 552:	e8 0f       	add	r30, r24
+ 554:	f9 1f       	adc	r31, r25
+ 556:	86 81       	ldd	r24, Z+6	; 0x06
+ 558:	45 d2       	rcall	.+1162   	; 0x9e4 <TM1637_display_prog_string>
+ 55a:	80 91 a7 00 	lds	r24, 0x00A7	; 0x8000a7 <currentState>
+ 55e:	90 91 a8 00 	lds	r25, 0x00A8	; 0x8000a8 <currentState+0x1>
+ 562:	9c 01       	movw	r18, r24
+ 564:	2a 5f       	subi	r18, 0xFA	; 250
+ 566:	3f 4f       	sbci	r19, 0xFF	; 255
+ 568:	80 91 8f 00 	lds	r24, 0x008F	; 0x80008f <c>
+ 56c:	90 e0       	ldi	r25, 0x00	; 0
+ 56e:	63 e0       	ldi	r22, 0x03	; 3
+ 570:	70 e0       	ldi	r23, 0x00	; 0
+ 572:	be d2       	rcall	.+1404   	; 0xaf0 <__mulhi3>
+ 574:	82 0f       	add	r24, r18
+ 576:	93 1f       	adc	r25, r19
+ 578:	08 95       	ret
 
-000005c2 <nav_getSelection>:
- 5c2:	1f 93       	push	r17
- 5c4:	cf 93       	push	r28
- 5c6:	df 93       	push	r29
- 5c8:	1a d2       	rcall	.+1076   	; 0x9fe <TM1637_is_enabled>
- 5ca:	18 2f       	mov	r17, r24
- 5cc:	81 e0       	ldi	r24, 0x01	; 1
- 5ce:	05 d2       	rcall	.+1034   	; 0x9da <TM1637_enable>
- 5d0:	38 98       	cbi	0x07, 0	; 7
- 5d2:	8f ed       	ldi	r24, 0xDF	; 223
- 5d4:	9e e2       	ldi	r25, 0x2E	; 46
+0000057a <nav_getSelection>:
+ 57a:	1f 93       	push	r17
+ 57c:	cf 93       	push	r28
+ 57e:	df 93       	push	r29
+ 580:	1a d2       	rcall	.+1076   	; 0x9b6 <TM1637_is_enabled>
+ 582:	18 2f       	mov	r17, r24
+ 584:	81 e0       	ldi	r24, 0x01	; 1
+ 586:	05 d2       	rcall	.+1034   	; 0x992 <TM1637_enable>
+ 588:	38 98       	cbi	0x07, 0	; 7
+ 58a:	8f ed       	ldi	r24, 0xDF	; 223
+ 58c:	9e e2       	ldi	r25, 0x2E	; 46
+ 58e:	01 97       	sbiw	r24, 0x01	; 1
+ 590:	f1 f7       	brne	.-4      	; 0x58e <nav_getSelection+0x14>
+ 592:	00 c0       	rjmp	.+0      	; 0x594 <nav_getSelection+0x1a>
+ 594:	00 00       	nop
+ 596:	36 9a       	sbi	0x06, 6	; 6
+ 598:	8f ec       	ldi	r24, 0xCF	; 207
+ 59a:	97 e0       	ldi	r25, 0x07	; 7
+ 59c:	01 97       	sbiw	r24, 0x01	; 1
+ 59e:	f1 f7       	brne	.-4      	; 0x59c <nav_getSelection+0x22>
+ 5a0:	00 c0       	rjmp	.+0      	; 0x5a2 <nav_getSelection+0x28>
+ 5a2:	00 00       	nop
+ 5a4:	7e df       	rcall	.-260    	; 0x4a2 <millis_Enable>
+ 5a6:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
+ 5aa:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
+ 5ae:	83 81       	ldd	r24, Z+3	; 0x03
+ 5b0:	81 11       	cpse	r24, r1
+ 5b2:	0b c0       	rjmp	.+22     	; 0x5ca <nav_getSelection+0x50>
+ 5b4:	8f ef       	ldi	r24, 0xFF	; 255
+ 5b6:	80 93 8f 00 	sts	0x008F, r24	; 0x80008f <c>
+ 5ba:	b6 df       	rcall	.-148    	; 0x528 <next>
+ 5bc:	ec 01       	movw	r28, r24
+ 5be:	71 df       	rcall	.-286    	; 0x4a2 <millis_Enable>
+ 5c0:	80 e9       	ldi	r24, 0x90	; 144
+ 5c2:	91 e0       	ldi	r25, 0x01	; 1
+ 5c4:	7b df       	rcall	.-266    	; 0x4bc <millis_TakeSnap>
+ 5c6:	fd de       	rcall	.-518    	; 0x3c2 <buttonDown>
+ 5c8:	38 c0       	rjmp	.+112    	; 0x63a <nav_getSelection+0xc0>
+ 5ca:	85 b1       	in	r24, 0x05	; 5
+ 5cc:	87 3e       	cpi	r24, 0xE7	; 231
+ 5ce:	90 f7       	brcc	.-28     	; 0x5b4 <nav_getSelection+0x3a>
+ 5d0:	36 9a       	sbi	0x06, 6	; 6
+ 5d2:	8f ec       	ldi	r24, 0xCF	; 207
+ 5d4:	97 e0       	ldi	r25, 0x07	; 7
  5d6:	01 97       	sbiw	r24, 0x01	; 1
- 5d8:	f1 f7       	brne	.-4      	; 0x5d6 <nav_getSelection+0x14>
- 5da:	00 c0       	rjmp	.+0      	; 0x5dc <nav_getSelection+0x1a>
+ 5d8:	f1 f7       	brne	.-4      	; 0x5d6 <nav_getSelection+0x5c>
+ 5da:	00 c0       	rjmp	.+0      	; 0x5dc <nav_getSelection+0x62>
  5dc:	00 00       	nop
- 5de:	36 9a       	sbi	0x06, 6	; 6
- 5e0:	8f ec       	ldi	r24, 0xCF	; 207
- 5e2:	97 e0       	ldi	r25, 0x07	; 7
- 5e4:	01 97       	sbiw	r24, 0x01	; 1
- 5e6:	f1 f7       	brne	.-4      	; 0x5e4 <nav_getSelection+0x22>
- 5e8:	00 c0       	rjmp	.+0      	; 0x5ea <nav_getSelection+0x28>
- 5ea:	00 00       	nop
- 5ec:	7e df       	rcall	.-260    	; 0x4ea <millis_Enable>
- 5ee:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
- 5f2:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
- 5f6:	83 81       	ldd	r24, Z+3	; 0x03
- 5f8:	81 11       	cpse	r24, r1
- 5fa:	0b c0       	rjmp	.+22     	; 0x612 <nav_getSelection+0x50>
- 5fc:	8f ef       	ldi	r24, 0xFF	; 255
- 5fe:	80 93 8f 00 	sts	0x008F, r24	; 0x80008f <c>
- 602:	b6 df       	rcall	.-148    	; 0x570 <next>
- 604:	ec 01       	movw	r28, r24
- 606:	71 df       	rcall	.-286    	; 0x4ea <millis_Enable>
- 608:	80 e9       	ldi	r24, 0x90	; 144
- 60a:	91 e0       	ldi	r25, 0x01	; 1
- 60c:	7b df       	rcall	.-266    	; 0x504 <millis_TakeSnap>
- 60e:	fd de       	rcall	.-518    	; 0x40a <buttonDown>
- 610:	38 c0       	rjmp	.+112    	; 0x682 <nav_getSelection+0xc0>
- 612:	85 b1       	in	r24, 0x05	; 5
- 614:	87 3e       	cpi	r24, 0xE7	; 231
- 616:	90 f7       	brcc	.-28     	; 0x5fc <nav_getSelection+0x3a>
- 618:	36 9a       	sbi	0x06, 6	; 6
- 61a:	8f ec       	ldi	r24, 0xCF	; 207
- 61c:	97 e0       	ldi	r25, 0x07	; 7
- 61e:	01 97       	sbiw	r24, 0x01	; 1
- 620:	f1 f7       	brne	.-4      	; 0x61e <nav_getSelection+0x5c>
- 622:	00 c0       	rjmp	.+0      	; 0x624 <nav_getSelection+0x62>
- 624:	00 00       	nop
- 626:	5a df       	rcall	.-332    	; 0x4dc <millis>
- 628:	81 32       	cpi	r24, 0x21	; 33
- 62a:	93 40       	sbci	r25, 0x03	; 3
- 62c:	90 f3       	brcs	.-28     	; 0x612 <nav_getSelection+0x50>
- 62e:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
- 632:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
- 636:	83 81       	ldd	r24, Z+3	; 0x03
- 638:	f9 d1       	rcall	.+1010   	; 0xa2c <TM1637_display_prog_string>
- 63a:	62 e0       	ldi	r22, 0x02	; 2
- 63c:	84 e0       	ldi	r24, 0x04	; 4
- 63e:	49 d2       	rcall	.+1170   	; 0xad2 <TM1637_flash>
- 640:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
- 644:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
- 648:	04 80       	ldd	r0, Z+4	; 0x04
- 64a:	f5 81       	ldd	r31, Z+5	; 0x05
- 64c:	e0 2d       	mov	r30, r0
- 64e:	09 95       	icall
- 650:	f6 de       	rcall	.-532    	; 0x43e <btnWait>
- 652:	81 2f       	mov	r24, r17
- 654:	c2 d1       	rcall	.+900    	; 0x9da <TM1637_enable>
- 656:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
- 65a:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
- 65e:	83 81       	ldd	r24, Z+3	; 0x03
- 660:	1a c0       	rjmp	.+52     	; 0x696 <nav_getSelection+0xd4>
- 662:	3c df       	rcall	.-392    	; 0x4dc <millis>
- 664:	20 91 9d 00 	lds	r18, 0x009D	; 0x80009d <millis_snap>
- 668:	30 91 9e 00 	lds	r19, 0x009E	; 0x80009e <millis_snap+0x1>
- 66c:	82 17       	cp	r24, r18
- 66e:	93 07       	cpc	r25, r19
- 670:	50 f4       	brcc	.+20     	; 0x686 <nav_getSelection+0xc4>
- 672:	cb de       	rcall	.-618    	; 0x40a <buttonDown>
- 674:	81 30       	cpi	r24, 0x01	; 1
- 676:	29 f4       	brne	.+10     	; 0x682 <nav_getSelection+0xc0>
- 678:	80 e9       	ldi	r24, 0x90	; 144
- 67a:	91 e0       	ldi	r25, 0x01	; 1
- 67c:	43 df       	rcall	.-378    	; 0x504 <millis_TakeSnap>
- 67e:	78 df       	rcall	.-272    	; 0x570 <next>
- 680:	ec 01       	movw	r28, r24
- 682:	20 97       	sbiw	r28, 0x00	; 0
- 684:	71 f7       	brne	.-36     	; 0x662 <nav_getSelection+0xa0>
- 686:	3c df       	rcall	.-392    	; 0x500 <millis_Disable>
- 688:	81 2f       	mov	r24, r17
- 68a:	a7 d1       	rcall	.+846    	; 0x9da <TM1637_enable>
- 68c:	4f df       	rcall	.-354    	; 0x52c <select>
- 68e:	8f ef       	ldi	r24, 0xFF	; 255
- 690:	80 93 8f 00 	sts	0x008F, r24	; 0x80008f <c>
- 694:	88 81       	ld	r24, Y
- 696:	df 91       	pop	r29
- 698:	cf 91       	pop	r28
- 69a:	1f 91       	pop	r17
- 69c:	08 95       	ret
+ 5de:	5a df       	rcall	.-332    	; 0x494 <millis>
+ 5e0:	81 32       	cpi	r24, 0x21	; 33
+ 5e2:	93 40       	sbci	r25, 0x03	; 3
+ 5e4:	90 f3       	brcs	.-28     	; 0x5ca <nav_getSelection+0x50>
+ 5e6:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
+ 5ea:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
+ 5ee:	83 81       	ldd	r24, Z+3	; 0x03
+ 5f0:	f9 d1       	rcall	.+1010   	; 0x9e4 <TM1637_display_prog_string>
+ 5f2:	62 e0       	ldi	r22, 0x02	; 2
+ 5f4:	84 e0       	ldi	r24, 0x04	; 4
+ 5f6:	49 d2       	rcall	.+1170   	; 0xa8a <TM1637_flash>
+ 5f8:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
+ 5fc:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
+ 600:	04 80       	ldd	r0, Z+4	; 0x04
+ 602:	f5 81       	ldd	r31, Z+5	; 0x05
+ 604:	e0 2d       	mov	r30, r0
+ 606:	09 95       	icall
+ 608:	f6 de       	rcall	.-532    	; 0x3f6 <btnWait>
+ 60a:	81 2f       	mov	r24, r17
+ 60c:	c2 d1       	rcall	.+900    	; 0x992 <TM1637_enable>
+ 60e:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
+ 612:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
+ 616:	83 81       	ldd	r24, Z+3	; 0x03
+ 618:	1a c0       	rjmp	.+52     	; 0x64e <nav_getSelection+0xd4>
+ 61a:	3c df       	rcall	.-392    	; 0x494 <millis>
+ 61c:	20 91 9d 00 	lds	r18, 0x009D	; 0x80009d <millis_snap>
+ 620:	30 91 9e 00 	lds	r19, 0x009E	; 0x80009e <millis_snap+0x1>
+ 624:	82 17       	cp	r24, r18
+ 626:	93 07       	cpc	r25, r19
+ 628:	50 f4       	brcc	.+20     	; 0x63e <nav_getSelection+0xc4>
+ 62a:	cb de       	rcall	.-618    	; 0x3c2 <buttonDown>
+ 62c:	81 30       	cpi	r24, 0x01	; 1
+ 62e:	29 f4       	brne	.+10     	; 0x63a <nav_getSelection+0xc0>
+ 630:	80 e9       	ldi	r24, 0x90	; 144
+ 632:	91 e0       	ldi	r25, 0x01	; 1
+ 634:	43 df       	rcall	.-378    	; 0x4bc <millis_TakeSnap>
+ 636:	78 df       	rcall	.-272    	; 0x528 <next>
+ 638:	ec 01       	movw	r28, r24
+ 63a:	20 97       	sbiw	r28, 0x00	; 0
+ 63c:	71 f7       	brne	.-36     	; 0x61a <nav_getSelection+0xa0>
+ 63e:	3c df       	rcall	.-392    	; 0x4b8 <millis_Disable>
+ 640:	81 2f       	mov	r24, r17
+ 642:	a7 d1       	rcall	.+846    	; 0x992 <TM1637_enable>
+ 644:	4f df       	rcall	.-354    	; 0x4e4 <select>
+ 646:	8f ef       	ldi	r24, 0xFF	; 255
+ 648:	80 93 8f 00 	sts	0x008F, r24	; 0x80008f <c>
+ 64c:	88 81       	ld	r24, Y
+ 64e:	df 91       	pop	r29
+ 650:	cf 91       	pop	r28
+ 652:	1f 91       	pop	r17
+ 654:	08 95       	ret
 
-0000069e <QC3_getMilliVoltage>:
- 69e:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
- 6a2:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
- 6a6:	08 95       	ret
+00000656 <QC3_getMilliVoltage>:
+ 656:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
+ 65a:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
+ 65e:	08 95       	ret
 
-000006a8 <dm0V>:
- 6a8:	c0 98       	cbi	0x18, 0	; 24
- 6aa:	b8 9a       	sbi	0x17, 0	; 23
- 6ac:	08 95       	ret
+00000660 <dm0V>:
+ 660:	c0 98       	cbi	0x18, 0	; 24
+ 662:	b8 9a       	sbi	0x17, 0	; 23
+ 664:	08 95       	ret
 
-000006ae <dm600mV>:
- 6ae:	b8 98       	cbi	0x17, 0	; 23
- 6b0:	08 95       	ret
+00000666 <dm600mV>:
+ 666:	b8 98       	cbi	0x17, 0	; 23
+ 668:	08 95       	ret
 
-000006b2 <dm3300mV>:
- 6b2:	c0 9a       	sbi	0x18, 0	; 24
- 6b4:	b8 9a       	sbi	0x17, 0	; 23
- 6b6:	08 95       	ret
+0000066a <dm3300mV>:
+ 66a:	c0 9a       	sbi	0x18, 0	; 24
+ 66c:	b8 9a       	sbi	0x17, 0	; 23
+ 66e:	08 95       	ret
 
-000006b8 <dp600mV>:
- 6b8:	b9 98       	cbi	0x17, 1	; 23
- 6ba:	08 95       	ret
+00000670 <dp600mV>:
+ 670:	b9 98       	cbi	0x17, 1	; 23
+ 672:	08 95       	ret
 
-000006bc <QC3_begin>:
- 6bc:	80 93 a6 00 	sts	0x00A6, r24	; 0x8000a6 <_classB>
- 6c0:	14 df       	rcall	.-472    	; 0x4ea <millis_Enable>
- 6c2:	fa df       	rcall	.-12     	; 0x6b8 <dp600mV>
- 6c4:	f4 df       	rcall	.-24     	; 0x6ae <dm600mV>
- 6c6:	0a df       	rcall	.-492    	; 0x4dc <millis>
- 6c8:	8c 3d       	cpi	r24, 0xDC	; 220
- 6ca:	95 40       	sbci	r25, 0x05	; 5
- 6cc:	e0 f3       	brcs	.-8      	; 0x6c6 <QC3_begin+0xa>
- 6ce:	ec df       	rcall	.-40     	; 0x6a8 <dm0V>
- 6d0:	8f e9       	ldi	r24, 0x9F	; 159
- 6d2:	9f e0       	ldi	r25, 0x0F	; 15
- 6d4:	01 97       	sbiw	r24, 0x01	; 1
- 6d6:	f1 f7       	brne	.-4      	; 0x6d4 <QC3_begin+0x18>
- 6d8:	00 c0       	rjmp	.+0      	; 0x6da <QC3_begin+0x1e>
+00000674 <QC3_begin>:
+ 674:	80 93 a6 00 	sts	0x00A6, r24	; 0x8000a6 <_classB>
+ 678:	14 df       	rcall	.-472    	; 0x4a2 <millis_Enable>
+ 67a:	fa df       	rcall	.-12     	; 0x670 <dp600mV>
+ 67c:	f4 df       	rcall	.-24     	; 0x666 <dm600mV>
+ 67e:	0a df       	rcall	.-492    	; 0x494 <millis>
+ 680:	8c 3d       	cpi	r24, 0xDC	; 220
+ 682:	95 40       	sbci	r25, 0x05	; 5
+ 684:	e0 f3       	brcs	.-8      	; 0x67e <QC3_begin+0xa>
+ 686:	ec df       	rcall	.-40     	; 0x660 <dm0V>
+ 688:	8f e9       	ldi	r24, 0x9F	; 159
+ 68a:	9f e0       	ldi	r25, 0x0F	; 15
+ 68c:	01 97       	sbiw	r24, 0x01	; 1
+ 68e:	f1 f7       	brne	.-4      	; 0x68c <QC3_begin+0x18>
+ 690:	00 c0       	rjmp	.+0      	; 0x692 <QC3_begin+0x1e>
+ 692:	00 00       	nop
+ 694:	11 cf       	rjmp	.-478    	; 0x4b8 <millis_Disable>
+
+00000696 <QC3_set5V>:
+ 696:	ec df       	rcall	.-40     	; 0x670 <dp600mV>
+ 698:	e3 df       	rcall	.-58     	; 0x660 <dm0V>
+ 69a:	2f ef       	ldi	r18, 0xFF	; 255
+ 69c:	86 e7       	ldi	r24, 0x76	; 118
+ 69e:	91 e0       	ldi	r25, 0x01	; 1
+ 6a0:	21 50       	subi	r18, 0x01	; 1
+ 6a2:	80 40       	sbci	r24, 0x00	; 0
+ 6a4:	90 40       	sbci	r25, 0x00	; 0
+ 6a6:	e1 f7       	brne	.-8      	; 0x6a0 <QC3_set5V+0xa>
+ 6a8:	00 c0       	rjmp	.+0      	; 0x6aa <QC3_set5V+0x14>
+ 6aa:	00 00       	nop
+ 6ac:	88 e8       	ldi	r24, 0x88	; 136
+ 6ae:	93 e1       	ldi	r25, 0x13	; 19
+ 6b0:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <_milliVoltNow+0x1>
+ 6b4:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <_milliVoltNow>
+ 6b8:	10 92 9f 00 	sts	0x009F, r1	; 0x80009f <_continuousMode>
+ 6bc:	08 95       	ret
+
+000006be <QC3_set12V>:
+ 6be:	80 91 9f 00 	lds	r24, 0x009F	; 0x80009f <_continuousMode>
+ 6c2:	81 11       	cpse	r24, r1
+ 6c4:	e8 df       	rcall	.-48     	; 0x696 <QC3_set5V>
+ 6c6:	d4 df       	rcall	.-88     	; 0x670 <dp600mV>
+ 6c8:	ce df       	rcall	.-100    	; 0x666 <dm600mV>
+ 6ca:	2f ef       	ldi	r18, 0xFF	; 255
+ 6cc:	86 e7       	ldi	r24, 0x76	; 118
+ 6ce:	91 e0       	ldi	r25, 0x01	; 1
+ 6d0:	21 50       	subi	r18, 0x01	; 1
+ 6d2:	80 40       	sbci	r24, 0x00	; 0
+ 6d4:	90 40       	sbci	r25, 0x00	; 0
+ 6d6:	e1 f7       	brne	.-8      	; 0x6d0 <QC3_set12V+0x12>
+ 6d8:	00 c0       	rjmp	.+0      	; 0x6da <QC3_set12V+0x1c>
  6da:	00 00       	nop
- 6dc:	11 cf       	rjmp	.-478    	; 0x500 <millis_Disable>
+ 6dc:	80 ee       	ldi	r24, 0xE0	; 224
+ 6de:	9e e2       	ldi	r25, 0x2E	; 46
+ 6e0:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <_milliVoltNow+0x1>
+ 6e4:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <_milliVoltNow>
+ 6e8:	08 95       	ret
 
-000006de <QC3_set5V>:
- 6de:	ec df       	rcall	.-40     	; 0x6b8 <dp600mV>
- 6e0:	e3 df       	rcall	.-58     	; 0x6a8 <dm0V>
- 6e2:	2f ef       	ldi	r18, 0xFF	; 255
- 6e4:	86 e7       	ldi	r24, 0x76	; 118
- 6e6:	91 e0       	ldi	r25, 0x01	; 1
- 6e8:	21 50       	subi	r18, 0x01	; 1
- 6ea:	80 40       	sbci	r24, 0x00	; 0
- 6ec:	90 40       	sbci	r25, 0x00	; 0
- 6ee:	e1 f7       	brne	.-8      	; 0x6e8 <QC3_set5V+0xa>
- 6f0:	00 c0       	rjmp	.+0      	; 0x6f2 <QC3_set5V+0x14>
- 6f2:	00 00       	nop
- 6f4:	88 e8       	ldi	r24, 0x88	; 136
- 6f6:	93 e1       	ldi	r25, 0x13	; 19
- 6f8:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <_milliVoltNow+0x1>
- 6fc:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <_milliVoltNow>
- 700:	10 92 9f 00 	sts	0x009F, r1	; 0x80009f <_continuousMode>
- 704:	08 95       	ret
+000006ea <switchToContinuousMode>:
+ 6ea:	c2 df       	rcall	.-124    	; 0x670 <dp600mV>
+ 6ec:	be df       	rcall	.-132    	; 0x66a <dm3300mV>
+ 6ee:	2f ef       	ldi	r18, 0xFF	; 255
+ 6f0:	86 e7       	ldi	r24, 0x76	; 118
+ 6f2:	91 e0       	ldi	r25, 0x01	; 1
+ 6f4:	21 50       	subi	r18, 0x01	; 1
+ 6f6:	80 40       	sbci	r24, 0x00	; 0
+ 6f8:	90 40       	sbci	r25, 0x00	; 0
+ 6fa:	e1 f7       	brne	.-8      	; 0x6f4 <switchToContinuousMode+0xa>
+ 6fc:	00 c0       	rjmp	.+0      	; 0x6fe <switchToContinuousMode+0x14>
+ 6fe:	00 00       	nop
+ 700:	81 e0       	ldi	r24, 0x01	; 1
+ 702:	80 93 9f 00 	sts	0x009F, r24	; 0x80009f <_continuousMode>
+ 706:	08 95       	ret
 
-00000706 <QC3_set12V>:
- 706:	80 91 9f 00 	lds	r24, 0x009F	; 0x80009f <_continuousMode>
- 70a:	81 11       	cpse	r24, r1
- 70c:	e8 df       	rcall	.-48     	; 0x6de <QC3_set5V>
- 70e:	d4 df       	rcall	.-88     	; 0x6b8 <dp600mV>
- 710:	ce df       	rcall	.-100    	; 0x6ae <dm600mV>
- 712:	2f ef       	ldi	r18, 0xFF	; 255
- 714:	86 e7       	ldi	r24, 0x76	; 118
- 716:	91 e0       	ldi	r25, 0x01	; 1
- 718:	21 50       	subi	r18, 0x01	; 1
- 71a:	80 40       	sbci	r24, 0x00	; 0
- 71c:	90 40       	sbci	r25, 0x00	; 0
- 71e:	e1 f7       	brne	.-8      	; 0x718 <QC3_set12V+0x12>
- 720:	00 c0       	rjmp	.+0      	; 0x722 <QC3_set12V+0x1c>
- 722:	00 00       	nop
- 724:	80 ee       	ldi	r24, 0xE0	; 224
- 726:	9e e2       	ldi	r25, 0x2E	; 46
- 728:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <_milliVoltNow+0x1>
- 72c:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <_milliVoltNow>
- 730:	08 95       	ret
+00000708 <QC3_decrementVoltage>:
+ 708:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
+ 70c:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
+ 710:	81 31       	cpi	r24, 0x11	; 17
+ 712:	9e 40       	sbci	r25, 0x0E	; 14
+ 714:	98 f0       	brcs	.+38     	; 0x73c <QC3_decrementVoltage+0x34>
+ 716:	80 91 9f 00 	lds	r24, 0x009F	; 0x80009f <_continuousMode>
+ 71a:	81 11       	cpse	r24, r1
+ 71c:	01 c0       	rjmp	.+2      	; 0x720 <QC3_decrementVoltage+0x18>
+ 71e:	e5 df       	rcall	.-54     	; 0x6ea <switchToContinuousMode>
+ 720:	a2 df       	rcall	.-188    	; 0x666 <dm600mV>
+ 722:	8f ec       	ldi	r24, 0xCF	; 207
+ 724:	97 e0       	ldi	r25, 0x07	; 7
+ 726:	01 97       	sbiw	r24, 0x01	; 1
+ 728:	f1 f7       	brne	.-4      	; 0x726 <QC3_decrementVoltage+0x1e>
+ 72a:	00 c0       	rjmp	.+0      	; 0x72c <QC3_decrementVoltage+0x24>
+ 72c:	00 00       	nop
+ 72e:	9d df       	rcall	.-198    	; 0x66a <dm3300mV>
+ 730:	8f ec       	ldi	r24, 0xCF	; 207
+ 732:	97 e0       	ldi	r25, 0x07	; 7
+ 734:	01 97       	sbiw	r24, 0x01	; 1
+ 736:	f1 f7       	brne	.-4      	; 0x734 <QC3_decrementVoltage+0x2c>
+ 738:	00 c0       	rjmp	.+0      	; 0x73a <QC3_decrementVoltage+0x32>
+ 73a:	00 00       	nop
+ 73c:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
+ 740:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
+ 744:	88 5c       	subi	r24, 0xC8	; 200
+ 746:	91 09       	sbc	r25, r1
+ 748:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <_milliVoltNow+0x1>
+ 74c:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <_milliVoltNow>
+ 750:	08 95       	ret
 
-00000732 <switchToContinuousMode>:
- 732:	c2 df       	rcall	.-124    	; 0x6b8 <dp600mV>
- 734:	be df       	rcall	.-132    	; 0x6b2 <dm3300mV>
- 736:	2f ef       	ldi	r18, 0xFF	; 255
- 738:	86 e7       	ldi	r24, 0x76	; 118
- 73a:	91 e0       	ldi	r25, 0x01	; 1
- 73c:	21 50       	subi	r18, 0x01	; 1
- 73e:	80 40       	sbci	r24, 0x00	; 0
- 740:	90 40       	sbci	r25, 0x00	; 0
- 742:	e1 f7       	brne	.-8      	; 0x73c <switchToContinuousMode+0xa>
- 744:	00 c0       	rjmp	.+0      	; 0x746 <switchToContinuousMode+0x14>
- 746:	00 00       	nop
- 748:	81 e0       	ldi	r24, 0x01	; 1
- 74a:	80 93 9f 00 	sts	0x009F, r24	; 0x80009f <_continuousMode>
- 74e:	08 95       	ret
+00000752 <dp3300mV>:
+ 752:	c1 9a       	sbi	0x18, 1	; 24
+ 754:	b9 9a       	sbi	0x17, 1	; 23
+ 756:	08 95       	ret
 
-00000750 <QC3_decrementVoltage>:
- 750:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
- 754:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
- 758:	81 31       	cpi	r24, 0x11	; 17
- 75a:	9e 40       	sbci	r25, 0x0E	; 14
- 75c:	98 f0       	brcs	.+38     	; 0x784 <QC3_decrementVoltage+0x34>
- 75e:	80 91 9f 00 	lds	r24, 0x009F	; 0x80009f <_continuousMode>
- 762:	81 11       	cpse	r24, r1
- 764:	01 c0       	rjmp	.+2      	; 0x768 <QC3_decrementVoltage+0x18>
- 766:	e5 df       	rcall	.-54     	; 0x732 <switchToContinuousMode>
- 768:	a2 df       	rcall	.-188    	; 0x6ae <dm600mV>
- 76a:	8f ec       	ldi	r24, 0xCF	; 207
- 76c:	97 e0       	ldi	r25, 0x07	; 7
- 76e:	01 97       	sbiw	r24, 0x01	; 1
- 770:	f1 f7       	brne	.-4      	; 0x76e <QC3_decrementVoltage+0x1e>
- 772:	00 c0       	rjmp	.+0      	; 0x774 <QC3_decrementVoltage+0x24>
+00000758 <QC3_set9V>:
+ 758:	80 91 9f 00 	lds	r24, 0x009F	; 0x80009f <_continuousMode>
+ 75c:	81 11       	cpse	r24, r1
+ 75e:	9b df       	rcall	.-202    	; 0x696 <QC3_set5V>
+ 760:	f8 df       	rcall	.-16     	; 0x752 <dp3300mV>
+ 762:	81 df       	rcall	.-254    	; 0x666 <dm600mV>
+ 764:	2f ef       	ldi	r18, 0xFF	; 255
+ 766:	86 e7       	ldi	r24, 0x76	; 118
+ 768:	91 e0       	ldi	r25, 0x01	; 1
+ 76a:	21 50       	subi	r18, 0x01	; 1
+ 76c:	80 40       	sbci	r24, 0x00	; 0
+ 76e:	90 40       	sbci	r25, 0x00	; 0
+ 770:	e1 f7       	brne	.-8      	; 0x76a <QC3_set9V+0x12>
+ 772:	00 c0       	rjmp	.+0      	; 0x774 <QC3_set9V+0x1c>
  774:	00 00       	nop
- 776:	9d df       	rcall	.-198    	; 0x6b2 <dm3300mV>
- 778:	8f ec       	ldi	r24, 0xCF	; 207
- 77a:	97 e0       	ldi	r25, 0x07	; 7
- 77c:	01 97       	sbiw	r24, 0x01	; 1
- 77e:	f1 f7       	brne	.-4      	; 0x77c <QC3_decrementVoltage+0x2c>
- 780:	00 c0       	rjmp	.+0      	; 0x782 <QC3_decrementVoltage+0x32>
- 782:	00 00       	nop
- 784:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
- 788:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
- 78c:	88 5c       	subi	r24, 0xC8	; 200
- 78e:	91 09       	sbc	r25, r1
- 790:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <_milliVoltNow+0x1>
- 794:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <_milliVoltNow>
- 798:	08 95       	ret
+ 776:	88 e2       	ldi	r24, 0x28	; 40
+ 778:	93 e2       	ldi	r25, 0x23	; 35
+ 77a:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <_milliVoltNow+0x1>
+ 77e:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <_milliVoltNow>
+ 782:	08 95       	ret
 
-0000079a <dp3300mV>:
- 79a:	c1 9a       	sbi	0x18, 1	; 24
- 79c:	b9 9a       	sbi	0x17, 1	; 23
- 79e:	08 95       	ret
+00000784 <QC3_set20V>:
+ 784:	80 91 a6 00 	lds	r24, 0x00A6	; 0x8000a6 <_classB>
+ 788:	88 23       	and	r24, r24
+ 78a:	a9 f0       	breq	.+42     	; 0x7b6 <QC3_set20V+0x32>
+ 78c:	80 91 9f 00 	lds	r24, 0x009F	; 0x80009f <_continuousMode>
+ 790:	81 11       	cpse	r24, r1
+ 792:	81 df       	rcall	.-254    	; 0x696 <QC3_set5V>
+ 794:	de df       	rcall	.-68     	; 0x752 <dp3300mV>
+ 796:	69 df       	rcall	.-302    	; 0x66a <dm3300mV>
+ 798:	2f ef       	ldi	r18, 0xFF	; 255
+ 79a:	86 e7       	ldi	r24, 0x76	; 118
+ 79c:	91 e0       	ldi	r25, 0x01	; 1
+ 79e:	21 50       	subi	r18, 0x01	; 1
+ 7a0:	80 40       	sbci	r24, 0x00	; 0
+ 7a2:	90 40       	sbci	r25, 0x00	; 0
+ 7a4:	e1 f7       	brne	.-8      	; 0x79e <QC3_set20V+0x1a>
+ 7a6:	00 c0       	rjmp	.+0      	; 0x7a8 <QC3_set20V+0x24>
+ 7a8:	00 00       	nop
+ 7aa:	80 e2       	ldi	r24, 0x20	; 32
+ 7ac:	9e e4       	ldi	r25, 0x4E	; 78
+ 7ae:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <_milliVoltNow+0x1>
+ 7b2:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <_milliVoltNow>
+ 7b6:	08 95       	ret
 
-000007a0 <QC3_set9V>:
- 7a0:	80 91 9f 00 	lds	r24, 0x009F	; 0x80009f <_continuousMode>
- 7a4:	81 11       	cpse	r24, r1
- 7a6:	9b df       	rcall	.-202    	; 0x6de <QC3_set5V>
- 7a8:	f8 df       	rcall	.-16     	; 0x79a <dp3300mV>
- 7aa:	81 df       	rcall	.-254    	; 0x6ae <dm600mV>
- 7ac:	2f ef       	ldi	r18, 0xFF	; 255
- 7ae:	86 e7       	ldi	r24, 0x76	; 118
- 7b0:	91 e0       	ldi	r25, 0x01	; 1
- 7b2:	21 50       	subi	r18, 0x01	; 1
- 7b4:	80 40       	sbci	r24, 0x00	; 0
- 7b6:	90 40       	sbci	r25, 0x00	; 0
- 7b8:	e1 f7       	brne	.-8      	; 0x7b2 <QC3_set9V+0x12>
- 7ba:	00 c0       	rjmp	.+0      	; 0x7bc <QC3_set9V+0x1c>
- 7bc:	00 00       	nop
- 7be:	88 e2       	ldi	r24, 0x28	; 40
- 7c0:	93 e2       	ldi	r25, 0x23	; 35
- 7c2:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <_milliVoltNow+0x1>
- 7c6:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <_milliVoltNow>
- 7ca:	08 95       	ret
+000007b8 <QC3_incrementVoltage>:
+ 7b8:	80 91 a6 00 	lds	r24, 0x00A6	; 0x8000a6 <_classB>
+ 7bc:	81 11       	cpse	r24, r1
+ 7be:	03 c0       	rjmp	.+6      	; 0x7c6 <QC3_incrementVoltage+0xe>
+ 7c0:	80 ee       	ldi	r24, 0xE0	; 224
+ 7c2:	9e e2       	ldi	r25, 0x2E	; 46
+ 7c4:	02 c0       	rjmp	.+4      	; 0x7ca <QC3_incrementVoltage+0x12>
+ 7c6:	80 e2       	ldi	r24, 0x20	; 32
+ 7c8:	9e e4       	ldi	r25, 0x4E	; 78
+ 7ca:	20 91 90 00 	lds	r18, 0x0090	; 0x800090 <_milliVoltNow>
+ 7ce:	30 91 91 00 	lds	r19, 0x0091	; 0x800091 <_milliVoltNow+0x1>
+ 7d2:	28 17       	cp	r18, r24
+ 7d4:	39 07       	cpc	r19, r25
+ 7d6:	98 f4       	brcc	.+38     	; 0x7fe <QC3_incrementVoltage+0x46>
+ 7d8:	80 91 9f 00 	lds	r24, 0x009F	; 0x80009f <_continuousMode>
+ 7dc:	81 11       	cpse	r24, r1
+ 7de:	01 c0       	rjmp	.+2      	; 0x7e2 <QC3_incrementVoltage+0x2a>
+ 7e0:	84 df       	rcall	.-248    	; 0x6ea <switchToContinuousMode>
+ 7e2:	b7 df       	rcall	.-146    	; 0x752 <dp3300mV>
+ 7e4:	8f ec       	ldi	r24, 0xCF	; 207
+ 7e6:	97 e0       	ldi	r25, 0x07	; 7
+ 7e8:	01 97       	sbiw	r24, 0x01	; 1
+ 7ea:	f1 f7       	brne	.-4      	; 0x7e8 <QC3_incrementVoltage+0x30>
+ 7ec:	00 c0       	rjmp	.+0      	; 0x7ee <QC3_incrementVoltage+0x36>
+ 7ee:	00 00       	nop
+ 7f0:	3f df       	rcall	.-386    	; 0x670 <dp600mV>
+ 7f2:	8f ec       	ldi	r24, 0xCF	; 207
+ 7f4:	97 e0       	ldi	r25, 0x07	; 7
+ 7f6:	01 97       	sbiw	r24, 0x01	; 1
+ 7f8:	f1 f7       	brne	.-4      	; 0x7f6 <QC3_incrementVoltage+0x3e>
+ 7fa:	00 c0       	rjmp	.+0      	; 0x7fc <QC3_incrementVoltage+0x44>
+ 7fc:	00 00       	nop
+ 7fe:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
+ 802:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
+ 806:	88 53       	subi	r24, 0x38	; 56
+ 808:	9f 4f       	sbci	r25, 0xFF	; 255
+ 80a:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <_milliVoltNow+0x1>
+ 80e:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <_milliVoltNow>
+ 812:	08 95       	ret
 
-000007cc <QC3_set20V>:
- 7cc:	80 91 a6 00 	lds	r24, 0x00A6	; 0x8000a6 <_classB>
- 7d0:	88 23       	and	r24, r24
- 7d2:	a9 f0       	breq	.+42     	; 0x7fe <QC3_set20V+0x32>
- 7d4:	80 91 9f 00 	lds	r24, 0x009F	; 0x80009f <_continuousMode>
- 7d8:	81 11       	cpse	r24, r1
- 7da:	81 df       	rcall	.-254    	; 0x6de <QC3_set5V>
- 7dc:	de df       	rcall	.-68     	; 0x79a <dp3300mV>
- 7de:	69 df       	rcall	.-302    	; 0x6b2 <dm3300mV>
- 7e0:	2f ef       	ldi	r18, 0xFF	; 255
- 7e2:	86 e7       	ldi	r24, 0x76	; 118
- 7e4:	91 e0       	ldi	r25, 0x01	; 1
- 7e6:	21 50       	subi	r18, 0x01	; 1
- 7e8:	80 40       	sbci	r24, 0x00	; 0
- 7ea:	90 40       	sbci	r25, 0x00	; 0
- 7ec:	e1 f7       	brne	.-8      	; 0x7e6 <QC3_set20V+0x1a>
- 7ee:	00 c0       	rjmp	.+0      	; 0x7f0 <QC3_set20V+0x24>
- 7f0:	00 00       	nop
- 7f2:	80 e2       	ldi	r24, 0x20	; 32
- 7f4:	9e e4       	ldi	r25, 0x4E	; 78
- 7f6:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <_milliVoltNow+0x1>
- 7fa:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <_milliVoltNow>
- 7fe:	08 95       	ret
+00000814 <QC3_setMilliVoltage>:
+ 814:	cf 93       	push	r28
+ 816:	df 93       	push	r29
+ 818:	81 31       	cpi	r24, 0x11	; 17
+ 81a:	2e e0       	ldi	r18, 0x0E	; 14
+ 81c:	92 07       	cpc	r25, r18
+ 81e:	e0 f0       	brcs	.+56     	; 0x858 <QC3_setMilliVoltage+0x44>
+ 820:	20 91 a6 00 	lds	r18, 0x00A6	; 0x8000a6 <_classB>
+ 824:	21 11       	cpse	r18, r1
+ 826:	03 c0       	rjmp	.+6      	; 0x82e <QC3_setMilliVoltage+0x1a>
+ 828:	40 ee       	ldi	r20, 0xE0	; 224
+ 82a:	5e e2       	ldi	r21, 0x2E	; 46
+ 82c:	02 c0       	rjmp	.+4      	; 0x832 <QC3_setMilliVoltage+0x1e>
+ 82e:	40 e2       	ldi	r20, 0x20	; 32
+ 830:	5e e4       	ldi	r21, 0x4E	; 78
+ 832:	84 17       	cp	r24, r20
+ 834:	95 07       	cpc	r25, r21
+ 836:	28 f0       	brcs	.+10     	; 0x842 <QC3_setMilliVoltage+0x2e>
+ 838:	21 11       	cpse	r18, r1
+ 83a:	11 c0       	rjmp	.+34     	; 0x85e <QC3_setMilliVoltage+0x4a>
+ 83c:	c0 ee       	ldi	r28, 0xE0	; 224
+ 83e:	de e2       	ldi	r29, 0x2E	; 46
+ 840:	10 c0       	rjmp	.+32     	; 0x862 <QC3_setMilliVoltage+0x4e>
+ 842:	8d 59       	subi	r24, 0x9D	; 157
+ 844:	9f 4f       	sbci	r25, 0xFF	; 255
+ 846:	68 ec       	ldi	r22, 0xC8	; 200
+ 848:	70 e0       	ldi	r23, 0x00	; 0
+ 84a:	63 d1       	rcall	.+710    	; 0xb12 <__udivmodhi4>
+ 84c:	cb 01       	movw	r24, r22
+ 84e:	68 ec       	ldi	r22, 0xC8	; 200
+ 850:	70 e0       	ldi	r23, 0x00	; 0
+ 852:	4e d1       	rcall	.+668    	; 0xaf0 <__mulhi3>
+ 854:	ec 01       	movw	r28, r24
+ 856:	05 c0       	rjmp	.+10     	; 0x862 <QC3_setMilliVoltage+0x4e>
+ 858:	c0 e1       	ldi	r28, 0x10	; 16
+ 85a:	de e0       	ldi	r29, 0x0E	; 14
+ 85c:	02 c0       	rjmp	.+4      	; 0x862 <QC3_setMilliVoltage+0x4e>
+ 85e:	c0 e2       	ldi	r28, 0x20	; 32
+ 860:	de e4       	ldi	r29, 0x4E	; 78
+ 862:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
+ 866:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
+ 86a:	c8 17       	cp	r28, r24
+ 86c:	d9 07       	cpc	r29, r25
+ 86e:	91 f1       	breq	.+100    	; 0x8d4 <QC3_setMilliVoltage+0xc0>
+ 870:	c8 32       	cpi	r28, 0x28	; 40
+ 872:	23 e2       	ldi	r18, 0x23	; 35
+ 874:	d2 07       	cpc	r29, r18
+ 876:	99 f0       	breq	.+38     	; 0x89e <QC3_setMilliVoltage+0x8a>
+ 878:	38 f4       	brcc	.+14     	; 0x888 <QC3_setMilliVoltage+0x74>
+ 87a:	c8 38       	cpi	r28, 0x88	; 136
+ 87c:	23 e1       	ldi	r18, 0x13	; 19
+ 87e:	d2 07       	cpc	r29, r18
+ 880:	a1 f4       	brne	.+40     	; 0x8aa <QC3_setMilliVoltage+0x96>
+ 882:	df 91       	pop	r29
+ 884:	cf 91       	pop	r28
+ 886:	07 cf       	rjmp	.-498    	; 0x696 <QC3_set5V>
+ 888:	c0 3e       	cpi	r28, 0xE0	; 224
+ 88a:	2e e2       	ldi	r18, 0x2E	; 46
+ 88c:	d2 07       	cpc	r29, r18
+ 88e:	51 f0       	breq	.+20     	; 0x8a4 <QC3_setMilliVoltage+0x90>
+ 890:	c0 32       	cpi	r28, 0x20	; 32
+ 892:	2e e4       	ldi	r18, 0x4E	; 78
+ 894:	d2 07       	cpc	r29, r18
+ 896:	49 f4       	brne	.+18     	; 0x8aa <QC3_setMilliVoltage+0x96>
+ 898:	df 91       	pop	r29
+ 89a:	cf 91       	pop	r28
+ 89c:	73 cf       	rjmp	.-282    	; 0x784 <QC3_set20V>
+ 89e:	df 91       	pop	r29
+ 8a0:	cf 91       	pop	r28
+ 8a2:	5a cf       	rjmp	.-332    	; 0x758 <QC3_set9V>
+ 8a4:	df 91       	pop	r29
+ 8a6:	cf 91       	pop	r28
+ 8a8:	0a cf       	rjmp	.-492    	; 0x6be <QC3_set12V>
+ 8aa:	8c 17       	cp	r24, r28
+ 8ac:	9d 07       	cpc	r25, r29
+ 8ae:	48 f4       	brcc	.+18     	; 0x8c2 <QC3_setMilliVoltage+0xae>
+ 8b0:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
+ 8b4:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
+ 8b8:	8c 17       	cp	r24, r28
+ 8ba:	9d 07       	cpc	r25, r29
+ 8bc:	58 f4       	brcc	.+22     	; 0x8d4 <QC3_setMilliVoltage+0xc0>
+ 8be:	7c df       	rcall	.-264    	; 0x7b8 <QC3_incrementVoltage>
+ 8c0:	f7 cf       	rjmp	.-18     	; 0x8b0 <QC3_setMilliVoltage+0x9c>
+ 8c2:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
+ 8c6:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
+ 8ca:	c8 17       	cp	r28, r24
+ 8cc:	d9 07       	cpc	r29, r25
+ 8ce:	10 f4       	brcc	.+4      	; 0x8d4 <QC3_setMilliVoltage+0xc0>
+ 8d0:	1b df       	rcall	.-458    	; 0x708 <QC3_decrementVoltage>
+ 8d2:	f7 cf       	rjmp	.-18     	; 0x8c2 <QC3_setMilliVoltage+0xae>
+ 8d4:	df 91       	pop	r29
+ 8d6:	cf 91       	pop	r28
+ 8d8:	08 95       	ret
 
-00000800 <QC3_incrementVoltage>:
- 800:	80 91 a6 00 	lds	r24, 0x00A6	; 0x8000a6 <_classB>
- 804:	81 11       	cpse	r24, r1
- 806:	03 c0       	rjmp	.+6      	; 0x80e <QC3_incrementVoltage+0xe>
- 808:	80 ee       	ldi	r24, 0xE0	; 224
- 80a:	9e e2       	ldi	r25, 0x2E	; 46
- 80c:	02 c0       	rjmp	.+4      	; 0x812 <QC3_incrementVoltage+0x12>
- 80e:	80 e2       	ldi	r24, 0x20	; 32
- 810:	9e e4       	ldi	r25, 0x4E	; 78
- 812:	20 91 90 00 	lds	r18, 0x0090	; 0x800090 <_milliVoltNow>
- 816:	30 91 91 00 	lds	r19, 0x0091	; 0x800091 <_milliVoltNow+0x1>
- 81a:	28 17       	cp	r18, r24
- 81c:	39 07       	cpc	r19, r25
- 81e:	98 f4       	brcc	.+38     	; 0x846 <QC3_incrementVoltage+0x46>
- 820:	80 91 9f 00 	lds	r24, 0x009F	; 0x80009f <_continuousMode>
- 824:	81 11       	cpse	r24, r1
- 826:	01 c0       	rjmp	.+2      	; 0x82a <QC3_incrementVoltage+0x2a>
- 828:	84 df       	rcall	.-248    	; 0x732 <switchToContinuousMode>
- 82a:	b7 df       	rcall	.-146    	; 0x79a <dp3300mV>
- 82c:	8f ec       	ldi	r24, 0xCF	; 207
- 82e:	97 e0       	ldi	r25, 0x07	; 7
- 830:	01 97       	sbiw	r24, 0x01	; 1
- 832:	f1 f7       	brne	.-4      	; 0x830 <QC3_incrementVoltage+0x30>
- 834:	00 c0       	rjmp	.+0      	; 0x836 <QC3_incrementVoltage+0x36>
- 836:	00 00       	nop
- 838:	3f df       	rcall	.-386    	; 0x6b8 <dp600mV>
- 83a:	8f ec       	ldi	r24, 0xCF	; 207
- 83c:	97 e0       	ldi	r25, 0x07	; 7
- 83e:	01 97       	sbiw	r24, 0x01	; 1
- 840:	f1 f7       	brne	.-4      	; 0x83e <QC3_incrementVoltage+0x3e>
- 842:	00 c0       	rjmp	.+0      	; 0x844 <QC3_incrementVoltage+0x44>
- 844:	00 00       	nop
- 846:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
- 84a:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
- 84e:	88 53       	subi	r24, 0x38	; 56
- 850:	9f 4f       	sbci	r25, 0xFF	; 255
- 852:	90 93 91 00 	sts	0x0091, r25	; 0x800091 <_milliVoltNow+0x1>
- 856:	80 93 90 00 	sts	0x0090, r24	; 0x800090 <_milliVoltNow>
- 85a:	08 95       	ret
+000008da <stateRun>:
+ 8da:	90 93 a8 00 	sts	0x00A8, r25	; 0x8000a8 <currentState+0x1>
+ 8de:	80 93 a7 00 	sts	0x00A7, r24	; 0x8000a7 <currentState>
+ 8e2:	89 dd       	rcall	.-1262   	; 0x3f6 <btnWait>
+ 8e4:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
+ 8e8:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
+ 8ec:	01 80       	ldd	r0, Z+1	; 0x01
+ 8ee:	f2 81       	ldd	r31, Z+2	; 0x02
+ 8f0:	e0 2d       	mov	r30, r0
+ 8f2:	09 95       	icall
+ 8f4:	f2 cf       	rjmp	.-28     	; 0x8da <stateRun>
 
-0000085c <QC3_setMilliVoltage>:
- 85c:	cf 93       	push	r28
- 85e:	df 93       	push	r29
- 860:	81 31       	cpi	r24, 0x11	; 17
- 862:	2e e0       	ldi	r18, 0x0E	; 14
- 864:	92 07       	cpc	r25, r18
- 866:	e0 f0       	brcs	.+56     	; 0x8a0 <QC3_setMilliVoltage+0x44>
- 868:	20 91 a6 00 	lds	r18, 0x00A6	; 0x8000a6 <_classB>
- 86c:	21 11       	cpse	r18, r1
- 86e:	03 c0       	rjmp	.+6      	; 0x876 <QC3_setMilliVoltage+0x1a>
- 870:	40 ee       	ldi	r20, 0xE0	; 224
- 872:	5e e2       	ldi	r21, 0x2E	; 46
- 874:	02 c0       	rjmp	.+4      	; 0x87a <QC3_setMilliVoltage+0x1e>
- 876:	40 e2       	ldi	r20, 0x20	; 32
- 878:	5e e4       	ldi	r21, 0x4E	; 78
- 87a:	84 17       	cp	r24, r20
- 87c:	95 07       	cpc	r25, r21
- 87e:	28 f0       	brcs	.+10     	; 0x88a <QC3_setMilliVoltage+0x2e>
- 880:	21 11       	cpse	r18, r1
- 882:	11 c0       	rjmp	.+34     	; 0x8a6 <QC3_setMilliVoltage+0x4a>
- 884:	c0 ee       	ldi	r28, 0xE0	; 224
- 886:	de e2       	ldi	r29, 0x2E	; 46
- 888:	10 c0       	rjmp	.+32     	; 0x8aa <QC3_setMilliVoltage+0x4e>
- 88a:	8d 59       	subi	r24, 0x9D	; 157
- 88c:	9f 4f       	sbci	r25, 0xFF	; 255
- 88e:	68 ec       	ldi	r22, 0xC8	; 200
- 890:	70 e0       	ldi	r23, 0x00	; 0
- 892:	7c d1       	rcall	.+760    	; 0xb8c <__udivmodhi4>
- 894:	cb 01       	movw	r24, r22
- 896:	68 ec       	ldi	r22, 0xC8	; 200
- 898:	70 e0       	ldi	r23, 0x00	; 0
- 89a:	4e d1       	rcall	.+668    	; 0xb38 <__mulhi3>
- 89c:	ec 01       	movw	r28, r24
- 89e:	05 c0       	rjmp	.+10     	; 0x8aa <QC3_setMilliVoltage+0x4e>
- 8a0:	c0 e1       	ldi	r28, 0x10	; 16
- 8a2:	de e0       	ldi	r29, 0x0E	; 14
- 8a4:	02 c0       	rjmp	.+4      	; 0x8aa <QC3_setMilliVoltage+0x4e>
- 8a6:	c0 e2       	ldi	r28, 0x20	; 32
- 8a8:	de e4       	ldi	r29, 0x4E	; 78
- 8aa:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
- 8ae:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
- 8b2:	c8 17       	cp	r28, r24
- 8b4:	d9 07       	cpc	r29, r25
- 8b6:	91 f1       	breq	.+100    	; 0x91c <QC3_setMilliVoltage+0xc0>
- 8b8:	c8 32       	cpi	r28, 0x28	; 40
- 8ba:	23 e2       	ldi	r18, 0x23	; 35
- 8bc:	d2 07       	cpc	r29, r18
- 8be:	99 f0       	breq	.+38     	; 0x8e6 <QC3_setMilliVoltage+0x8a>
- 8c0:	38 f4       	brcc	.+14     	; 0x8d0 <QC3_setMilliVoltage+0x74>
- 8c2:	c8 38       	cpi	r28, 0x88	; 136
- 8c4:	23 e1       	ldi	r18, 0x13	; 19
- 8c6:	d2 07       	cpc	r29, r18
- 8c8:	a1 f4       	brne	.+40     	; 0x8f2 <QC3_setMilliVoltage+0x96>
- 8ca:	df 91       	pop	r29
- 8cc:	cf 91       	pop	r28
- 8ce:	07 cf       	rjmp	.-498    	; 0x6de <QC3_set5V>
- 8d0:	c0 3e       	cpi	r28, 0xE0	; 224
- 8d2:	2e e2       	ldi	r18, 0x2E	; 46
- 8d4:	d2 07       	cpc	r29, r18
- 8d6:	51 f0       	breq	.+20     	; 0x8ec <QC3_setMilliVoltage+0x90>
- 8d8:	c0 32       	cpi	r28, 0x20	; 32
- 8da:	2e e4       	ldi	r18, 0x4E	; 78
- 8dc:	d2 07       	cpc	r29, r18
- 8de:	49 f4       	brne	.+18     	; 0x8f2 <QC3_setMilliVoltage+0x96>
- 8e0:	df 91       	pop	r29
- 8e2:	cf 91       	pop	r28
- 8e4:	73 cf       	rjmp	.-282    	; 0x7cc <QC3_set20V>
- 8e6:	df 91       	pop	r29
- 8e8:	cf 91       	pop	r28
- 8ea:	5a cf       	rjmp	.-332    	; 0x7a0 <QC3_set9V>
- 8ec:	df 91       	pop	r29
- 8ee:	cf 91       	pop	r28
- 8f0:	0a cf       	rjmp	.-492    	; 0x706 <QC3_set12V>
- 8f2:	8c 17       	cp	r24, r28
- 8f4:	9d 07       	cpc	r25, r29
- 8f6:	48 f4       	brcc	.+18     	; 0x90a <QC3_setMilliVoltage+0xae>
- 8f8:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
- 8fc:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
- 900:	8c 17       	cp	r24, r28
- 902:	9d 07       	cpc	r25, r29
- 904:	58 f4       	brcc	.+22     	; 0x91c <QC3_setMilliVoltage+0xc0>
- 906:	7c df       	rcall	.-264    	; 0x800 <QC3_incrementVoltage>
- 908:	f7 cf       	rjmp	.-18     	; 0x8f8 <QC3_setMilliVoltage+0x9c>
- 90a:	80 91 90 00 	lds	r24, 0x0090	; 0x800090 <_milliVoltNow>
- 90e:	90 91 91 00 	lds	r25, 0x0091	; 0x800091 <_milliVoltNow+0x1>
- 912:	c8 17       	cp	r28, r24
- 914:	d9 07       	cpc	r29, r25
- 916:	10 f4       	brcc	.+4      	; 0x91c <QC3_setMilliVoltage+0xc0>
- 918:	1b df       	rcall	.-458    	; 0x750 <QC3_decrementVoltage>
- 91a:	f7 cf       	rjmp	.-18     	; 0x90a <QC3_setMilliVoltage+0xae>
- 91c:	df 91       	pop	r29
- 91e:	cf 91       	pop	r28
- 920:	08 95       	ret
+000008f6 <nilFunc>:
+ 8f6:	08 95       	ret
 
-00000922 <stateRun>:
- 922:	90 93 a8 00 	sts	0x00A8, r25	; 0x8000a8 <currentState+0x1>
- 926:	80 93 a7 00 	sts	0x00A7, r24	; 0x8000a7 <currentState>
- 92a:	89 dd       	rcall	.-1262   	; 0x43e <btnWait>
- 92c:	e0 91 a7 00 	lds	r30, 0x00A7	; 0x8000a7 <currentState>
- 930:	f0 91 a8 00 	lds	r31, 0x00A8	; 0x8000a8 <currentState+0x1>
- 934:	01 80       	ldd	r0, Z+1	; 0x01
- 936:	f2 81       	ldd	r31, Z+2	; 0x02
- 938:	e0 2d       	mov	r30, r0
- 93a:	09 95       	icall
- 93c:	f2 cf       	rjmp	.-28     	; 0x922 <stateRun>
+000008f8 <TM1637_start>:
+ 8f8:	c3 9a       	sbi	0x18, 3	; 24
+ 8fa:	c4 9a       	sbi	0x18, 4	; 24
+ 8fc:	8d e0       	ldi	r24, 0x0D	; 13
+ 8fe:	8a 95       	dec	r24
+ 900:	f1 f7       	brne	.-4      	; 0x8fe <TM1637_start+0x6>
+ 902:	00 00       	nop
+ 904:	c3 98       	cbi	0x18, 3	; 24
+ 906:	08 95       	ret
 
-0000093e <nilFunc>:
- 93e:	08 95       	ret
+00000908 <TM1637_stop>:
+ 908:	c4 98       	cbi	0x18, 4	; 24
+ 90a:	8d e0       	ldi	r24, 0x0D	; 13
+ 90c:	8a 95       	dec	r24
+ 90e:	f1 f7       	brne	.-4      	; 0x90c <TM1637_stop+0x4>
+ 910:	00 00       	nop
+ 912:	c3 98       	cbi	0x18, 3	; 24
+ 914:	8d e0       	ldi	r24, 0x0D	; 13
+ 916:	8a 95       	dec	r24
+ 918:	f1 f7       	brne	.-4      	; 0x916 <TM1637_stop+0xe>
+ 91a:	00 00       	nop
+ 91c:	c4 9a       	sbi	0x18, 4	; 24
+ 91e:	8d e0       	ldi	r24, 0x0D	; 13
+ 920:	8a 95       	dec	r24
+ 922:	f1 f7       	brne	.-4      	; 0x920 <TM1637_stop+0x18>
+ 924:	00 00       	nop
+ 926:	c3 9a       	sbi	0x18, 3	; 24
+ 928:	08 95       	ret
 
-00000940 <TM1637_start>:
- 940:	c3 9a       	sbi	0x18, 3	; 24
- 942:	c4 9a       	sbi	0x18, 4	; 24
- 944:	8d e0       	ldi	r24, 0x0D	; 13
- 946:	8a 95       	dec	r24
- 948:	f1 f7       	brne	.-4      	; 0x946 <TM1637_start+0x6>
- 94a:	00 00       	nop
- 94c:	c3 98       	cbi	0x18, 3	; 24
- 94e:	08 95       	ret
-
-00000950 <TM1637_stop>:
+0000092a <TM1637_write_byte>:
+ 92a:	98 e0       	ldi	r25, 0x08	; 8
+ 92c:	c4 98       	cbi	0x18, 4	; 24
+ 92e:	2d e0       	ldi	r18, 0x0D	; 13
+ 930:	2a 95       	dec	r18
+ 932:	f1 f7       	brne	.-4      	; 0x930 <TM1637_write_byte+0x6>
+ 934:	00 00       	nop
+ 936:	80 ff       	sbrs	r24, 0
+ 938:	02 c0       	rjmp	.+4      	; 0x93e <TM1637_write_byte+0x14>
+ 93a:	c3 9a       	sbi	0x18, 3	; 24
+ 93c:	01 c0       	rjmp	.+2      	; 0x940 <TM1637_write_byte+0x16>
+ 93e:	c3 98       	cbi	0x18, 3	; 24
+ 940:	c4 9a       	sbi	0x18, 4	; 24
+ 942:	2d e0       	ldi	r18, 0x0D	; 13
+ 944:	2a 95       	dec	r18
+ 946:	f1 f7       	brne	.-4      	; 0x944 <TM1637_write_byte+0x1a>
+ 948:	00 00       	nop
+ 94a:	86 95       	lsr	r24
+ 94c:	91 50       	subi	r25, 0x01	; 1
+ 94e:	71 f7       	brne	.-36     	; 0x92c <TM1637_write_byte+0x2>
  950:	c4 98       	cbi	0x18, 4	; 24
- 952:	8d e0       	ldi	r24, 0x0D	; 13
- 954:	8a 95       	dec	r24
- 956:	f1 f7       	brne	.-4      	; 0x954 <TM1637_stop+0x4>
- 958:	00 00       	nop
- 95a:	c3 98       	cbi	0x18, 3	; 24
- 95c:	8d e0       	ldi	r24, 0x0D	; 13
- 95e:	8a 95       	dec	r24
- 960:	f1 f7       	brne	.-4      	; 0x95e <TM1637_stop+0xe>
- 962:	00 00       	nop
- 964:	c4 9a       	sbi	0x18, 4	; 24
- 966:	8d e0       	ldi	r24, 0x0D	; 13
- 968:	8a 95       	dec	r24
- 96a:	f1 f7       	brne	.-4      	; 0x968 <TM1637_stop+0x18>
- 96c:	00 00       	nop
- 96e:	c3 9a       	sbi	0x18, 3	; 24
- 970:	08 95       	ret
+ 952:	bb 98       	cbi	0x17, 3	; 23
+ 954:	c3 9a       	sbi	0x18, 3	; 24
+ 956:	8d e0       	ldi	r24, 0x0D	; 13
+ 958:	8a 95       	dec	r24
+ 95a:	f1 f7       	brne	.-4      	; 0x958 <TM1637_write_byte+0x2e>
+ 95c:	00 00       	nop
+ 95e:	96 b3       	in	r25, 0x16	; 22
+ 960:	81 e0       	ldi	r24, 0x01	; 1
+ 962:	29 2f       	mov	r18, r25
+ 964:	28 70       	andi	r18, 0x08	; 8
+ 966:	93 ff       	sbrs	r25, 3
+ 968:	80 e0       	ldi	r24, 0x00	; 0
+ 96a:	22 23       	and	r18, r18
+ 96c:	11 f0       	breq	.+4      	; 0x972 <TM1637_write_byte+0x48>
+ 96e:	bb 9a       	sbi	0x17, 3	; 23
+ 970:	c3 98       	cbi	0x18, 3	; 24
+ 972:	9d e0       	ldi	r25, 0x0D	; 13
+ 974:	9a 95       	dec	r25
+ 976:	f1 f7       	brne	.-4      	; 0x974 <TM1637_write_byte+0x4a>
+ 978:	00 00       	nop
+ 97a:	c4 9a       	sbi	0x18, 4	; 24
+ 97c:	2d e0       	ldi	r18, 0x0D	; 13
+ 97e:	2a 95       	dec	r18
+ 980:	f1 f7       	brne	.-4      	; 0x97e <TM1637_write_byte+0x54>
+ 982:	00 00       	nop
+ 984:	c4 98       	cbi	0x18, 4	; 24
+ 986:	9d e0       	ldi	r25, 0x0D	; 13
+ 988:	9a 95       	dec	r25
+ 98a:	f1 f7       	brne	.-4      	; 0x988 <TM1637_write_byte+0x5e>
+ 98c:	00 00       	nop
+ 98e:	bb 9a       	sbi	0x17, 3	; 23
+ 990:	08 95       	ret
 
-00000972 <TM1637_write_byte>:
- 972:	98 e0       	ldi	r25, 0x08	; 8
- 974:	c4 98       	cbi	0x18, 4	; 24
- 976:	2d e0       	ldi	r18, 0x0D	; 13
- 978:	2a 95       	dec	r18
- 97a:	f1 f7       	brne	.-4      	; 0x978 <TM1637_write_byte+0x6>
- 97c:	00 00       	nop
- 97e:	80 ff       	sbrs	r24, 0
- 980:	02 c0       	rjmp	.+4      	; 0x986 <TM1637_write_byte+0x14>
- 982:	c3 9a       	sbi	0x18, 3	; 24
- 984:	01 c0       	rjmp	.+2      	; 0x988 <TM1637_write_byte+0x16>
- 986:	c3 98       	cbi	0x18, 3	; 24
- 988:	c4 9a       	sbi	0x18, 4	; 24
- 98a:	2d e0       	ldi	r18, 0x0D	; 13
- 98c:	2a 95       	dec	r18
- 98e:	f1 f7       	brne	.-4      	; 0x98c <TM1637_write_byte+0x1a>
- 990:	00 00       	nop
- 992:	86 95       	lsr	r24
- 994:	91 50       	subi	r25, 0x01	; 1
- 996:	71 f7       	brne	.-36     	; 0x974 <TM1637_write_byte+0x2>
- 998:	c4 98       	cbi	0x18, 4	; 24
- 99a:	bb 98       	cbi	0x17, 3	; 23
- 99c:	c3 9a       	sbi	0x18, 3	; 24
- 99e:	8d e0       	ldi	r24, 0x0D	; 13
- 9a0:	8a 95       	dec	r24
- 9a2:	f1 f7       	brne	.-4      	; 0x9a0 <TM1637_write_byte+0x2e>
- 9a4:	00 00       	nop
- 9a6:	96 b3       	in	r25, 0x16	; 22
- 9a8:	81 e0       	ldi	r24, 0x01	; 1
- 9aa:	29 2f       	mov	r18, r25
- 9ac:	28 70       	andi	r18, 0x08	; 8
- 9ae:	93 ff       	sbrs	r25, 3
- 9b0:	80 e0       	ldi	r24, 0x00	; 0
- 9b2:	22 23       	and	r18, r18
- 9b4:	11 f0       	breq	.+4      	; 0x9ba <TM1637_write_byte+0x48>
- 9b6:	bb 9a       	sbi	0x17, 3	; 23
- 9b8:	c3 98       	cbi	0x18, 3	; 24
- 9ba:	9d e0       	ldi	r25, 0x0D	; 13
- 9bc:	9a 95       	dec	r25
- 9be:	f1 f7       	brne	.-4      	; 0x9bc <TM1637_write_byte+0x4a>
- 9c0:	00 00       	nop
- 9c2:	c4 9a       	sbi	0x18, 4	; 24
- 9c4:	2d e0       	ldi	r18, 0x0D	; 13
- 9c6:	2a 95       	dec	r18
- 9c8:	f1 f7       	brne	.-4      	; 0x9c6 <TM1637_write_byte+0x54>
- 9ca:	00 00       	nop
- 9cc:	c4 98       	cbi	0x18, 4	; 24
- 9ce:	9d e0       	ldi	r25, 0x0D	; 13
- 9d0:	9a 95       	dec	r25
- 9d2:	f1 f7       	brne	.-4      	; 0x9d0 <TM1637_write_byte+0x5e>
- 9d4:	00 00       	nop
- 9d6:	bb 9a       	sbi	0x17, 3	; 23
- 9d8:	08 95       	ret
+00000992 <TM1637_enable>:
+ 992:	cf 93       	push	r28
+ 994:	98 2f       	mov	r25, r24
+ 996:	80 93 a1 00 	sts	0x00A1, r24	; 0x8000a1 <enabled>
+ 99a:	6f e0       	ldi	r22, 0x0F	; 15
+ 99c:	a0 d0       	rcall	.+320    	; 0xade <__mulqi3>
+ 99e:	80 93 92 00 	sts	0x0092, r24	; 0x800092 <enabledDigits>
+ 9a2:	91 11       	cpse	r25, r1
+ 9a4:	02 c0       	rjmp	.+4      	; 0x9aa <TM1637_enable+0x18>
+ 9a6:	c0 e8       	ldi	r28, 0x80	; 128
+ 9a8:	01 c0       	rjmp	.+2      	; 0x9ac <TM1637_enable+0x1a>
+ 9aa:	c8 e8       	ldi	r28, 0x88	; 136
+ 9ac:	a5 df       	rcall	.-182    	; 0x8f8 <TM1637_start>
+ 9ae:	8c 2f       	mov	r24, r28
+ 9b0:	bc df       	rcall	.-136    	; 0x92a <TM1637_write_byte>
+ 9b2:	cf 91       	pop	r28
+ 9b4:	a9 cf       	rjmp	.-174    	; 0x908 <TM1637_stop>
 
-000009da <TM1637_enable>:
- 9da:	cf 93       	push	r28
- 9dc:	98 2f       	mov	r25, r24
- 9de:	80 93 a1 00 	sts	0x00A1, r24	; 0x8000a1 <enabled>
- 9e2:	6f e0       	ldi	r22, 0x0F	; 15
- 9e4:	a0 d0       	rcall	.+320    	; 0xb26 <__mulqi3>
- 9e6:	80 93 92 00 	sts	0x0092, r24	; 0x800092 <enabledDigits>
- 9ea:	91 11       	cpse	r25, r1
- 9ec:	02 c0       	rjmp	.+4      	; 0x9f2 <TM1637_enable+0x18>
- 9ee:	c0 e8       	ldi	r28, 0x80	; 128
- 9f0:	01 c0       	rjmp	.+2      	; 0x9f4 <TM1637_enable+0x1a>
- 9f2:	c8 e8       	ldi	r28, 0x88	; 136
- 9f4:	a5 df       	rcall	.-182    	; 0x940 <TM1637_start>
- 9f6:	8c 2f       	mov	r24, r28
- 9f8:	bc df       	rcall	.-136    	; 0x972 <TM1637_write_byte>
- 9fa:	cf 91       	pop	r28
- 9fc:	a9 cf       	rjmp	.-174    	; 0x950 <TM1637_stop>
+000009b6 <TM1637_is_enabled>:
+ 9b6:	80 91 a1 00 	lds	r24, 0x00A1	; 0x8000a1 <enabled>
+ 9ba:	08 95       	ret
 
-000009fe <TM1637_is_enabled>:
- 9fe:	80 91 a1 00 	lds	r24, 0x00A1	; 0x8000a1 <enabled>
- a02:	08 95       	ret
+000009bc <TM1637_push_buff>:
+ 9bc:	cf 93       	push	r28
+ 9be:	df 93       	push	r29
+ 9c0:	9b df       	rcall	.-202    	; 0x8f8 <TM1637_start>
+ 9c2:	80 e4       	ldi	r24, 0x40	; 64
+ 9c4:	b2 df       	rcall	.-156    	; 0x92a <TM1637_write_byte>
+ 9c6:	a0 df       	rcall	.-192    	; 0x908 <TM1637_stop>
+ 9c8:	97 df       	rcall	.-210    	; 0x8f8 <TM1637_start>
+ 9ca:	80 ec       	ldi	r24, 0xC0	; 192
+ 9cc:	ae df       	rcall	.-164    	; 0x92a <TM1637_write_byte>
+ 9ce:	c2 ea       	ldi	r28, 0xA2	; 162
+ 9d0:	d0 e0       	ldi	r29, 0x00	; 0
+ 9d2:	89 91       	ld	r24, Y+
+ 9d4:	aa df       	rcall	.-172    	; 0x92a <TM1637_write_byte>
+ 9d6:	80 e0       	ldi	r24, 0x00	; 0
+ 9d8:	c6 3a       	cpi	r28, 0xA6	; 166
+ 9da:	d8 07       	cpc	r29, r24
+ 9dc:	d1 f7       	brne	.-12     	; 0x9d2 <TM1637_push_buff+0x16>
+ 9de:	df 91       	pop	r29
+ 9e0:	cf 91       	pop	r28
+ 9e2:	92 cf       	rjmp	.-220    	; 0x908 <TM1637_stop>
 
-00000a04 <TM1637_push_buff>:
- a04:	cf 93       	push	r28
- a06:	df 93       	push	r29
- a08:	9b df       	rcall	.-202    	; 0x940 <TM1637_start>
- a0a:	80 e4       	ldi	r24, 0x40	; 64
- a0c:	b2 df       	rcall	.-156    	; 0x972 <TM1637_write_byte>
- a0e:	a0 df       	rcall	.-192    	; 0x950 <TM1637_stop>
- a10:	97 df       	rcall	.-210    	; 0x940 <TM1637_start>
- a12:	80 ec       	ldi	r24, 0xC0	; 192
- a14:	ae df       	rcall	.-164    	; 0x972 <TM1637_write_byte>
- a16:	c2 ea       	ldi	r28, 0xA2	; 162
- a18:	d0 e0       	ldi	r29, 0x00	; 0
- a1a:	89 91       	ld	r24, Y+
- a1c:	aa df       	rcall	.-172    	; 0x972 <TM1637_write_byte>
- a1e:	80 e0       	ldi	r24, 0x00	; 0
- a20:	c6 3a       	cpi	r28, 0xA6	; 166
- a22:	d8 07       	cpc	r29, r24
- a24:	d1 f7       	brne	.-12     	; 0xa1a <TM1637_push_buff+0x16>
- a26:	df 91       	pop	r29
- a28:	cf 91       	pop	r28
- a2a:	92 cf       	rjmp	.-220    	; 0x950 <TM1637_stop>
+000009e4 <TM1637_display_prog_string>:
+ 9e4:	91 e0       	ldi	r25, 0x01	; 1
+ 9e6:	90 93 a0 00 	sts	0x00A0, r25	; 0x8000a0 <lastWasStr>
+ 9ea:	90 e0       	ldi	r25, 0x00	; 0
+ 9ec:	90 93 94 00 	sts	0x0094, r25	; 0x800094 <lastValue+0x1>
+ 9f0:	80 93 93 00 	sts	0x0093, r24	; 0x800093 <lastValue>
+ 9f4:	88 0f       	add	r24, r24
+ 9f6:	99 1f       	adc	r25, r25
+ 9f8:	88 0f       	add	r24, r24
+ 9fa:	99 1f       	adc	r25, r25
+ 9fc:	fc 01       	movw	r30, r24
+ 9fe:	e2 5e       	subi	r30, 0xE2	; 226
+ a00:	ff 4f       	sbci	r31, 0xFF	; 255
+ a02:	e4 91       	lpm	r30, Z
+ a04:	a2 ea       	ldi	r26, 0xA2	; 162
+ a06:	b0 e0       	ldi	r27, 0x00	; 0
+ a08:	ec 93       	st	X, r30
+ a0a:	fc 01       	movw	r30, r24
+ a0c:	e1 5e       	subi	r30, 0xE1	; 225
+ a0e:	ff 4f       	sbci	r31, 0xFF	; 255
+ a10:	e4 91       	lpm	r30, Z
+ a12:	11 96       	adiw	r26, 0x01	; 1
+ a14:	ec 93       	st	X, r30
+ a16:	11 97       	sbiw	r26, 0x01	; 1
+ a18:	fc 01       	movw	r30, r24
+ a1a:	e0 5e       	subi	r30, 0xE0	; 224
+ a1c:	ff 4f       	sbci	r31, 0xFF	; 255
+ a1e:	e4 91       	lpm	r30, Z
+ a20:	12 96       	adiw	r26, 0x02	; 2
+ a22:	ec 93       	st	X, r30
+ a24:	12 97       	sbiw	r26, 0x02	; 2
+ a26:	fc 01       	movw	r30, r24
+ a28:	ef 5d       	subi	r30, 0xDF	; 223
+ a2a:	ff 4f       	sbci	r31, 0xFF	; 255
+ a2c:	84 91       	lpm	r24, Z
+ a2e:	13 96       	adiw	r26, 0x03	; 3
+ a30:	8c 93       	st	X, r24
+ a32:	c4 cf       	rjmp	.-120    	; 0x9bc <TM1637_push_buff>
 
-00000a2c <TM1637_display_prog_string>:
- a2c:	91 e0       	ldi	r25, 0x01	; 1
- a2e:	90 93 a0 00 	sts	0x00A0, r25	; 0x8000a0 <lastWasStr>
- a32:	90 e0       	ldi	r25, 0x00	; 0
- a34:	90 93 94 00 	sts	0x0094, r25	; 0x800094 <lastValue+0x1>
- a38:	80 93 93 00 	sts	0x0093, r24	; 0x800093 <lastValue>
- a3c:	88 0f       	add	r24, r24
- a3e:	99 1f       	adc	r25, r25
- a40:	88 0f       	add	r24, r24
- a42:	99 1f       	adc	r25, r25
- a44:	fc 01       	movw	r30, r24
- a46:	e2 5e       	subi	r30, 0xE2	; 226
- a48:	ff 4f       	sbci	r31, 0xFF	; 255
- a4a:	e4 91       	lpm	r30, Z
- a4c:	a2 ea       	ldi	r26, 0xA2	; 162
- a4e:	b0 e0       	ldi	r27, 0x00	; 0
- a50:	ec 93       	st	X, r30
- a52:	fc 01       	movw	r30, r24
- a54:	e1 5e       	subi	r30, 0xE1	; 225
- a56:	ff 4f       	sbci	r31, 0xFF	; 255
- a58:	e4 91       	lpm	r30, Z
- a5a:	11 96       	adiw	r26, 0x01	; 1
- a5c:	ec 93       	st	X, r30
- a5e:	11 97       	sbiw	r26, 0x01	; 1
- a60:	fc 01       	movw	r30, r24
- a62:	e0 5e       	subi	r30, 0xE0	; 224
- a64:	ff 4f       	sbci	r31, 0xFF	; 255
- a66:	e4 91       	lpm	r30, Z
- a68:	12 96       	adiw	r26, 0x02	; 2
- a6a:	ec 93       	st	X, r30
- a6c:	12 97       	sbiw	r26, 0x02	; 2
- a6e:	fc 01       	movw	r30, r24
- a70:	ef 5d       	subi	r30, 0xDF	; 223
- a72:	ff 4f       	sbci	r31, 0xFF	; 255
- a74:	84 91       	lpm	r24, Z
- a76:	13 96       	adiw	r26, 0x03	; 3
- a78:	8c 93       	st	X, r24
- a7a:	c4 cf       	rjmp	.-120    	; 0xa04 <TM1637_push_buff>
+00000a34 <_TM1637_display_number>:
+ a34:	cf 93       	push	r28
+ a36:	df 93       	push	r29
+ a38:	10 92 a0 00 	sts	0x00A0, r1	; 0x8000a0 <lastWasStr>
+ a3c:	80 93 93 00 	sts	0x0093, r24	; 0x800093 <lastValue>
+ a40:	90 93 94 00 	sts	0x0094, r25	; 0x800094 <lastValue+0x1>
+ a44:	c6 ea       	ldi	r28, 0xA6	; 166
+ a46:	d0 e0       	ldi	r29, 0x00	; 0
+ a48:	2a e0       	ldi	r18, 0x0A	; 10
+ a4a:	30 e0       	ldi	r19, 0x00	; 0
+ a4c:	b9 01       	movw	r22, r18
+ a4e:	61 d0       	rcall	.+194    	; 0xb12 <__udivmodhi4>
+ a50:	fc 01       	movw	r30, r24
+ a52:	ee 5a       	subi	r30, 0xAE	; 174
+ a54:	ff 4f       	sbci	r31, 0xFF	; 255
+ a56:	e4 91       	lpm	r30, Z
+ a58:	ea 93       	st	-Y, r30
+ a5a:	cb 01       	movw	r24, r22
+ a5c:	40 e0       	ldi	r20, 0x00	; 0
+ a5e:	c2 3a       	cpi	r28, 0xA2	; 162
+ a60:	d4 07       	cpc	r29, r20
+ a62:	a1 f7       	brne	.-24     	; 0xa4c <_TM1637_display_number+0x18>
+ a64:	80 91 a3 00 	lds	r24, 0x00A3	; 0x8000a3 <byteBuf+0x1>
+ a68:	80 68       	ori	r24, 0x80	; 128
+ a6a:	80 93 a3 00 	sts	0x00A3, r24	; 0x8000a3 <byteBuf+0x1>
+ a6e:	df 91       	pop	r29
+ a70:	cf 91       	pop	r28
+ a72:	08 95       	ret
 
-00000a7c <_TM1637_display_number>:
- a7c:	cf 93       	push	r28
- a7e:	df 93       	push	r29
- a80:	10 92 a0 00 	sts	0x00A0, r1	; 0x8000a0 <lastWasStr>
- a84:	80 93 93 00 	sts	0x0093, r24	; 0x800093 <lastValue>
- a88:	90 93 94 00 	sts	0x0094, r25	; 0x800094 <lastValue+0x1>
- a8c:	c6 ea       	ldi	r28, 0xA6	; 166
- a8e:	d0 e0       	ldi	r29, 0x00	; 0
- a90:	2a e0       	ldi	r18, 0x0A	; 10
- a92:	30 e0       	ldi	r19, 0x00	; 0
- a94:	b9 01       	movw	r22, r18
- a96:	7a d0       	rcall	.+244    	; 0xb8c <__udivmodhi4>
- a98:	fc 01       	movw	r30, r24
- a9a:	ee 5a       	subi	r30, 0xAE	; 174
- a9c:	ff 4f       	sbci	r31, 0xFF	; 255
- a9e:	e4 91       	lpm	r30, Z
- aa0:	ea 93       	st	-Y, r30
- aa2:	cb 01       	movw	r24, r22
- aa4:	40 e0       	ldi	r20, 0x00	; 0
- aa6:	c2 3a       	cpi	r28, 0xA2	; 162
- aa8:	d4 07       	cpc	r29, r20
- aaa:	a1 f7       	brne	.-24     	; 0xa94 <_TM1637_display_number+0x18>
- aac:	80 91 a3 00 	lds	r24, 0x00A3	; 0x8000a3 <byteBuf+0x1>
- ab0:	80 68       	ori	r24, 0x80	; 128
- ab2:	80 93 a3 00 	sts	0x00A3, r24	; 0x8000a3 <byteBuf+0x1>
+00000a74 <TM1637_display_number>:
+ a74:	2f e0       	ldi	r18, 0x0F	; 15
+ a76:	20 93 92 00 	sts	0x0092, r18	; 0x800092 <enabledDigits>
+ a7a:	dc df       	rcall	.-72     	; 0xa34 <_TM1637_display_number>
+ a7c:	9f cf       	rjmp	.-194    	; 0x9bc <TM1637_push_buff>
+
+00000a7e <TM1637_toggle>:
+ a7e:	81 e0       	ldi	r24, 0x01	; 1
+ a80:	90 91 a1 00 	lds	r25, 0x00A1	; 0x8000a1 <enabled>
+ a84:	91 11       	cpse	r25, r1
+ a86:	80 e0       	ldi	r24, 0x00	; 0
+ a88:	84 cf       	rjmp	.-248    	; 0x992 <TM1637_enable>
+
+00000a8a <TM1637_flash>:
+ a8a:	1f 93       	push	r17
+ a8c:	cf 93       	push	r28
+ a8e:	df 93       	push	r29
+ a90:	d8 2f       	mov	r29, r24
+ a92:	16 2f       	mov	r17, r22
+ a94:	c0 e0       	ldi	r28, 0x00	; 0
+ a96:	cd 17       	cp	r28, r29
+ a98:	71 f0       	breq	.+28     	; 0xab6 <TM1637_flash+0x2c>
+ a9a:	f1 df       	rcall	.-30     	; 0xa7e <TM1637_toggle>
+ a9c:	80 e0       	ldi	r24, 0x00	; 0
+ a9e:	81 17       	cp	r24, r17
+ aa0:	41 f0       	breq	.+16     	; 0xab2 <TM1637_flash+0x28>
+ aa2:	ef ed       	ldi	r30, 0xDF	; 223
+ aa4:	fe e2       	ldi	r31, 0x2E	; 46
+ aa6:	31 97       	sbiw	r30, 0x01	; 1
+ aa8:	f1 f7       	brne	.-4      	; 0xaa6 <TM1637_flash+0x1c>
+ aaa:	00 c0       	rjmp	.+0      	; 0xaac <TM1637_flash+0x22>
+ aac:	00 00       	nop
+ aae:	8f 5f       	subi	r24, 0xFF	; 255
+ ab0:	f6 cf       	rjmp	.-20     	; 0xa9e <TM1637_flash+0x14>
+ ab2:	cf 5f       	subi	r28, 0xFF	; 255
+ ab4:	f0 cf       	rjmp	.-32     	; 0xa96 <TM1637_flash+0xc>
  ab6:	df 91       	pop	r29
  ab8:	cf 91       	pop	r28
- aba:	08 95       	ret
+ aba:	1f 91       	pop	r17
+ abc:	08 95       	ret
 
-00000abc <TM1637_display_number>:
- abc:	2f e0       	ldi	r18, 0x0F	; 15
- abe:	20 93 92 00 	sts	0x0092, r18	; 0x800092 <enabledDigits>
- ac2:	dc df       	rcall	.-72     	; 0xa7c <_TM1637_display_number>
- ac4:	9f cf       	rjmp	.-194    	; 0xa04 <TM1637_push_buff>
+00000abe <TM1637_clear>:
+ abe:	e2 ea       	ldi	r30, 0xA2	; 162
+ ac0:	f0 e0       	ldi	r31, 0x00	; 0
+ ac2:	10 82       	st	Z, r1
+ ac4:	11 82       	std	Z+1, r1	; 0x01
+ ac6:	12 82       	std	Z+2, r1	; 0x02
+ ac8:	13 82       	std	Z+3, r1	; 0x03
+ aca:	78 cf       	rjmp	.-272    	; 0x9bc <TM1637_push_buff>
 
-00000ac6 <TM1637_toggle>:
- ac6:	81 e0       	ldi	r24, 0x01	; 1
- ac8:	90 91 a1 00 	lds	r25, 0x00A1	; 0x8000a1 <enabled>
- acc:	91 11       	cpse	r25, r1
- ace:	80 e0       	ldi	r24, 0x00	; 0
- ad0:	84 cf       	rjmp	.-248    	; 0x9da <TM1637_enable>
+00000acc <TM1637_init>:
+ acc:	87 b3       	in	r24, 0x17	; 23
+ ace:	88 61       	ori	r24, 0x18	; 24
+ ad0:	87 bb       	out	0x17, r24	; 23
+ ad2:	88 b3       	in	r24, 0x18	; 24
+ ad4:	87 7e       	andi	r24, 0xE7	; 231
+ ad6:	88 bb       	out	0x18, r24	; 24
+ ad8:	81 e0       	ldi	r24, 0x01	; 1
+ ada:	5b df       	rcall	.-330    	; 0x992 <TM1637_enable>
+ adc:	f0 cf       	rjmp	.-32     	; 0xabe <TM1637_clear>
 
-00000ad2 <TM1637_flash>:
- ad2:	1f 93       	push	r17
- ad4:	cf 93       	push	r28
- ad6:	df 93       	push	r29
- ad8:	d8 2f       	mov	r29, r24
- ada:	16 2f       	mov	r17, r22
- adc:	c0 e0       	ldi	r28, 0x00	; 0
- ade:	cd 17       	cp	r28, r29
- ae0:	71 f0       	breq	.+28     	; 0xafe <TM1637_flash+0x2c>
- ae2:	f1 df       	rcall	.-30     	; 0xac6 <TM1637_toggle>
- ae4:	80 e0       	ldi	r24, 0x00	; 0
- ae6:	81 17       	cp	r24, r17
- ae8:	41 f0       	breq	.+16     	; 0xafa <TM1637_flash+0x28>
- aea:	ef ed       	ldi	r30, 0xDF	; 223
- aec:	fe e2       	ldi	r31, 0x2E	; 46
- aee:	31 97       	sbiw	r30, 0x01	; 1
- af0:	f1 f7       	brne	.-4      	; 0xaee <TM1637_flash+0x1c>
- af2:	00 c0       	rjmp	.+0      	; 0xaf4 <TM1637_flash+0x22>
- af4:	00 00       	nop
- af6:	8f 5f       	subi	r24, 0xFF	; 255
- af8:	f6 cf       	rjmp	.-20     	; 0xae6 <TM1637_flash+0x14>
- afa:	cf 5f       	subi	r28, 0xFF	; 255
- afc:	f0 cf       	rjmp	.-32     	; 0xade <TM1637_flash+0xc>
- afe:	df 91       	pop	r29
- b00:	cf 91       	pop	r28
- b02:	1f 91       	pop	r17
- b04:	08 95       	ret
+00000ade <__mulqi3>:
+ ade:	00 24       	eor	r0, r0
 
-00000b06 <TM1637_clear>:
- b06:	e2 ea       	ldi	r30, 0xA2	; 162
- b08:	f0 e0       	ldi	r31, 0x00	; 0
- b0a:	10 82       	st	Z, r1
- b0c:	11 82       	std	Z+1, r1	; 0x01
- b0e:	12 82       	std	Z+2, r1	; 0x02
- b10:	13 82       	std	Z+3, r1	; 0x03
- b12:	78 cf       	rjmp	.-272    	; 0xa04 <TM1637_push_buff>
+00000ae0 <__mulqi3_loop>:
+ ae0:	80 fd       	sbrc	r24, 0
+ ae2:	06 0e       	add	r0, r22
+ ae4:	66 0f       	add	r22, r22
+ ae6:	11 f0       	breq	.+4      	; 0xaec <__mulqi3_exit>
+ ae8:	86 95       	lsr	r24
+ aea:	d1 f7       	brne	.-12     	; 0xae0 <__mulqi3_loop>
 
-00000b14 <TM1637_init>:
- b14:	87 b3       	in	r24, 0x17	; 23
- b16:	88 61       	ori	r24, 0x18	; 24
- b18:	87 bb       	out	0x17, r24	; 23
- b1a:	88 b3       	in	r24, 0x18	; 24
- b1c:	87 7e       	andi	r24, 0xE7	; 231
- b1e:	88 bb       	out	0x18, r24	; 24
- b20:	81 e0       	ldi	r24, 0x01	; 1
- b22:	5b df       	rcall	.-330    	; 0x9da <TM1637_enable>
- b24:	f0 cf       	rjmp	.-32     	; 0xb06 <TM1637_clear>
+00000aec <__mulqi3_exit>:
+ aec:	80 2d       	mov	r24, r0
+ aee:	08 95       	ret
 
-00000b26 <__mulqi3>:
- b26:	00 24       	eor	r0, r0
+00000af0 <__mulhi3>:
+ af0:	00 24       	eor	r0, r0
+ af2:	55 27       	eor	r21, r21
+ af4:	04 c0       	rjmp	.+8      	; 0xafe <__mulhi3+0xe>
+ af6:	08 0e       	add	r0, r24
+ af8:	59 1f       	adc	r21, r25
+ afa:	88 0f       	add	r24, r24
+ afc:	99 1f       	adc	r25, r25
+ afe:	00 97       	sbiw	r24, 0x00	; 0
+ b00:	29 f0       	breq	.+10     	; 0xb0c <__mulhi3+0x1c>
+ b02:	76 95       	lsr	r23
+ b04:	67 95       	ror	r22
+ b06:	b8 f3       	brcs	.-18     	; 0xaf6 <__mulhi3+0x6>
+ b08:	71 05       	cpc	r23, r1
+ b0a:	b9 f7       	brne	.-18     	; 0xafa <__mulhi3+0xa>
+ b0c:	80 2d       	mov	r24, r0
+ b0e:	95 2f       	mov	r25, r21
+ b10:	08 95       	ret
 
-00000b28 <__mulqi3_loop>:
- b28:	80 fd       	sbrc	r24, 0
- b2a:	06 0e       	add	r0, r22
- b2c:	66 0f       	add	r22, r22
- b2e:	11 f0       	breq	.+4      	; 0xb34 <__mulqi3_exit>
- b30:	86 95       	lsr	r24
- b32:	d1 f7       	brne	.-12     	; 0xb28 <__mulqi3_loop>
+00000b12 <__udivmodhi4>:
+ b12:	aa 1b       	sub	r26, r26
+ b14:	bb 1b       	sub	r27, r27
+ b16:	51 e1       	ldi	r21, 0x11	; 17
+ b18:	07 c0       	rjmp	.+14     	; 0xb28 <__udivmodhi4_ep>
 
-00000b34 <__mulqi3_exit>:
- b34:	80 2d       	mov	r24, r0
- b36:	08 95       	ret
+00000b1a <__udivmodhi4_loop>:
+ b1a:	aa 1f       	adc	r26, r26
+ b1c:	bb 1f       	adc	r27, r27
+ b1e:	a6 17       	cp	r26, r22
+ b20:	b7 07       	cpc	r27, r23
+ b22:	10 f0       	brcs	.+4      	; 0xb28 <__udivmodhi4_ep>
+ b24:	a6 1b       	sub	r26, r22
+ b26:	b7 0b       	sbc	r27, r23
 
-00000b38 <__mulhi3>:
- b38:	00 24       	eor	r0, r0
- b3a:	55 27       	eor	r21, r21
- b3c:	04 c0       	rjmp	.+8      	; 0xb46 <__mulhi3+0xe>
- b3e:	08 0e       	add	r0, r24
- b40:	59 1f       	adc	r21, r25
- b42:	88 0f       	add	r24, r24
- b44:	99 1f       	adc	r25, r25
- b46:	00 97       	sbiw	r24, 0x00	; 0
- b48:	29 f0       	breq	.+10     	; 0xb54 <__mulhi3+0x1c>
- b4a:	76 95       	lsr	r23
- b4c:	67 95       	ror	r22
- b4e:	b8 f3       	brcs	.-18     	; 0xb3e <__mulhi3+0x6>
- b50:	71 05       	cpc	r23, r1
- b52:	b9 f7       	brne	.-18     	; 0xb42 <__mulhi3+0xa>
- b54:	80 2d       	mov	r24, r0
- b56:	95 2f       	mov	r25, r21
- b58:	08 95       	ret
+00000b28 <__udivmodhi4_ep>:
+ b28:	88 1f       	adc	r24, r24
+ b2a:	99 1f       	adc	r25, r25
+ b2c:	5a 95       	dec	r21
+ b2e:	a9 f7       	brne	.-22     	; 0xb1a <__udivmodhi4_loop>
+ b30:	80 95       	com	r24
+ b32:	90 95       	com	r25
+ b34:	bc 01       	movw	r22, r24
+ b36:	cd 01       	movw	r24, r26
+ b38:	08 95       	ret
 
-00000b5a <__mulsi3>:
- b5a:	ee 27       	eor	r30, r30
- b5c:	ff 27       	eor	r31, r31
+00000b3a <_exit>:
+ b3a:	f8 94       	cli
 
-00000b5e <__mulsi3_helper>:
- b5e:	aa 27       	eor	r26, r26
- b60:	bb 27       	eor	r27, r27
- b62:	08 c0       	rjmp	.+16     	; 0xb74 <__mulsi3_helper+0x16>
- b64:	a2 0f       	add	r26, r18
- b66:	b3 1f       	adc	r27, r19
- b68:	e4 1f       	adc	r30, r20
- b6a:	f5 1f       	adc	r31, r21
- b6c:	22 0f       	add	r18, r18
- b6e:	33 1f       	adc	r19, r19
- b70:	44 1f       	adc	r20, r20
- b72:	55 1f       	adc	r21, r21
- b74:	96 95       	lsr	r25
- b76:	87 95       	ror	r24
- b78:	77 95       	ror	r23
- b7a:	67 95       	ror	r22
- b7c:	98 f3       	brcs	.-26     	; 0xb64 <__mulsi3_helper+0x6>
- b7e:	70 40       	sbci	r23, 0x00	; 0
- b80:	a9 f7       	brne	.-22     	; 0xb6c <__mulsi3_helper+0xe>
- b82:	00 97       	sbiw	r24, 0x00	; 0
- b84:	99 f7       	brne	.-26     	; 0xb6c <__mulsi3_helper+0xe>
- b86:	bd 01       	movw	r22, r26
- b88:	cf 01       	movw	r24, r30
- b8a:	08 95       	ret
-
-00000b8c <__udivmodhi4>:
- b8c:	aa 1b       	sub	r26, r26
- b8e:	bb 1b       	sub	r27, r27
- b90:	51 e1       	ldi	r21, 0x11	; 17
- b92:	07 c0       	rjmp	.+14     	; 0xba2 <__udivmodhi4_ep>
-
-00000b94 <__udivmodhi4_loop>:
- b94:	aa 1f       	adc	r26, r26
- b96:	bb 1f       	adc	r27, r27
- b98:	a6 17       	cp	r26, r22
- b9a:	b7 07       	cpc	r27, r23
- b9c:	10 f0       	brcs	.+4      	; 0xba2 <__udivmodhi4_ep>
- b9e:	a6 1b       	sub	r26, r22
- ba0:	b7 0b       	sbc	r27, r23
-
-00000ba2 <__udivmodhi4_ep>:
- ba2:	88 1f       	adc	r24, r24
- ba4:	99 1f       	adc	r25, r25
- ba6:	5a 95       	dec	r21
- ba8:	a9 f7       	brne	.-22     	; 0xb94 <__udivmodhi4_loop>
- baa:	80 95       	com	r24
- bac:	90 95       	com	r25
- bae:	bc 01       	movw	r22, r24
- bb0:	cd 01       	movw	r24, r26
- bb2:	08 95       	ret
-
-00000bb4 <__udivmodsi4>:
- bb4:	a1 e2       	ldi	r26, 0x21	; 33
- bb6:	1a 2e       	mov	r1, r26
- bb8:	aa 1b       	sub	r26, r26
- bba:	bb 1b       	sub	r27, r27
- bbc:	fd 01       	movw	r30, r26
- bbe:	0d c0       	rjmp	.+26     	; 0xbda <__udivmodsi4_ep>
-
-00000bc0 <__udivmodsi4_loop>:
- bc0:	aa 1f       	adc	r26, r26
- bc2:	bb 1f       	adc	r27, r27
- bc4:	ee 1f       	adc	r30, r30
- bc6:	ff 1f       	adc	r31, r31
- bc8:	a2 17       	cp	r26, r18
- bca:	b3 07       	cpc	r27, r19
- bcc:	e4 07       	cpc	r30, r20
- bce:	f5 07       	cpc	r31, r21
- bd0:	20 f0       	brcs	.+8      	; 0xbda <__udivmodsi4_ep>
- bd2:	a2 1b       	sub	r26, r18
- bd4:	b3 0b       	sbc	r27, r19
- bd6:	e4 0b       	sbc	r30, r20
- bd8:	f5 0b       	sbc	r31, r21
-
-00000bda <__udivmodsi4_ep>:
- bda:	66 1f       	adc	r22, r22
- bdc:	77 1f       	adc	r23, r23
- bde:	88 1f       	adc	r24, r24
- be0:	99 1f       	adc	r25, r25
- be2:	1a 94       	dec	r1
- be4:	69 f7       	brne	.-38     	; 0xbc0 <__udivmodsi4_loop>
- be6:	60 95       	com	r22
- be8:	70 95       	com	r23
- bea:	80 95       	com	r24
- bec:	90 95       	com	r25
- bee:	9b 01       	movw	r18, r22
- bf0:	ac 01       	movw	r20, r24
- bf2:	bd 01       	movw	r22, r26
- bf4:	cf 01       	movw	r24, r30
- bf6:	08 95       	ret
-
-00000bf8 <_exit>:
- bf8:	f8 94       	cli
-
-00000bfa <__stop_program>:
- bfa:	ff cf       	rjmp	.-2      	; 0xbfa <__stop_program>
+00000b3c <__stop_program>:
+ b3c:	ff cf       	rjmp	.-2      	; 0xb3c <__stop_program>
