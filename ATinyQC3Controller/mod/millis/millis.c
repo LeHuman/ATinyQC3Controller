@@ -8,15 +8,15 @@
 #include "../mod.h"
 #include <avr/interrupt.h>
 #include <avr/io.h>
-#include <util/atomic.h>
 #include <inttypes.h>
+#include <util/atomic.h>
 
 uint16_t millis_snap = 0;
 uint16_t ms = 0;
 uint16_t us = 0;
 
 ISR(TIMER0_COMPA_vect) {
-	ms++;
+    ms++;
 }
 
 uint16_t millis(void) {
@@ -42,11 +42,11 @@ void millis_TakeSnap(uint16_t future) {
     millis_snap = future + millis();
 }
 
-void millis_Init(void) { // TODO: Increase prescaler as F_CPU increases
-	OCR0A = ((F_CPU / 1000) / 8); // 125 @ 1 Mhz
-	
-	TCCR0A  |= (1 << WGM01); // Clear when matching (CTC)
-	TCCR0B |= (1 << CS01); // 1/8th clock rate
-	
-	TIMSK |= (1 << OCIE0A); // Enable Counter0 Output Compare Match A interrupt
+void millis_Init(void) {          // TODO: Increase prescaler as F_CPU increases
+    OCR0A = ((F_CPU / 1000) / 8); // 125 @ 1 Mhz
+
+    TCCR0A |= (1 << WGM01); // Clear when matching (CTC)
+    TCCR0B |= (1 << CS01);  // 1/8th clock rate
+
+    TIMSK |= (1 << OCIE0A); // Enable Counter0 Output Compare Match A interrupt
 }
