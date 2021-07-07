@@ -96,4 +96,4 @@ This 'menu' can be visualized as follows.
 
 Unfortunately, the charger that I bought does not seem to actually be QC 3.0. My only clue is that it does not output 5V on standby, and, from what I understand, the QC standard makes chargers output 5V on standby. Regardless, this does not let me power the ATiny from the same port.
 
-Regardless, everything else, like the menu system and the potentiometer, seems to be working just fine.
+Nevertheless, everything else, like the menu system and the potentiometer, seems to be working just fine.
