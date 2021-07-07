@@ -68,8 +68,7 @@ The only wiring I will take note of does not involve the Arduino ISP.
 ### Images
 
 Refer to [Turning a Quick Charge 3.0 charger into a variable voltage power supply by Vince](http://blog.deconinck.info/post/2017/08/09/Turning-a-Quick-Charge-3.0-charger-into-a-variable-voltage-power-supply) for the actual QC3 Circuit, not shown here.
-
-Take note of the final update on this blog post.
+Take note of the final update that Vince left.
 
 ![Wiring](Images/Wiring.png)
 Shown above is the wiring without and with the larger parts, alongside the Arduino ISP.
