@@ -65,6 +65,15 @@ The only wiring I will take note of does not involve the Arduino ISP.
 
 `*` Note: PB5 is normally only used as the ATiny reset pin unless permanently programmed to use it as a normal GPIO. However, by using a 10kΩ and 5kΩ resistor in parallel ( equivalent to ~ 3.3kΩ resistor ) on the button, it can still be used as input in a limited range.
 
+### Images
+
+Refer to [Turning a Quick Charge 3.0 charger into a variable voltage power supply by Vince](http://blog.deconinck.info/post/2017/08/09/Turning-a-Quick-Charge-3.0-charger-into-a-variable-voltage-power-supply) for the actual QC3 Circuit, not shown here.
+
+Take note of the final update on this blog post.
+
+![Wiring](Images/Wiring.png)
+Shown above is the wiring without and with the larger parts, alongside the Arduino ISP.
+
 ## Usage
 
 The only input that the ATiny takes in is the potentiometer and the button.
@@ -91,6 +100,16 @@ This 'menu' can be visualized as follows.
 `*` This option will reset the selection and go back to the default state
 
 `**` This option will first normalize the given voltage to QC 3.0 standard then return to **MainMenu** [0]
+
+## Resources
+
+- [Turning a Quick Charge 3.0 charger into a variable voltage power supply by Vince](http://blog.deconinck.info/post/2017/08/09/Turning-a-Quick-Charge-3.0-charger-into-a-variable-voltage-power-supply) 
+  - Most of the QC 3.0 Stuff was done by him
+
+ - [Arduino ISP programmer by randofo](https://www.instructables.com/Program-an-ATtiny-with-Arduino/) 
+   - Roughly followed this guide
+ - [attiny-tm1637-library by lpodkalicki](https://github.com/lpodkalicki/attiny-tm1637-library)
+   - Heavily modified this library for my situation
 
 ## Not worky, I don't think
 
